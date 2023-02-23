@@ -9,7 +9,8 @@ interface PortalProps {
 export default function Portal({ children, selector }: PortalProps) {
   const [mount, setMount] = useState(false);
 
-  const element = mount && document.getElementById(selector);
+  const element =
+    typeof window !== undefined && mount && document.getElementById(selector);
 
   useEffect(() => {
     setMount((prev) => true);
