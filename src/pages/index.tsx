@@ -1,13 +1,20 @@
-import Head from "next/head";
+import { ReactElement } from "react";
+import CustomHead from "@/components/CustomHead/CustomHead";
+import BaseLayout from "@/components/Layout/BaseLayout";
+import MainPageLayout from "@/components/Layout/MainPageLayout";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>복불복</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <CustomHead title={"음식점"} />
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <BaseLayout>
+      <MainPageLayout>{page}</MainPageLayout>
+    </BaseLayout>
+  );
+};
