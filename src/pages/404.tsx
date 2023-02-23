@@ -14,7 +14,7 @@ export default function NotFoundPage() {
 
   return (
     <>
-      <CustomHead title={router.pathname.slice(1)} />
+      <CustomHead title={"404"} />
       <NotFound />
     </>
   );
