@@ -1,6 +1,6 @@
 import style from "./Button.module.scss";
 import classNames from "classnames/bind";
-import { ReactNode, useCallback } from "react";
+import { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;

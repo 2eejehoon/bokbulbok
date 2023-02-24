@@ -1,5 +1,5 @@
 import style from "./Modal.module.scss";
-import Portal from "../Portal";
+import Portal from "@/components/Portal";
 import { ReactNode, Dispatch, SetStateAction, useCallback } from "react";
 import classNames from "classnames/bind";
 
@@ -18,13 +18,14 @@ export default function Modal({
   modalOpen,
   setModalOpen,
 }: ModalProps) {
-  const handleClick = useCallback(() => setModalOpen((prev) => false), []);
-
+  const handleOuterClick = useCallback(() => setModalOpen((prev) => false), []);
   return (
     <Portal selector="portal">
       {modalOpen && (
         <>
-          <div className={cx("modal", type)}>{children}</div>
+          <div className={style.outerContainer} onClick={handleOuterClick}>
+            <div className={cx("modal", type)}>{children}</div>
+          </div>
         </>
       )}
     </Portal>

@@ -1,4 +1,4 @@
-import BaseLayout from "@/components/Layout/BaseLayout/BaseLayout";
+import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
 import NotFound from "@/components/NotFound/NotFound";
 import CustomHead from "@/components/CustomHead";
 import { ReactElement } from "react";

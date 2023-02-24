@@ -1,14 +1,12 @@
 import { ReactElement } from "react";
 import CustomHead from "@/components/CustomHead";
-import BaseLayout from "@/components/Layout/BaseLayout/BaseLayout";
-import NavLayout from "@/components/Layout/NavLayout/NavLayout";
-import DistanceSlider from "@/molcules/RangeSlider/RangeSlider";
+import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
+import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
 
 export default function Plays() {
   return (
     <>
       <CustomHead title="놀거리" />
-      <DistanceSlider />
     </>
   );
 }

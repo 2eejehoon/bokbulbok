@@ -1,16 +1,14 @@
 import { ReactElement } from "react";
-import Button from "@/components/Button/Button";
 import CustomHead from "@/components/CustomHead";
-import BaseLayout from "@/components/Layout/BaseLayout/BaseLayout";
-import NavLayout from "@/components/Layout/NavLayout/NavLayout";
+import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
+import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
+import RangeSlider from "@/components/common/RangeSlider/RangeSlider";
 
 export default function Foods() {
   return (
     <>
       <CustomHead title="식당" />
-      {/* <Button type="button" color="black" size="small" onClick={}>
-        거리
-      </Button> */}
+      <RangeSlider />
     </>
   );
 }
