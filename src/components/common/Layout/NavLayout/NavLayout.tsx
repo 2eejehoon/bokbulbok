@@ -12,9 +12,9 @@ export default function NavLayout({ children }: NavLayoutProps) {
       <nav className={style.nav}>
         <ul className={style.ul}>
           {[
-            { name: "식당", path: "/foods" },
-            { name: "카페", path: "/drinks" },
-            { name: "놀거리", path: "/plays" },
+            { name: "식당", path: "/restaurant" },
+            { name: "카페", path: "/cafe" },
+            { name: "놀거리", path: "/play" },
           ].map((category) => {
             return (
               <li key={category.name} className={style.li}>

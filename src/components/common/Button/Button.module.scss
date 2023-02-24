@@ -4,6 +4,7 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
 
   // color
   &.white {
@@ -13,9 +14,9 @@
   }
 
   &.black {
-    color: white;
-    background-color: black;
-    border: 0.5px solid white;
+    color: bl;
+    background-color: white;
+    border: 0.5px solid black;
     border-radius: 10px;
   }
 

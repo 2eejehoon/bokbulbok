@@ -2,13 +2,13 @@ import { ReactElement } from "react";
 import CustomHead from "@/components/CustomHead";
 import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
 import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
-import RangeSlider from "@/components/common/RangeSlider/RangeSlider";
+import RangeSliderModal from "@/components/common/RangeSliderModal/RangeSliderModal";
 
 export default function Foods() {
   return (
     <>
       <CustomHead title="식당" />
-      <RangeSlider />
+      <RangeSliderModal />
     </>
   );
 }

@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
 import { useRecoilState } from "recoil";
-import style from "./RangeSlider.module.scss";
+import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
 import { distanceState } from "@/states/distance";
 
-export default function RangeSlider() {
+export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
   const [range, setRange] = useState<string>("0.5");
   const [distance, setDistance] = useRecoilState<string>(distanceState);
@@ -17,8 +17,8 @@ export default function RangeSlider() {
   }, [distance]);
 
   const handleConfirm = useCallback(() => {
-    setDistance((prev) => range);
     setModalOpen((prev) => false);
+    setDistance((prev) => range);
   }, [range]);
 
   return (
