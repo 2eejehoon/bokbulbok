@@ -1,6 +1,6 @@
-import style from "./BaseLayout.module.scss";
 import { ReactNode } from "react";
 import Link from "next/link";
+import style from "./BaseLayout.module.scss";
 
 interface BaseLayoutProps {
   children: ReactNode;

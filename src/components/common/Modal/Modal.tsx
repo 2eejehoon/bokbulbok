@@ -1,7 +1,7 @@
-import style from "./Modal.module.scss";
-import Portal from "@/components/Portal";
 import { ReactNode, Dispatch, SetStateAction, useCallback } from "react";
 import classNames from "classnames/bind";
+import style from "./Modal.module.scss";
+import Portal from "@/components/Portal";
 
 interface ModalProps {
   children: ReactNode;
@@ -23,9 +23,8 @@ export default function Modal({
     <Portal selector="portal">
       {modalOpen && (
         <>
-          <div className={style.outerContainer} onClick={handleOuterClick}>
-            <div className={cx("modal", type)}>{children}</div>
-          </div>
+          <div className={cx("modal", type)}>{children}</div>
+          <div className={style.outerContainer} onClick={handleOuterClick} />
         </>
       )}
     </Portal>

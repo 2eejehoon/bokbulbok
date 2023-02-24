@@ -1,5 +1,5 @@
-import style from "./Slider.module.scss";
 import { ChangeEvent, useCallback, Dispatch, SetStateAction } from "react";
+import style from "./Slider.module.scss";
 
 interface SliderProps {
   value: string;

@@ -1,9 +1,9 @@
+import { useState, useCallback } from "react";
+import { useRecoilState } from "recoil";
 import style from "./RangeSlider.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { useState, useCallback } from "react";
-import { useRecoilState } from "recoil";
 import { distanceState } from "@/states/distance";
 
 export default function RangeSlider() {

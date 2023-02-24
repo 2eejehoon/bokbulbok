@@ -1,9 +1,9 @@
-import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
-import NotFound from "@/components/NotFound/NotFound";
-import CustomHead from "@/components/CustomHead";
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
+import NotFound from "@/components/common/NotFound/NotFound";
+import CustomHead from "@/components/CustomHead";
 
 export default function NotFoundPage() {
   const router = useRouter();

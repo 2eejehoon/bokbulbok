@@ -1,6 +1,6 @@
-import style from "./NavLayout.module.scss";
 import Link from "next/link";
 import { ReactNode } from "react";
+import style from "./NavLayout.module.scss";
 
 interface NavLayoutProps {
   children: ReactNode;
