@@ -1,17 +1,20 @@
-import "./Modal.module.scss";
+import style from "./Modal.module.scss";
 import Portal from "../Portal";
 import { ReactNode, Dispatch, SetStateAction, useCallback } from "react";
+import classNames from "classnames/bind";
 
 interface ModalProps {
   children: ReactNode;
-  size: string;
+  type: string;
   modalOpen: boolean;
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+const cx = classNames.bind(style);
+
 export default function Modal({
   children,
-  size,
+  type,
   modalOpen,
   setModalOpen,
 }: ModalProps) {
@@ -21,7 +24,7 @@ export default function Modal({
     <Portal selector="portal">
       {modalOpen && (
         <>
-          <div className={["modal", size].join(" ")}>{children}</div>
+          <div className={cx("modal", type)}>{children}</div>
         </>
       )}
     </Portal>

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import CustomHead from "@/components/CustomHead";
 import BaseLayout from "@/components/Layout/BaseLayout/BaseLayout";
 import NavLayout from "@/components/Layout/NavLayout/NavLayout";
-import DistanceSlider from "@/molcules/DistanceSlider/DistanceSlider";
+import DistanceSlider from "@/molcules/RangeSlider/RangeSlider";
 
 export default function Plays() {
   return (

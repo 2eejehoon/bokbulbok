@@ -1,27 +1,44 @@
 import style from "./Slider.module.scss";
-import { useRecoilState } from "recoil";
-import { distanceState } from "@/states/distance";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useCallback, Dispatch, SetStateAction } from "react";
 
-export default function Slider() {
-  const [distance, setDistance] = useRecoilState<string>(distanceState);
+interface SliderProps {
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+  id: string;
+  unit: string;
+  min: string;
+  max: string;
+  step: string;
+}
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDistance((prev) => e.target.value);
-  };
+export default function Slider({
+  value,
+  setValue,
+  id,
+  unit,
+  min,
+  max,
+  step,
+}: SliderProps) {
+  console.log(`value ${value}`);
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setValue((prev) => e.target.value),
+    []
+  );
 
   return (
     <>
-      <label htmlFor="distance" aria-label="거리" className={style.label}>
-        {`거리 : ${distance} km`}
+      <label htmlFor={id} className={style.label}>
+        {`${value} ${unit}`}
       </label>
       <input
+        id={id}
         type="range"
-        value={distance}
+        value={value}
         onChange={handleChange}
-        min="0"
-        max="3"
-        step="0.5"
+        min={min}
+        max={max}
+        step={step}
         className={style.input}
       />
     </>

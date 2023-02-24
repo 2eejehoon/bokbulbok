@@ -1,0 +1,30 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  border: 0.5px solid lightgrey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &.slider {
+    width: 360px;
+    height: 140px;
+  }
+
+  &.roulette {
+    width: 360px;
+    height: 540px;
+  }
+
+  &.message {
+    width: 300px;
+    height: 90px;
+  }
+}
