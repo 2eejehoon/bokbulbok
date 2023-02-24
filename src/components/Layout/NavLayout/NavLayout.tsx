@@ -1,12 +1,12 @@
-import style from "./MainPageLayout.module.scss";
+import style from "./NavLayout.module.scss";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-interface MainPageLayoutProps {
+interface NavLayoutProps {
   children: ReactNode;
 }
 
-export default function MainPageLayout({ children }: MainPageLayoutProps) {
+export default function NavLayout({ children }: NavLayoutProps) {
   return (
     <>
       <nav className={style.nav}>
@@ -24,7 +24,7 @@ export default function MainPageLayout({ children }: MainPageLayoutProps) {
           })}
         </ul>
       </nav>
-      <main className={style.main}>{children}</main>
+      <section className={style.section}>{children}</section>
     </>
   );
 }

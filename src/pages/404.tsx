@@ -1,6 +1,6 @@
-import BaseLayout from "@/components/Layout/BaseLayout";
+import BaseLayout from "@/components/Layout/BaseLayout/BaseLayout";
 import NotFound from "@/components/NotFound/NotFound";
-import CustomHead from "@/components/CustomHead/CustomHead";
+import CustomHead from "@/components/CustomHead";
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
