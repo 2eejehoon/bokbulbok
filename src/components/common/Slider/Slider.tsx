@@ -20,7 +20,6 @@ export default function Slider({
   max,
   step,
 }: SliderProps) {
-  console.log(`value ${value}`);
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setValue((prev) => e.target.value),
     []

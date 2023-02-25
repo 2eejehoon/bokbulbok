@@ -8,8 +8,8 @@ import { distanceState } from "@/states/distance";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [range, setRange] = useState<string>("0.5");
-  const [distance, setDistance] = useRecoilState<string>(distanceState);
+  const [range, setRange] = useState("0.5");
+  const [distance, setDistance] = useRecoilState(distanceState);
 
   const handleCancle = useCallback(() => {
     setModalOpen((prev) => !prev);
@@ -19,7 +19,7 @@ export default function RangeSliderModal() {
   const handleConfirm = useCallback(() => {
     setModalOpen((prev) => false);
     setDistance((prev) => range);
-  }, [range]);
+  }, [range, setDistance]);
 
   return (
     <>

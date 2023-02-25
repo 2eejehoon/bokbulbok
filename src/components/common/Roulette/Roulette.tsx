@@ -1,20 +1,41 @@
+import { useState, useCallback } from "react";
 import classNames from "classnames/bind";
+import Button from "../Button/Button";
 import style from "./Roulette.module.scss";
 
 const cx = classNames.bind(style);
 
-export default function Roulette() {
+interface RouletteProps {
+  data: string[];
+}
+
+export default function Roulette({ data }: RouletteProps) {
+  const [spin, setSpin] = useState("");
+  const [stop, setStop] = useState("");
+
+  const handleClick = useCallback(() => {
+    setStop((prev) => "");
+    setSpin((prev) => "spin");
+    setTimeout(
+      () => setStop((prev) => "stop"),
+      Math.floor(Math.random() * 5000) + 1000
+    );
+  }, []);
   return (
     <>
-      <ul className={style.ul}>
-        {[1, 2, 3, 4, 5, 6].map((el, idx) => {
+      <div className={style.arrow} />
+      <ul className={cx("roulette", spin, stop)}>
+        {data.map((title) => {
           return (
-            <li key={el} className={cx("list")}>
-              <div className={style.text}>{el}</div>
+            <li key={title} className={style.li}>
+              <div className={style.text}>{title}</div>
             </li>
           );
         })}
       </ul>
+      <Button type="button" color="black" size="medium" onClick={handleClick}>
+        돌려 돌려 돌림판
+      </Button>
     </>
   );
 }

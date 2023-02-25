@@ -1,4 +1,4 @@
-.ul {
+.roulette {
   width: 330px;
   height: 330px;
   position: relative;
@@ -6,9 +6,17 @@
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
+
+  &.spin {
+    animation: spin 1.5s linear infinite;
+  }
+
+  &.stop {
+    animation-play-state: paused;
+  }
 }
 
-.list {
+.li {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -16,27 +24,33 @@
   width: 50%;
   height: 50%;
   transform-origin: 0% 100%;
+  display: flex;
 
   &:first-child {
     background-color: #e96479;
     transform: rotate(0deg) skewY(-30deg);
   }
+
   &:nth-child(2) {
     background-color: #4d455d;
     transform: rotate(60deg) skewY(-30deg);
   }
+
   &:nth-child(3) {
     background-color: #f2cd5c;
     transform: rotate(120deg) skewY(-30deg);
   }
+
   &:nth-child(4) {
     background-color: #7db9b6;
     transform: rotate(180deg) skewY(-30deg);
   }
+
   &:nth-child(5) {
     background-color: #ef5b0c;
     transform: rotate(240deg) skewY(-30deg);
   }
+
   &:nth-child(6) {
     background-color: #609966;
     transform: rotate(300deg) skewY(-30deg);
@@ -45,5 +59,31 @@
 
 .text {
   position: absolute;
+  display: block;
   left: -100%;
+  width: 200%;
+  height: 200%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  transform: skewY(30deg) rotate(30deg);
+  padding-top: 30px;
+}
+
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 30px solid black;
+  left: 50%;
+  top: 60px;
+  z-index: 1;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(1080deg);
+  }
 }

@@ -11,10 +11,10 @@ export default function RouletteModal() {
   return (
     <>
       <Button type="button" color="black" size="medium" onClick={handleClick}>
-        돌려 돌려 돌림판
+        돌림판 불러오기
       </Button>
       <Modal type="roulette" modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <Roulette />
+        <Roulette data={["1", "2", "3", "4", "5", "6"]} />
       </Modal>
     </>
   );
