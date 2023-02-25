@@ -14,7 +14,7 @@ export default function RouletteModal() {
         돌림판 불러오기
       </Button>
       <Modal type="roulette" modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <Roulette data={["1", "2", "3"]} />
+        <Roulette data={["1", "2", "3", "4", "5", "6"]} />
       </Modal>
     </>
   );

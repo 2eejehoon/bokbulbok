@@ -11,10 +11,9 @@ interface RouletteProps {
 
 export default function Roulette({ data }: RouletteProps) {
   const [start, setStart] = useState("");
-  const [stop, setStop] = useState("");
+  const [stop, setStop] = useState("stop");
   const [spin, setSpin] = useState(false);
 
-  // 데이터의 길이에 따라 룰렛의 CSS 효과를 변경합니다.
   const length = useMemo(() => {
     const len = data.length;
     if (len === 1) return "one";
@@ -34,10 +33,11 @@ export default function Roulette({ data }: RouletteProps) {
       setSpin((prev) => false);
     }, Math.floor(Math.random() * 5000) + 1000);
   }, []);
+
   return (
     <>
       <div className={style.arrow} />
-      <ul className={cx("roulette", start, stop)}>
+      <ul className={cx("circle", start, stop)}>
         {data.map((title) => {
           return (
             <li key={title} className={cx("li", length)}>

@@ -8,27 +8,27 @@
   transform-origin: 0% 100%;
   &:first-child {
     background-color: #e96479;
-    transform: rotate((360 / 6) * 0 + deg) skewY(-(180 / 6) + deg);
+    transform: rotate((360 / 6) * 0 + deg) skewY(-30deg);
   }
 
   &:nth-child(2) {
     background-color: #4d455d;
-    transform: rotate((360 / 6) * 1 + deg) skewY(-(180 / 6) + deg);
+    transform: rotate((360 / 6) * 1 + deg) skewY(-30deg);
   }
 
   &:nth-child(3) {
     background-color: #f2cd5c;
-    transform: rotate((360 / 6) * 2 + deg) skewY(-(180 / 6) + deg);
+    transform: rotate((360 / 6) * 2 + deg) skewY(-30deg);
   }
 
   &:nth-child(4) {
     background-color: #7db9b6;
-    transform: rotate((360 / 6) * 3 + deg) skewY(-(180 / 6) + deg);
+    transform: rotate((360 / 6) * 3 + deg) skewY(-30deg);
   }
 
   &:nth-child(5) {
     background-color: #ef5b0c;
-    transform: rotate((360 / 6) * 4 + deg) skewY(-(180 / 6) + deg);
+    transform: rotate((360 / 6) * 4 + deg) skewY(-30deg);
   }
 
   &:nth-child(6) {
@@ -47,27 +47,27 @@
   transform-origin: 0% 100%;
   &:first-child {
     background-color: #e96479;
-    transform: rotate((360 / 5) * 0 + deg) skewY(-(90 / 5) + deg);
+    transform: rotate((360 / 5) * 0 + deg) skewY(-18deg);
   }
 
   &:nth-child(2) {
     background-color: #4d455d;
-    transform: rotate((360 / 5) * 1 + deg) skewY(-(90 / 5) + deg);
+    transform: rotate((360 / 5) * 1 + deg) skewY(-18deg);
   }
 
   &:nth-child(3) {
     background-color: #f2cd5c;
-    transform: rotate((360 / 5) * 2 + deg) skewY(-(90 / 5) + deg);
+    transform: rotate((360 / 5) * 2 + deg) skewY(-18deg);
   }
 
   &:nth-child(4) {
     background-color: #7db9b6;
-    transform: rotate((360 / 5) * 3 + deg) skewY(-(90 / 5) + deg);
+    transform: rotate((360 / 5) * 3 + deg) skewY(-18deg);
   }
 
   &:nth-child(5) {
     background-color: #ef5b0c;
-    transform: rotate((360 / 5) * 4 + deg) skewY(-(90 / 5) + deg);
+    transform: rotate((360 / 5) * 4 + deg) skewY(-18deg);
   }
 }
 
@@ -160,7 +160,7 @@
   }
 }
 
-.roulette {
+.circle {
   width: 330px;
   height: 330px;
   position: relative;
