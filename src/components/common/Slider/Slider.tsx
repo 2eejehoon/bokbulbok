@@ -27,19 +27,21 @@ export default function Slider({
 
   return (
     <>
-      <label htmlFor={id} className={style.label}>
-        {`${value} ${unit}`}
-      </label>
-      <input
-        id={id}
-        type="range"
-        value={value}
-        onChange={handleChange}
-        min={min}
-        max={max}
-        step={step}
-        className={style.input}
-      />
+      <div className={style.container}>
+        <label htmlFor={id} className={style.label}>
+          {`${value} ${unit}`}
+        </label>
+        <input
+          id={id}
+          type="range"
+          value={value}
+          onChange={handleChange}
+          min={min}
+          max={max}
+          step={step}
+          className={style.input}
+        />
+      </div>
     </>
   );
 }

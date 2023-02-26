@@ -46,7 +46,6 @@ export default function Roulette({ data }: RouletteProps) {
           );
         })}
       </ul>
-      {/* 룰렛이 회전하고 있을 때 버튼이 보이지 않습니다.*/}
       {!spin && (
         <div className={style.buttonContainer}>
           <Button

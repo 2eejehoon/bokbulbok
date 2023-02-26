@@ -3,7 +3,7 @@ import CustomHead from "@/components/CustomHead";
 import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
 import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
 
-export default function Drinks() {
+export default function Cafe() {
   return (
     <>
       <CustomHead title="카페" />
@@ -11,7 +11,7 @@ export default function Drinks() {
   );
 }
 
-Drinks.getLayout = function getLayout(page: ReactElement) {
+Cafe.getLayout = function getLayout(page: ReactElement) {
   return (
     <BaseLayout>
       <NavLayout>{page}</NavLayout>
