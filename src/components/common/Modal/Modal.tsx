@@ -18,7 +18,11 @@ export default function Modal({
   modalOpen,
   setModalOpen,
 }: ModalProps) {
-  const handleOuterClick = useCallback(() => setModalOpen((prev) => false), []);
+  const handleOuterClick = useCallback(
+    () => setModalOpen((prev) => false),
+    [setModalOpen]
+  );
+
   return (
     <Portal selector="portal">
       {modalOpen && (

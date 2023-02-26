@@ -178,6 +178,12 @@
   }
 }
 
+@keyframes spin {
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
 .li {
   &.six {
     @include list-six;
@@ -255,12 +261,6 @@
   left: 50%;
   top: 85px;
   z-index: 1;
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(1080deg);
-  }
 }
 
 .buttonContainer {

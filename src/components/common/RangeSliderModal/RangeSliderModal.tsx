@@ -4,33 +4,33 @@ import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { distanceState } from "@/states/distance";
+import { rangeState } from "@/states/range";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [range, setRange] = useState("0.5");
-  const [distance, setDistance] = useRecoilState(distanceState);
+  const [value, setValue] = useState("0.5");
+  const [range, setRange] = useRecoilState(rangeState);
 
   const handleCancle = useCallback(() => {
     setModalOpen((prev) => !prev);
-    setRange((prev) => distance);
-  }, [distance]);
+    setValue((prev) => range);
+  }, [range]);
 
   const handleConfirm = useCallback(() => {
     setModalOpen((prev) => false);
-    setDistance((prev) => range);
-  }, [range, setDistance]);
+    setRange((prev) => value);
+  }, [value, setRange]);
 
   return (
     <>
       <Button type="button" color="black" size="medium" onClick={handleCancle}>
-        {`${distance} km`}
+        {`${range} km`}
       </Button>
       <Modal type="slider" modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <div className={style.sliderContainer}>
           <Slider
-            value={range}
-            setValue={setRange}
+            value={value}
+            setValue={setValue}
             id="거리"
             unit={"km"}
             min={"0"}

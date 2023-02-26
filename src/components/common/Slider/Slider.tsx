@@ -22,7 +22,7 @@ export default function Slider({
 }: SliderProps) {
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setValue((prev) => e.target.value),
-    []
+    [setValue]
   );
 
   return (
