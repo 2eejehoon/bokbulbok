@@ -1,21 +1,23 @@
 import ListItem from "../ListItem/ListItem";
 import style from "./List.module.scss";
 
-export default function List() {
-  const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+interface ListProps {
+  data: string[];
+}
 
+export default function List({ data }: ListProps) {
   return (
     <>
       <ul className={style.container}>
-        {data.map((el) => {
+        {data.map((item) => {
           return (
             <ListItem
-              key={el}
-              id={"1"}
+              key={item}
+              id={item}
               image={""}
-              title={"title"}
-              address={"address"}
-              phone={"phone"}
+              title={item}
+              address={item}
+              phone={item}
             />
           );
         })}

@@ -13,7 +13,7 @@ export default function Portal({ children, selector }: PortalProps) {
     typeof window !== undefined && mount && document.getElementById(selector);
 
   useEffect(() => {
-    setMount((prev) => true);
+    setMount(true);
   }, []);
 
   return <>{element && children && createPortal(children, element)}</>;

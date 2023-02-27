@@ -1,22 +1,32 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Select from "../Select/Select";
 import { sortState } from "@/states/atom/sort";
 
-export default function SortSelectModal() {
+interface SortSelectModal {
+  options: string[];
+}
+
+export default function SortSelectModal({ options }: SortSelectModal) {
   const [modalOpen, setModalOpen] = useState(false);
   const [sort, setSort] = useRecoilState(sortState);
 
   const handleModal = useCallback(() => setModalOpen((prev) => !prev), []);
+
+  const handleChange = useCallback(
+    (e: MouseEvent<HTMLLIElement>) => setSort(e.currentTarget.innerHTML),
+    [setSort]
+  );
+
   return (
     <>
-      <Button type="button" color="black" size="medium" onClick={handleModal}>
+      <Button type="button" color="grey" size="medium" onClick={handleModal}>
         {sort}
       </Button>
       <Modal type="sort" modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <Select options={["제목", "등록", "수정"]} setValue={setSort} />
+        <Select options={options} value={sort} onChange={handleChange} />
       </Modal>
     </>
   );

@@ -16,6 +16,7 @@ export default function Roulette({ data }: RouletteProps) {
 
   const length = useMemo(() => {
     const len = data.length;
+    if (len === 0) return "zero";
     if (len === 1) return "one";
     if (len === 2) return "two";
     if (len === 3) return "three";
@@ -34,6 +35,7 @@ export default function Roulette({ data }: RouletteProps) {
     }, Math.floor(Math.random() * 5000) + 1000);
   }, []);
 
+  if (length === "zero") return null;
   return (
     <>
       <div className={style.arrow} />
@@ -48,12 +50,7 @@ export default function Roulette({ data }: RouletteProps) {
       </ul>
       {!spin && (
         <div className={style.buttonContainer}>
-          <Button
-            type="button"
-            color="black"
-            size="large"
-            onClick={handleClick}
-          >
+          <Button type="button" color="grey" size="large" onClick={handleClick}>
             돌려 돌려 돌림판
           </Button>
         </div>
