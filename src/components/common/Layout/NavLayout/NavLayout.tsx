@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import Nav from "../../Nav/Nav";
 import style from "./NavLayout.module.scss";
 
 interface NavLayoutProps {
@@ -7,25 +8,15 @@ interface NavLayoutProps {
 }
 
 export default function NavLayout({ children }: NavLayoutProps) {
-  const categories = [
+  const pages = [
     { name: "식당", path: "/restaurant" },
     { name: "카페", path: "/cafe" },
     { name: "놀거리", path: "/play" },
-  ] as const;
+  ];
 
   return (
     <>
-      <nav className={style.nav}>
-        <ul className={style.ul}>
-          {categories.map((category) => {
-            return (
-              <li key={category.name} className={style.li}>
-                <Link href={category.path}>{category.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <Nav pages={pages} />
       <section className={style.section}>{children}</section>
     </>
   );

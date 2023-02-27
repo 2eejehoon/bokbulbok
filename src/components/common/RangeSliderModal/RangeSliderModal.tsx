@@ -4,14 +4,14 @@ import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { rangeState } from "@/states/range";
+import { rangeState } from "@/states/atom/range";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
   const [value, setValue] = useState("0.5");
   const [range, setRange] = useRecoilState(rangeState);
 
-  const handleCancle = useCallback(() => {
+  const handleModal = useCallback(() => {
     setModalOpen((prev) => !prev);
     setValue((prev) => range);
   }, [range]);
@@ -23,10 +23,10 @@ export default function RangeSliderModal() {
 
   return (
     <>
-      <Button type="button" color="black" size="medium" onClick={handleCancle}>
+      <Button type="button" color="black" size="medium" onClick={handleModal}>
         {`${range} km`}
       </Button>
-      <Modal type="slider" modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      <Modal type="slider" modalOpen={modalOpen} setModalOpen={handleModal}>
         <div className={style.sliderContainer}>
           <Slider
             value={value}
@@ -43,7 +43,7 @@ export default function RangeSliderModal() {
             type="button"
             color="white"
             size="small"
-            onClick={handleCancle}
+            onClick={handleModal}
           >
             취소
           </Button>
