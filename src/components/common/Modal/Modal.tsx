@@ -1,7 +1,7 @@
 import { ReactNode, Dispatch, SetStateAction, useCallback } from "react";
 import classNames from "classnames/bind";
+import Portal from "../Portal/Portal";
 import style from "./Modal.module.scss";
-import Portal from "@/components/Portal";
 
 interface ModalProps {
   children: ReactNode;

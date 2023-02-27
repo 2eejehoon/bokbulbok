@@ -51,7 +51,7 @@ export default function Roulette({ data }: RouletteProps) {
           <Button
             type="button"
             color="black"
-            size="medium"
+            size="large"
             onClick={handleClick}
           >
             돌려 돌려 돌림판

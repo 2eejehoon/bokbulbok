@@ -9,7 +9,7 @@ interface SelectProps {
 
 export default function Select({ options, setValue }: SelectProps) {
   const handleSelect = useCallback(
-    (e: MouseEvent<HTMLLIElement>) =>
+    (e: MouseEvent<HTMLElement>) =>
       setValue((prev) => e.currentTarget.innerHTML),
     [setValue]
   );

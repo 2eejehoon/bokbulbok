@@ -18,7 +18,7 @@ export default function RestaurantSelectModal() {
       </Button>
       <Modal type="restaurant" modalOpen={modalOpen} setModalOpen={handleModal}>
         <Select
-          options={["전체", "한식", "중식", "양식", "일식", "동남아"]}
+          options={["전체", "한식", "서양식", "일식", "중식", "이색음식"]}
           setValue={setCategory}
         />
       </Modal>

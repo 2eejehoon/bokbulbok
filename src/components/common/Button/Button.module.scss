@@ -4,6 +4,7 @@
   align-items: center;
   margin: 5px;
   padding: 10px;
+  border: none;
   cursor: pointer;
 
   &.white {
@@ -15,25 +16,19 @@
   &.black {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     border-radius: 10px;
   }
 
   &.large {
     font-size: 16px;
-    width: 120px;
-    height: 50px;
   }
 
   &.medium {
     font-size: 14px;
-    width: 80px;
-    height: 35px;
   }
 
   &.small {
     font-size: 12px;
-    width: 50px;
-    height: 20px;
   }
 }

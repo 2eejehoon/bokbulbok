@@ -16,7 +16,7 @@ export default function SortSelectModal() {
         {sort}
       </Button>
       <Modal type="sort" modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <Select options={["제목", "최신", "거리"]} setValue={setSort} />
+        <Select options={["제목", "등록", "수정"]} setValue={setSort} />
       </Modal>
     </>
   );
