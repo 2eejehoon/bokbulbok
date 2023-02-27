@@ -4,7 +4,7 @@ import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { rangeState } from "@/states/atom/range";
+import { rangeState } from "@/states/atom/filter";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);

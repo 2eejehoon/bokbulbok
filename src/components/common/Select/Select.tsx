@@ -3,13 +3,11 @@ import { SetterOrUpdater } from "recoil";
 import style from "./Select.module.scss";
 
 interface SelectProps {
-  value: string;
+  options: string[];
   setValue: SetterOrUpdater<string>;
 }
 
-export default function Select({ value, setValue }: SelectProps) {
-  const categories = ["전체", "한식", "중식", "양식", "일식", "동남아"];
-
+export default function Select({ options, setValue }: SelectProps) {
   const handleSelect = useCallback(
     (e: MouseEvent<HTMLLIElement>) =>
       setValue((prev) => e.currentTarget.innerHTML),
@@ -18,7 +16,7 @@ export default function Select({ value, setValue }: SelectProps) {
 
   return (
     <ul className={style.ul}>
-      {categories.map((el) => {
+      {options.map((el) => {
         return (
           <li key={el} className={style.li} onClick={handleSelect}>
             {el}
