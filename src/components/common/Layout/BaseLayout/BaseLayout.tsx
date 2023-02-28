@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Link from "next/link";
-import RouletteModal from "../../RouletteModal/RouletteModal";
 import style from "./BaseLayout.module.scss";
 
 interface BaseLayoutProps {
@@ -17,11 +16,8 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
       </header>
       <main className={style.main}>{children}</main>
       <footer className={style.footer}>
-        <Link href={"https://github.com/2eejehoon/bokbulbok"} target="_blank">
-          <span className={style.text}>깃허브</span>
-        </Link>
-        <Link href={"https://velog.io/@2jehoon"} target="_blank">
-          <span className={style.text}>블로그</span>
+        <Link href={"https://api.visitkorea.or.kr/#/"} target="_blank">
+          <span className={style.text}>데이터 제공 : 한국관광공사</span>
         </Link>
       </footer>
     </>

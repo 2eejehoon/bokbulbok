@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { dehydrate, QueryClient, useQuery } from "react-query";
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
 import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
