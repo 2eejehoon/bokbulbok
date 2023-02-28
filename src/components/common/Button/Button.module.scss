@@ -5,6 +5,7 @@
   margin: 5px;
   padding: 10px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
 
   &.white {
@@ -16,14 +17,12 @@
   &.grey {
     color: black;
     background-color: white;
-    border-radius: 10px;
     border: 1px solid lightgrey;
   }
 
   &.black {
     color: white;
     background-color: black;
-    border-radius: 10px;
   }
 
   &.large {

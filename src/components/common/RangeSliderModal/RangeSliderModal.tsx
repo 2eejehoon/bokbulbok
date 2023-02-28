@@ -23,7 +23,7 @@ export default function RangeSliderModal() {
 
   return (
     <>
-      <Button type="button" color="grey" size="medium" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModal}>
         {`${range} km`}
       </Button>
       <Modal type="slider" modalOpen={modalOpen} setModalOpen={handleModal}>
@@ -34,7 +34,7 @@ export default function RangeSliderModal() {
             id="거리"
             unit={"km"}
             min={"0"}
-            max={"3"}
+            max={"5"}
             step={"0.5"}
           />
         </div>

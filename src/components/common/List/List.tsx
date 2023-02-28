@@ -2,7 +2,12 @@ import ListItem from "../ListItem/ListItem";
 import style from "./List.module.scss";
 
 interface ListProps {
-  data: string[];
+  data: {
+    contentid: string;
+    firstimage: string;
+    title: string;
+    addr1: string;
+  }[];
 }
 
 export default function List({ data }: ListProps) {
@@ -12,12 +17,11 @@ export default function List({ data }: ListProps) {
         {data.map((item) => {
           return (
             <ListItem
-              key={item}
-              id={item}
-              image={""}
-              title={item}
-              address={item}
-              phone={item}
+              key={item.title}
+              id={item.contentid}
+              image={item.firstimage}
+              title={item.title}
+              address={item.addr1}
             />
           );
         })}

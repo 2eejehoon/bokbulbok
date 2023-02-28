@@ -16,13 +16,16 @@ export default function SortSelectModal({ options }: SortSelectModal) {
   const handleModal = useCallback(() => setModalOpen((prev) => !prev), []);
 
   const handleChange = useCallback(
-    (e: MouseEvent<HTMLLIElement>) => setSort(e.currentTarget.innerHTML),
+    (e: MouseEvent<HTMLLIElement>) => {
+      setModalOpen(false);
+      setSort(e.currentTarget.innerHTML);
+    },
     [setSort]
   );
 
   return (
     <>
-      <Button type="button" color="grey" size="medium" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModal}>
         {sort}
       </Button>
       <Modal type="sort" modalOpen={modalOpen} setModalOpen={setModalOpen}>

@@ -13,11 +13,11 @@ export default function RouletteModal() {
 
   return (
     <>
-      <Button type="button" color="black" size="medium" onClick={handleClick}>
+      <Button type="button" color="black" size="small" onClick={handleClick}>
         돌림판
       </Button>
       <Modal type="roulette" modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <Roulette data={["1", "2", "3", "4", "5"]} />
+        <Roulette data={["1", "2", "3", "4", "5", "6"]} />
       </Modal>
     </>
   );

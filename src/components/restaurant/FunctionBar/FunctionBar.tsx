@@ -9,7 +9,7 @@ export default function FunctionBar() {
     <div className={style.container}>
       <div className={style.filtersort}>
         <SelectModal
-          options={["전체", "한식", "중식", "양식", "일식", "이색음식"]}
+          options={["모두", "한식", "중식", "양식", "일식", "이색음식"]}
         />
         <RangeSliderModal />
         <SortSelectModal options={["제목순", "등록순", "수정순"]} />

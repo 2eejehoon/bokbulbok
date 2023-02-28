@@ -32,7 +32,7 @@ export default function Roulette({ data }: RouletteProps) {
     setTimeout(() => {
       setStop((prev) => "stop");
       setSpin((prev) => false);
-    }, Math.floor(Math.random() * 5000) + 1000);
+    }, Math.random() * 5000 + 1000);
   }, []);
 
   if (length === "zero") return null;
@@ -50,7 +50,12 @@ export default function Roulette({ data }: RouletteProps) {
       </ul>
       {!spin && (
         <div className={style.buttonContainer}>
-          <Button type="button" color="grey" size="large" onClick={handleClick}>
+          <Button
+            type="button"
+            color="black"
+            size="large"
+            onClick={handleClick}
+          >
             돌려 돌려 돌림판
           </Button>
         </div>

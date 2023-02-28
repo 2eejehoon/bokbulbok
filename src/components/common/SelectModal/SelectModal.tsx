@@ -13,14 +13,14 @@ export default function SelectModal({ options }: SelectModalProps) {
 
   const handleModal = useCallback(() => setModalOpen((prev) => !prev), []);
 
-  const handleChange = useCallback(
-    (e: MouseEvent<HTMLLIElement>) => setValue(e.currentTarget.innerHTML),
-    []
-  );
+  const handleChange = useCallback((e: MouseEvent<HTMLLIElement>) => {
+    setModalOpen(false);
+    setValue(e.currentTarget.innerHTML);
+  }, []);
 
   return (
     <>
-      <Button type="button" color="grey" size="medium" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModal}>
         {value}
       </Button>
       <Modal type="select" modalOpen={modalOpen} setModalOpen={handleModal}>
