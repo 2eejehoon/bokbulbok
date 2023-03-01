@@ -13,7 +13,8 @@ export default function SortSelectModal({ options }: SortSelectModal) {
   const [modalOpen, setModalOpen] = useState(false);
   const [sort, setSort] = useRecoilState(sortState);
 
-  const handleModal = useCallback(() => setModalOpen((prev) => !prev), []);
+  const handleModalOpen = useCallback(() => setModalOpen(true), []);
+  const handleModalClose = useCallback(() => setModalOpen(false), []);
 
   const handleChange = useCallback(
     (e: MouseEvent<HTMLLIElement>) => {
@@ -25,10 +26,10 @@ export default function SortSelectModal({ options }: SortSelectModal) {
 
   return (
     <>
-      <Button type="button" color="grey" size="small" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
         {sort}
       </Button>
-      <Modal type="sort" modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      <Modal type="sort" modalOpen={modalOpen} setModalOpen={handleModalClose}>
         <Select options={options} value={sort} onChange={handleChange} />
       </Modal>
     </>

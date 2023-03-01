@@ -10,13 +10,14 @@ export default function RouletteModal() {
   const rouletteItems = useRecoilValue(rouletteItemsState);
 
   const handleClick = useCallback(() => setModalOpen(true), []);
+  const handleModal = useCallback(() => setModalOpen(false), []);
 
   return (
     <>
       <Button type="button" color="black" size="small" onClick={handleClick}>
         돌림판
       </Button>
-      <Modal type="roulette" modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      <Modal type="roulette" modalOpen={modalOpen} setModalOpen={handleModal}>
         <Roulette data={["1", "2", "3", "4", "5", "6"]} />
       </Modal>
     </>

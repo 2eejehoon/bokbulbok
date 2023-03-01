@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { ReactNode } from "react";
+import { ReactNode, MouseEventHandler } from "react";
 import style from "./Button.module.scss";
 
 interface ButtonProps {
@@ -7,7 +7,7 @@ interface ButtonProps {
   type: "button" | "submit" | "reset" | undefined;
   color: string;
   size: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const cx = classNames.bind(style);

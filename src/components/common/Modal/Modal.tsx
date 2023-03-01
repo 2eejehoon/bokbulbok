@@ -1,4 +1,4 @@
-import { ReactNode, Dispatch, SetStateAction, useCallback } from "react";
+import { ReactNode, MouseEventHandler } from "react";
 import classNames from "classnames/bind";
 import Portal from "../Portal/Portal";
 import style from "./Modal.module.scss";
@@ -7,7 +7,7 @@ interface ModalProps {
   children: ReactNode;
   type: string;
   modalOpen: boolean;
-  setModalOpen: Dispatch<SetStateAction<boolean>>;
+  setModalOpen: MouseEventHandler<HTMLDivElement>;
 }
 
 const cx = classNames.bind(style);
@@ -18,17 +18,12 @@ export default function Modal({
   modalOpen,
   setModalOpen,
 }: ModalProps) {
-  const handleOuterClick = useCallback(
-    () => setModalOpen((prev) => false),
-    [setModalOpen]
-  );
-
   return (
     <Portal selector="portal">
       {modalOpen && (
         <>
           <div className={cx("modal", type)}>{children}</div>
-          <div className={style.outerContainer} onClick={handleOuterClick} />
+          <div className={style.outerContainer} onClick={setModalOpen} />
         </>
       )}
     </Portal>

@@ -11,22 +11,27 @@ export default function RangeSliderModal() {
   const [value, setValue] = useState("0.5");
   const [range, setRange] = useRecoilState(rangeState);
 
-  const handleModal = useCallback(() => {
-    setModalOpen((prev) => !prev);
+  const handleModalOpen = useCallback(() => setModalOpen(true), []);
+  const handleModalClose = useCallback(() => {
+    setModalOpen(false);
     setValue((prev) => range);
   }, [range]);
 
   const handleConfirm = useCallback(() => {
-    setModalOpen((prev) => false);
+    setModalOpen(false);
     setRange((prev) => value);
   }, [value, setRange]);
 
   return (
     <>
-      <Button type="button" color="grey" size="small" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
         {`${range} km`}
       </Button>
-      <Modal type="slider" modalOpen={modalOpen} setModalOpen={handleModal}>
+      <Modal
+        type="slider"
+        modalOpen={modalOpen}
+        setModalOpen={handleModalClose}
+      >
         <div className={style.sliderContainer}>
           <Slider
             value={value}
@@ -43,7 +48,7 @@ export default function RangeSliderModal() {
             type="button"
             color="white"
             size="small"
-            onClick={handleModal}
+            onClick={handleModalClose}
           >
             취소
           </Button>

@@ -11,7 +11,8 @@ export default function SelectModal({ options }: SelectModalProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [value, setValue] = useState("전체");
 
-  const handleModal = useCallback(() => setModalOpen((prev) => !prev), []);
+  const handleModalOpen = useCallback(() => setModalOpen(true), []);
+  const handleModalClose = useCallback(() => setModalOpen(false), []);
 
   const handleChange = useCallback((e: MouseEvent<HTMLLIElement>) => {
     setModalOpen(false);
@@ -20,10 +21,14 @@ export default function SelectModal({ options }: SelectModalProps) {
 
   return (
     <>
-      <Button type="button" color="grey" size="small" onClick={handleModal}>
+      <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
         {value}
       </Button>
-      <Modal type="select" modalOpen={modalOpen} setModalOpen={handleModal}>
+      <Modal
+        type="select"
+        modalOpen={modalOpen}
+        setModalOpen={handleModalClose}
+      >
         <Select options={options} value={value} onChange={handleChange} />
       </Modal>
     </>
