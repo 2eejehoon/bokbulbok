@@ -26,16 +26,17 @@ export default function Roulette({ data }: RouletteProps) {
   }, [data]);
 
   const handleClick = useCallback(() => {
-    setStop((prev) => "");
-    setStart((prev) => "start");
-    setSpin((prev) => true);
+    setStop("");
+    setStart("start");
+    setSpin(true);
     setTimeout(() => {
-      setStop((prev) => "stop");
-      setSpin((prev) => false);
+      setStop("stop");
+      setSpin(false);
     }, Math.random() * 5000 + 1000);
   }, []);
 
   if (length === "zero") return null;
+
   return (
     <>
       <div className={style.arrow} />

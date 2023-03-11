@@ -20,7 +20,11 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   return (
-    <button className={cx("button", color, size)} type={type} onClick={onClick}>
+    <button
+      className={cx("button", [color, size])}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

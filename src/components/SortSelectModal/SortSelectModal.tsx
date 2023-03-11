@@ -1,9 +1,9 @@
 import { useState, useCallback, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
-import Button from "../Button/Button";
-import Modal from "../Modal/Modal";
-import Select from "../Select/Select";
-import { sortState } from "@/states/atom/sort";
+import Button from "../common/Button/Button";
+import Modal from "../common/Modal/Modal";
+import Select from "../common/Select/Select";
+import { sortState } from "@/recoil/atom/sort";
 
 interface SortSelectModal {
   options: string[];
@@ -16,21 +16,18 @@ export default function SortSelectModal({ options }: SortSelectModal) {
   const handleModalOpen = useCallback(() => setModalOpen(true), []);
   const handleModalClose = useCallback(() => setModalOpen(false), []);
 
-  const handleChange = useCallback(
-    (e: MouseEvent<HTMLLIElement>) => {
-      setModalOpen(false);
-      setSort(e.currentTarget.innerHTML);
-    },
-    [setSort]
-  );
+  const handleClick = useCallback((e: MouseEvent<HTMLLIElement>) => {
+    setModalOpen(false);
+    setSort(e.currentTarget.innerHTML);
+  }, []);
 
   return (
     <>
       <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
         {sort}
       </Button>
-      <Modal type="sort" modalOpen={modalOpen} setModalOpen={handleModalClose}>
-        <Select options={options} value={sort} onChange={handleChange} />
+      <Modal type="sort" modalOpen={modalOpen} setModalClose={handleModalClose}>
+        <Select options={options} onClick={handleClick} />
       </Modal>
     </>
   );

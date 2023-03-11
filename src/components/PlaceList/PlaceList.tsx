@@ -1,7 +1,7 @@
-import ListItem from "../ListItem/ListItem";
-import style from "./List.module.scss";
+import PlaceListItem from "../PlaceItem/PlaceItem";
+import style from "./PlaceList.module.scss";
 
-interface ListProps {
+interface PlaceListProps {
   data: {
     contentid: string;
     firstimage: string;
@@ -10,13 +10,13 @@ interface ListProps {
   }[];
 }
 
-export default function List({ data }: ListProps) {
+export default function PlaceList({ data }: PlaceListProps) {
   return (
     <>
       <ul className={style.container}>
         {data.map((item) => {
           return (
-            <ListItem
+            <PlaceListItem
               key={item.title}
               id={item.contentid}
               image={item.firstimage}

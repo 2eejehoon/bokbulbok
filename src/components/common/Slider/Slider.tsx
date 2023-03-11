@@ -5,7 +5,7 @@ interface SliderProps {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
   id: string;
-  unit: string;
+  text: string;
   min: string;
   max: string;
   step: string;
@@ -15,13 +15,13 @@ export default function Slider({
   value,
   setValue,
   id,
-  unit,
+  text,
   min,
   max,
   step,
 }: SliderProps) {
   const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setValue((prev) => e.target.value),
+    (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value),
     [setValue]
   );
 
@@ -29,7 +29,7 @@ export default function Slider({
     <>
       <div className={style.container}>
         <label htmlFor={id} className={style.label}>
-          {`${value} ${unit}`}
+          {text}
         </label>
         <input
           id={id}

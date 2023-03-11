@@ -8,9 +8,8 @@ interface NavLayoutProps {
 
 export default function NavLayout({ children }: NavLayoutProps) {
   const pages = [
-    { name: "음식", path: "/restaurant" },
-    { name: "쇼핑", path: "/shop" },
-    { name: "놀거리", path: "/play" },
+    { name: "내 주변", path: "/location" },
+    { name: "지역별", path: "/area" },
   ];
 
   return (

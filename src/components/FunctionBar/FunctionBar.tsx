@@ -1,14 +1,14 @@
+import RangeSliderModal from "../RangeSliderModal/RangeSliderModal";
+import SortSelectModal from "../SortSelectModal/SortSelectModal";
+import RouletteModal from "../RouletteModal/RouletteModal";
 import style from "./FunctionBar.module.scss";
-import SelectModal from "@/components/common/SelectModal/SelectModal";
-import RangeSliderModal from "@/components/common/RangeSliderModal/RangeSliderModal";
-import SortSelectModal from "@/components/common/SortSelectModal/SortSelectModal";
-import RouletteModal from "@/components/common/RouletteModal/RouletteModal";
+import CategorySelectModal from "@/components/CategorySelectModal/CategorySelectModal";
 
 export default function FunctionBar() {
   return (
     <div className={style.container}>
       <div className={style.filtersort}>
-        <SelectModal
+        <CategorySelectModal
           options={["모두", "한식", "중식", "양식", "일식", "이색음식"]}
         />
         <RangeSliderModal />

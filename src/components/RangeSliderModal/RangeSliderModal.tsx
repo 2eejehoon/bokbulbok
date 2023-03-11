@@ -4,7 +4,7 @@ import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { rangeState } from "@/states/atom/filter";
+import { rangeState } from "@/recoil/atom/filter";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,12 +14,12 @@ export default function RangeSliderModal() {
   const handleModalOpen = useCallback(() => setModalOpen(true), []);
   const handleModalClose = useCallback(() => {
     setModalOpen(false);
-    setValue((prev) => range);
+    setValue(range);
   }, [range]);
 
   const handleConfirm = useCallback(() => {
     setModalOpen(false);
-    setRange((prev) => value);
+    setRange(value);
   }, [value, setRange]);
 
   return (
@@ -30,17 +30,17 @@ export default function RangeSliderModal() {
       <Modal
         type="slider"
         modalOpen={modalOpen}
-        setModalOpen={handleModalClose}
+        setModalClose={handleModalClose}
       >
         <div className={style.sliderContainer}>
           <Slider
             value={value}
             setValue={setValue}
             id="거리"
-            unit={"km"}
-            min={"0"}
-            max={"5"}
-            step={"0.5"}
+            text={`${value} km 이내`}
+            min="0"
+            max="5"
+            step="0.5"
           />
         </div>
         <div className={style.buttonContainer}>

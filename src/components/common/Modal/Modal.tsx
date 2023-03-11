@@ -7,7 +7,7 @@ interface ModalProps {
   children: ReactNode;
   type: string;
   modalOpen: boolean;
-  setModalOpen: MouseEventHandler<HTMLDivElement>;
+  setModalClose: MouseEventHandler<HTMLDivElement>;
 }
 
 const cx = classNames.bind(style);
@@ -16,14 +16,14 @@ export default function Modal({
   children,
   type,
   modalOpen,
-  setModalOpen,
+  setModalClose,
 }: ModalProps) {
   return (
     <Portal selector="portal">
       {modalOpen && (
         <>
           <div className={cx("modal", type)}>{children}</div>
-          <div className={style.outerContainer} onClick={setModalOpen} />
+          <div className={style.outerContainer} onClick={setModalClose} />
         </>
       )}
     </Portal>

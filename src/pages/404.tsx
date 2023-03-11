@@ -8,14 +8,10 @@ export default function NotFoundPage() {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => router.push("/"), 5000);
+    window.setTimeout(() => router.push("/"), 1500);
   });
 
-  return (
-    <>
-      <NotFound />
-    </>
-  );
+  return <NotFound />;
 }
 
 NotFoundPage.getLayout = function getLayout(page: ReactElement) {
