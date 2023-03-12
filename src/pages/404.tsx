@@ -8,7 +8,7 @@ export default function NotFoundPage() {
   const router = useRouter();
 
   useEffect(() => {
-    window.setTimeout(() => router.push("/"), 1500);
+    window.setTimeout(() => router.push("/"), 1000);
   });
 
   return <NotFound />;
