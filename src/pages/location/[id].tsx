@@ -1,3 +1,3 @@
-export default function RestaurantDetail() {
+export default function LocationDetail() {
   return <></>;
 }

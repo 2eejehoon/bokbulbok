@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useCallback } from "react";
-import style from "./PlaceItem.module.scss";
+import style from "./LocationPlaceItem.module.scss";
 
 interface ListItemProps {
   id: string;
@@ -23,6 +23,7 @@ export default function PlaceItem({
   const handleAdd = useCallback(() => console.log(`${id} 추가`), []);
   const handleRemove = useCallback(() => console.log(`${id} 제거`), []);
 
+  if (image === "") return null;
   return (
     <li
       className={style.container}

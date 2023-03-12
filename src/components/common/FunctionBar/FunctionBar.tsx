@@ -1,8 +1,8 @@
 import RangeSliderModal from "../RangeSliderModal/RangeSliderModal";
 import SortSelectModal from "../SortSelectModal/SortSelectModal";
 import RouletteModal from "../RouletteModal/RouletteModal";
+import CategorySelectModal from "../CategorySelectModal/CategorySelectModal";
 import style from "./FunctionBar.module.scss";
-import CategorySelectModal from "@/components/CategorySelectModal/CategorySelectModal";
 
 export default function FunctionBar() {
   return (

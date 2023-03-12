@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const categoryState = atom({
+export const categoryState = atom<string>({
   key: "category",
-  default: "모두" as string,
+  default: "모두",
 });

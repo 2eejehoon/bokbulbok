@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import Button from "../common/Button/Button";
-import Modal from "../common/Modal/Modal";
-import Roulette from "../common/Roulette/Roulette";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import Roulette from "../Roulette/Roulette";
 import { rouletteItemsState } from "@/recoil/atom/rouletteItems";
 
 export default function RouletteModal() {

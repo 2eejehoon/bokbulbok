@@ -1,4 +1,5 @@
 import "../style/global.scss";
+import { RecoilEnv } from "recoil";
 import { ReactElement, ReactNode, useState } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -9,6 +10,8 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

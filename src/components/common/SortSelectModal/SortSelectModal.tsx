@@ -1,8 +1,8 @@
 import { useState, useCallback, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
-import Button from "../common/Button/Button";
-import Modal from "../common/Modal/Modal";
-import Select from "../common/Select/Select";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import Select from "../Select/Select";
 import { sortState } from "@/recoil/atom/sort";
 
 interface SortSelectModal {
