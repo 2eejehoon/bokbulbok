@@ -30,7 +30,7 @@ export default function PlaceItem({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={id}>
+      <Link href={`/location/${id}`}>
         <div className={style.thumbnail}>
           <Image src={image} alt={title} width="220" height="220" />
         </div>

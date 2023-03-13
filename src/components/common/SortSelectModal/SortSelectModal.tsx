@@ -3,13 +3,10 @@ import { useRecoilState } from "recoil";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Select from "../Select/Select";
-import { sortState } from "@/recoil/atom/sort";
+import { sortState } from "@/recoil/sort";
+import { SORT_ARRAY } from "@/contant";
 
-interface SortSelectModal {
-  options: string[];
-}
-
-export default function SortSelectModal({ options }: SortSelectModal) {
+export default function SortSelectModal() {
   const [modalOpen, setModalOpen] = useState(false);
   const [sort, setSort] = useRecoilState(sortState);
 
@@ -27,7 +24,7 @@ export default function SortSelectModal({ options }: SortSelectModal) {
         {sort}
       </Button>
       <Modal type="sort" modalOpen={modalOpen} setModalClose={handleModalClose}>
-        <Select options={options} onClick={handleClick} />
+        <Select options={SORT_ARRAY} onClick={handleClick} />
       </Modal>
     </>
   );

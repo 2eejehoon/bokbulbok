@@ -10,7 +10,7 @@ const instance = axios.create({
   timeout: 5000,
 });
 
-export const getLocationData = async (
+export const getDataByLocation = async (
   pageParam: number
 ): Promise<{
   placeList: PlaceData[];
@@ -18,7 +18,7 @@ export const getLocationData = async (
   prevCursor: number;
 }> => {
   const response = await instance.get(
-    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=10&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&mapX=${126.981611}&mapY=${37.568477}&radius=${1000}&contentTypeId=39`
+    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&contentTypeId=39&mapX=${126.981611}&mapY=${37.568477}&radius=${1000}`
   );
 
   const { items, pageNo } = await response.data.response.body;
@@ -30,7 +30,7 @@ export const getLocationData = async (
   };
 };
 
-export const getAreaData = async (
+export const getDataByArea = async (
   pageParam: number
 ): Promise<{
   placeList: PlaceData[];
@@ -38,7 +38,7 @@ export const getAreaData = async (
   prevCursor: number;
 }> => {
   const response = await instance.get(
-    `B551011/KorService/areaBasedList?numOfRows=10&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&serviceKey=${key}&listYN=Y&arrange=A&contentTypeId=39&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&_type=json`
+    `B551011/KorService/areaBasedList?numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&serviceKey=${key}&_type=json&contentTypeId=39&areaCode=`
   );
 
   const { items, pageNo } = await response.data.response.body;

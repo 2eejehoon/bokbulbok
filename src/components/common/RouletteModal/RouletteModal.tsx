@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Roulette from "../Roulette/Roulette";
-import { rouletteItemsState } from "@/recoil/atom/rouletteItems";
+import { rouletteItemsState } from "@/recoil/rouletteItems";
 
 export default function RouletteModal() {
   const [modalOpen, setModalOpen] = useState(false);

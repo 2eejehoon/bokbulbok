@@ -6,17 +6,15 @@
   bottom: 0;
   margin: auto;
   background-color: white;
-  border: 1px solid lightgrey;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 2;
 
   &.slider {
     width: 360px;
-    height: 140px;
+    height: 150px;
   }
 
   &.roulette {
@@ -29,9 +27,9 @@
     height: 90px;
   }
 
-  &.select {
+  &.sido {
     width: 160px;
-    height: 300px;
+    max-height: 760px;
   }
 
   &.sort {
@@ -40,7 +38,7 @@
   }
 }
 
-.outerContainer {
+.background {
   position: absolute;
   top: 0;
   left: 0;

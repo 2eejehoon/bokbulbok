@@ -19,13 +19,13 @@ export default function Modal({
   setModalClose,
 }: ModalProps) {
   return (
-    <Portal selector="portal">
+    <>
       {modalOpen && (
-        <>
+        <Portal selector="portal">
           <div className={cx("modal", type)}>{children}</div>
-          <div className={style.outerContainer} onClick={setModalClose} />
-        </>
+          <div className={style.background} onClick={setModalClose} />
+        </Portal>
       )}
-    </Portal>
+    </>
   );
 }

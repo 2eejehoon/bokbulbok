@@ -3,14 +3,14 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
 import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
 import { QUERY_KEY } from "@/contant";
-import FunctionBar from "@/components/common/FunctionBar/FunctionBar";
 import AreaPlaceList from "@/components/area/AreaPlaceList/AreaPlaceList";
-import { getAreaData } from "@/pages/api/client";
+import { getDataByArea } from "@/pages/api/client";
+import AreaSelectGroup from "@/components/area/AreaSelectGroup/AreaSelectGroup";
 
 export default function Area() {
   return (
     <>
-      <FunctionBar />
+      <AreaSelectGroup />
       <AreaPlaceList />
     </>
   );
@@ -24,12 +24,12 @@ Area.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({
     queryKey: [QUERY_KEY.AREA],
-    queryFn: ({ pageParam = 1 }) => getAreaData(pageParam),
+    queryFn: ({ pageParam = 1 }) => getDataByArea(pageParam),
   });
 
   return {

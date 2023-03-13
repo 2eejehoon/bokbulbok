@@ -8,6 +8,7 @@ export default function NotFound() {
   useEffect(() => {
     window.setTimeout(() => router.push("/"), 1000);
   });
+
   return (
     <div className={style.container}>
       <h1 className={style.title}>404</h1>

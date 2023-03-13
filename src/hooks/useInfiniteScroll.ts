@@ -1,16 +1,22 @@
+import {
+  FetchNextPageOptions,
+  InfiniteQueryObserverResult,
+} from "@tanstack/react-query";
 import { useEffect, MutableRefObject } from "react";
 
-interface useIniniteScrollProps {
-  ref: MutableRefObject<null>;
+interface useInfiniteScrollProps {
+  ref: MutableRefObject<HTMLElement | null>;
   hasNextPage: boolean | undefined;
-  fetchNextPage: () => void;
+  fetchNextPage: (
+    options?: FetchNextPageOptions | undefined
+  ) => Promise<InfiniteQueryObserverResult<unknown>>;
 }
 
-export default function useIniniteScroll({
+export default function useInfiniteScroll({
   ref,
   hasNextPage,
   fetchNextPage,
-}: useIniniteScrollProps) {
+}: useInfiniteScrollProps) {
   useEffect(() => {
     if (!hasNextPage) {
       return;

@@ -22,7 +22,18 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            refetchOnMount: false,
+            retry: true,
+          },
+        },
+      })
+  );
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(

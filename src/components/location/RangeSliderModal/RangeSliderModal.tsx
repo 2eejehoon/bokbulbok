@@ -4,7 +4,7 @@ import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { rangeState } from "@/recoil/atom/filter";
+import { rangeState } from "@/recoil/filter";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function RangeSliderModal() {
   const handleConfirm = useCallback(() => {
     setModalOpen(false);
     setRange(value);
-  }, [value, setRange]);
+  }, [value]);
 
   return (
     <>
@@ -32,34 +32,36 @@ export default function RangeSliderModal() {
         modalOpen={modalOpen}
         setModalClose={handleModalClose}
       >
-        <div className={style.sliderContainer}>
-          <Slider
-            value={value}
-            setValue={setValue}
-            id="거리"
-            text={`${value} km 이내`}
-            min="0"
-            max="5"
-            step="0.5"
-          />
-        </div>
-        <div className={style.buttonContainer}>
-          <Button
-            type="button"
-            color="white"
-            size="small"
-            onClick={handleModalClose}
-          >
-            취소
-          </Button>
-          <Button
-            type="button"
-            color="white"
-            size="small"
-            onClick={handleConfirm}
-          >
-            확인
-          </Button>
+        <div className={style.container}>
+          <div className={style.sliderContainer}>
+            <Slider
+              value={value}
+              setValue={setValue}
+              id="거리"
+              text={`${value} km 이내`}
+              min="0"
+              max="5"
+              step="0.5"
+            />
+          </div>
+          <div className={style.buttonContainer}>
+            <Button
+              type="button"
+              color="white"
+              size="small"
+              onClick={handleModalClose}
+            >
+              취소
+            </Button>
+            <Button
+              type="button"
+              color="white"
+              size="small"
+              onClick={handleConfirm}
+            >
+              확인
+            </Button>
+          </div>
         </div>
       </Modal>
     </>

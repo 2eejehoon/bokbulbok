@@ -1,20 +1,20 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef } from "react";
 import AreaPlaceItem from "../AreaPlaceItem/AreaPlaceItem";
-import useIniniteScroll from "../../../hooks/useInfiniteScroll";
+import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 import style from "./AreaPlaceList.module.scss";
-import { getAreaData } from "@/pages/api/client";
+import { getDataByArea } from "@/pages/api/client";
 import { QUERY_KEY } from "@/contant";
 
 export default function AreaPlaceList() {
   const ref = useRef(null);
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: [QUERY_KEY.AREA],
-    queryFn: ({ pageParam = 1 }) => getAreaData(pageParam),
+    queryFn: ({ pageParam = 1 }) => getDataByArea(pageParam),
     getNextPageParam: (lastpage) => lastpage?.nextCursor,
   });
 
-  useIniniteScroll({
+  useInfiniteScroll({
     ref,
     hasNextPage,
     fetchNextPage,
