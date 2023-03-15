@@ -6,7 +6,9 @@ export default function NotFound() {
   const router = useRouter();
 
   useEffect(() => {
-    window.setTimeout(() => router.push("/"), 1000);
+    const timeOut = window.setTimeout(() => router.push("/"), 5000);
+
+    return () => clearTimeout(timeOut);
   });
 
   return (

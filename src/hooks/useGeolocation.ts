@@ -5,9 +5,7 @@ import { locationState } from "@/recoil/location";
 export default function useGeolocation() {
   const [location, setLocation] = useRecoilState(locationState);
 
-  const onSuccess = (location: {
-    coords: { longitude: number; latitude: number };
-  }) => {
+  const onSuccess = (location: { coords: { longitude: number; latitude: number } }) => {
     setLocation({
       coordinates: {
         mapX: location.coords.longitude,
