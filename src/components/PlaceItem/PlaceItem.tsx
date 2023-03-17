@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useCallback } from "react";
-import style from "./AreaPlaceItem.module.scss";
+import style from "./PlaceItem.module.scss";
 
 interface ListItemProps {
   id: string;
@@ -21,7 +21,7 @@ export default function PlaceItem({ id, image, title, address }: ListItemProps) 
   if (image === "") return null;
   return (
     <li className={style.container} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Link href={`/area/${id}`}>
+      <Link href={`/location/${id}`}>
         <div className={style.thumbnail}>
           <Image src={image} alt={title} width="220" height="220" />
         </div>

@@ -1,8 +1,12 @@
 import { ReactElement } from "react";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
-import NavLayout from "@/layout/NavLayout/NavLayout";
+import NavLayout from "@/layout/NestedLayout/NestedLayout";
+import { useGeolocation } from "@/hooks/useGeolocation";
 
 export default function Home() {
+  const location = useGeolocation();
+
+  console.log(location);
   return <></>;
 }
 

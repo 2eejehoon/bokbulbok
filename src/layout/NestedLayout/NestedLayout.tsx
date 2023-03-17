@@ -1,20 +1,14 @@
 import { ReactNode } from "react";
-import Nav from "../../components/common/Nav/Nav";
-import style from "./NavLayout.module.scss";
+import style from "./NestedLayout.module.scss";
 
 interface NavLayoutProps {
   children: ReactNode;
 }
 
 export default function NavLayout({ children }: NavLayoutProps) {
-  const pages = [
-    { name: "내 주변", path: "/location" },
-    { name: "지역별", path: "/area" },
-  ];
-
   return (
     <>
-      <Nav pages={pages} />
+      <div className={style.title}>현재 위치 : 서울시 중구</div>
       <section className={style.section}>{children}</section>
     </>
   );

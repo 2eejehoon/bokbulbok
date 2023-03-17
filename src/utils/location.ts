@@ -1,9 +1,4 @@
-interface locationType {
-  coordinates?: { lat: number; lng: number };
-  error?: { code: number; message: string };
-}
-
-export function saveLocationDataToStorage(): void {
+export function saveLocationDataToStorage() {
   const { geolocation } = navigator;
 
   if (!geolocation) return;

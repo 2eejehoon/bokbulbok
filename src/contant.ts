@@ -1,6 +1,5 @@
 export const QUERY_KEY = {
-  LOCATION: "LOCATION",
-  AREA: "AREA",
+  PLACE: "PLACE",
 } as const;
 
 export const SORT_ARRAY = ["제목순", "등록순", "수정순"] as const;
