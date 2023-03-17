@@ -1,6 +1,7 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { ReactElement } from "react";
-import { getPlaceData } from "../api/place";
+import { GetServerSidePropsContext } from "next";
+import { getPlaceData } from "../../api/place";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import NestedLayout from "@/layout/NestedLayout/NestedLayout";
 import { QUERY_KEY } from "@/contant";
@@ -17,7 +18,7 @@ PlaceDetail.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export async function getServerSideProps({ query }: any) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({

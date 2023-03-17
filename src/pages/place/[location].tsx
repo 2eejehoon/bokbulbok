@@ -28,11 +28,12 @@ Place.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const { lng, lat } = context.query;
+  const { lng, lat, range, sort } = context.query;
 
   await queryClient.prefetchInfiniteQuery({
     queryKey: [QUERY_KEY.PLACE],
-    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, Number(lng), Number(lat)),
+    queryFn: ({ pageParam = 1 }) =>
+      getPlaceData(pageParam, Number(lng), Number(lat), Number(range), String(sort)),
   });
 
   return {

@@ -21,7 +21,7 @@ export default function PlaceItem({ id, image, title, address }: ListItemProps) 
   if (image === "") return null;
   return (
     <li className={style.container} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Link href={`/location/${id}`}>
+      <Link href={`/place/detail/${id}`}>
         <div className={style.thumbnail}>
           <Image src={image} alt={title} width="220" height="220" />
         </div>

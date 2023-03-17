@@ -1,6 +1,15 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
-export const rangeState = atom<string>({
+export const rangeState = atom<number>({
   key: "rangeState",
-  default: "0.5",
+  default: 3.0,
+});
+
+export const radiusState = selector<number>({
+  key: "radiusState",
+  get: ({ get }) => {
+    const range = get(rangeState);
+
+    return range * 1000;
+  },
 });

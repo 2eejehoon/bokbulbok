@@ -1,5 +1,6 @@
 import { useState, useCallback, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
+import { QueryClient } from "@tanstack/react-query";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Select from "../Select/Select";
@@ -7,6 +8,7 @@ import { sortState } from "@/recoil/sort";
 import { SORT_ARRAY } from "@/contant";
 
 export default function SortSelectModal() {
+  const queryClient = new QueryClient();
   const [modalOpen, setModalOpen] = useState(false);
   const [sort, setSort] = useRecoilState(sortState);
 

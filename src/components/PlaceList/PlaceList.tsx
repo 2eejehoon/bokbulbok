@@ -1,18 +1,23 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef } from "react";
+import { useRecoilValue } from "recoil";
 import PlaceItem from "../PlaceItem/PlaceItem";
 import style from "./PlaceList.module.scss";
 import { getPlaceData } from "@/pages/api/place";
 import { QUERY_KEY } from "@/contant";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useGeolocation } from "@/hooks/useGeolocation";
+import { arrangeState } from "@/recoil/sort";
+import { radiusState } from "@/recoil/range";
 
 export default function PlaceList() {
   const { lng, lat } = useGeolocation();
+  const radius = useRecoilValue(radiusState);
+  const arrange = useRecoilValue(arrangeState);
 
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACE],
-    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat),
+    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, radius, arrange),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
