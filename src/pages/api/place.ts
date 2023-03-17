@@ -1,5 +1,6 @@
 import axios from "axios";
-import { PlaceData } from "../../type";
+import { PlaceData } from "../../type/place";
+import { Location } from "@/type/location";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -11,14 +12,20 @@ const instance = axios.create({
 });
 
 export const getDataByLocation = async (
-  pageParam: number
+  pageParam: number,
+  location?: Location,
+  range?: number
 ): Promise<{
   placeList: PlaceData[];
   nextCursor: number;
   prevCursor: number;
 }> => {
+  const mapX = 126.981611;
+  const mapY = 37.568477;
+  const radius = 5000;
+
   const response = await instance.get(
-    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&contentTypeId=39&mapX=${126.981611}&mapY=${37.568477}&radius=${1000}`
+    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&contentTypeId=39&mapX=${mapX}&mapY=${mapY}&radius=${radius}`
   );
 
   const { items, pageNo } = await response.data.response.body;

@@ -1,8 +1,9 @@
-import { useRecoilState } from "recoil";
 import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { locationState } from "@/recoil/location";
+import { Location } from "@/type/location";
 
-export default function useGeolocation() {
+export function useGeolocation(): Location {
   const [location, setLocation] = useRecoilState(locationState);
 
   const onSuccess = (location: { coords: { longitude: number; latitude: number } }) => {

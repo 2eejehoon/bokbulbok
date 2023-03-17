@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
-import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
+import NavLayout from "@/layout/NavLayout/NavLayout";
 import { QUERY_KEY } from "@/contant";
 import AreaPlaceList from "@/components/area/AreaPlaceList/AreaPlaceList";
-import { getDataByArea } from "@/pages/api/client";
+import { getDataByArea } from "@/pages/api/place";
 import AreaSelectGroup from "@/components/area/AreaSelectGroup/AreaSelectGroup";
 
 export default function Area() {

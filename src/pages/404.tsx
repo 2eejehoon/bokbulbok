@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import NotFound from "@/components/common/NotFound/NotFound";
 
 export default function NotFoundPage() {

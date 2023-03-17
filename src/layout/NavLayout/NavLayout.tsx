@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Nav from "../../Nav/Nav";
+import Nav from "../../components/common/Nav/Nav";
 import style from "./NavLayout.module.scss";
 
 interface NavLayoutProps {

@@ -1,11 +1,7 @@
 import { atom } from "recoil";
+import { Location } from "@/type/location";
 
-interface LocationState {
-  coordinates?: { mapX: number; mapY: number };
-  error?: { code: number; message: string };
-}
-
-export const locationState = atom<LocationState>({
+export const locationState = atom<Location>({
   key: "location",
   default: {},
 });

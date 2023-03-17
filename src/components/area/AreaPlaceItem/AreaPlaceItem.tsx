@@ -10,12 +10,7 @@ interface ListItemProps {
   address: string;
 }
 
-export default function PlaceItem({
-  id,
-  image,
-  title,
-  address,
-}: ListItemProps) {
+export default function PlaceItem({ id, image, title, address }: ListItemProps) {
   const [hover, setHover] = useState(false);
   const handleMouseEnter = useCallback(() => setHover(true), []);
   const handleMouseLeave = useCallback(() => setHover(false), []);
@@ -25,11 +20,7 @@ export default function PlaceItem({
 
   if (image === "") return null;
   return (
-    <li
-      className={style.container}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <li className={style.container} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Link href={`/area/${id}`}>
         <div className={style.thumbnail}>
           <Image src={image} alt={title} width="220" height="220" />

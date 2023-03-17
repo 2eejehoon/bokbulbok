@@ -3,7 +3,7 @@ export const QUERY_KEY = {
   AREA: "AREA",
 } as const;
 
-export const SORT_ARRAY = ["제목순", "등록순", "수정순"];
+export const SORT_ARRAY = ["제목순", "등록순", "수정순"] as const;
 
 export const SIDO_ARRAY = [
   "전체",
@@ -24,7 +24,7 @@ export const SIDO_ARRAY = [
   "전라북도",
   "전라남도",
   "제주도",
-];
+] as const;
 
 export const SIDO_CODE = {
   전체: 0,

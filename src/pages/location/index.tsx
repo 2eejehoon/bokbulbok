@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getDataByLocation } from "../api/client";
+import { getDataByLocation } from "../api/place";
 import { QUERY_KEY } from "@/contant";
-import BaseLayout from "@/components/common/Layout/BaseLayout/BaseLayout";
-import NavLayout from "@/components/common/Layout/NavLayout/NavLayout";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
+import NavLayout from "@/layout/NavLayout/NavLayout";
 import LocationSelectGroup from "@/components/location/LocationSelectGroup/LocationSelectGroup";
 import LocationPlaceList from "@/components/location/LocationPlaceList/LocationPlaceList";
 

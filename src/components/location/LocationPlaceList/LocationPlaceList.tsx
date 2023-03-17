@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef } from "react";
 import PlaceItem from "../LocationPlaceItem/LocationPlaceItem";
-import { getDataByLocation } from "../../../pages/api/client";
+import { getDataByLocation } from "../../../pages/api/place";
 import style from "./LocationPlaceList.module.scss";
 import { QUERY_KEY } from "@/contant";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
@@ -20,7 +20,7 @@ export default function PlaceList() {
   return (
     <ul className={style.container}>
       {data?.pages.map((place) =>
-        place.placeList.map((place) => {
+        place.placeList?.map((place) => {
           return (
             <PlaceItem
               key={place.contentid}
