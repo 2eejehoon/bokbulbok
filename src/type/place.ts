@@ -1,4 +1,4 @@
-export interface PlaceData {
+export interface PlaceDataType {
   addr1: string;
   addr2: string;
   areacode: string;

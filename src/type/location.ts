@@ -1,4 +1,7 @@
-export interface Location {
-  coordinates?: { mapX: number; mapY: number };
-  error?: { code: number; message: string };
+export interface LocationType {
+  loaded: boolean;
+  lng?: number;
+  lat?: number;
+  error?: boolean;
+  errorMessage?: string;
 }

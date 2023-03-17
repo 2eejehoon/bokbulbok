@@ -1,22 +1,15 @@
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { ReactElement } from "react";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getPlaceData } from "../api/place";
-import { QUERY_KEY } from "@/contant";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import NestedLayout from "@/layout/NestedLayout/NestedLayout";
-import PlaceList from "@/components/PlaceList/PlaceList";
-import SelectGroup from "@/components/SelectGroup/SelectGroup";
+import { QUERY_KEY } from "@/contant";
 
-export default function Place() {
-  return (
-    <>
-      <SelectGroup />
-      <PlaceList />
-    </>
-  );
+export default function PlaceDetail() {
+  return <></>;
 }
 
-Place.getLayout = function getLayout(page: ReactElement) {
+PlaceDetail.getLayout = function getLayout(page: ReactElement) {
   return (
     <BaseLayout>
       <NestedLayout>{page}</NestedLayout>
@@ -24,7 +17,7 @@ Place.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }: any) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({

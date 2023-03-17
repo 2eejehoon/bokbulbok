@@ -1,6 +1,5 @@
 import axios from "axios";
-import { PlaceData } from "../../type/place";
-import { Location } from "@/type/location";
+import { PlaceDataType } from "../../type/place";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -13,18 +12,19 @@ const AxiosInstance = axios.create({
 
 export const getPlaceData = async (
   pageParam: number,
-  location?: Location,
+  lng?: number,
+  lat?: number,
   range?: number,
   sort?: string
 ): Promise<{
-  placeList: PlaceData[];
+  placeList: PlaceDataType[];
   nextCursor: number;
   prevCursor: number;
 }> => {
-  const mapX = 126.981611;
-  const mapY = 37.568477;
-  const radius = 5000;
-  const arrange = "B"; // 제목 A, 수정 B, 등록 C
+  const mapX = lng || "126.981611";
+  const mapY = lat || "37.568477";
+  const radius = range || "5000";
+  const arrange = sort || "C";
 
   const response = await AxiosInstance.get(
     `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${mapX}&mapY=${mapY}&radius=${radius}`
