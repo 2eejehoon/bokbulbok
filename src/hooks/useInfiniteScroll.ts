@@ -1,7 +1,4 @@
-import {
-  FetchNextPageOptions,
-  InfiniteQueryObserverResult,
-} from "@tanstack/react-query";
+import { FetchNextPageOptions, InfiniteQueryObserverResult } from "@tanstack/react-query";
 import { useEffect, MutableRefObject } from "react";
 
 interface useInfiniteScrollProps {

@@ -12,12 +12,7 @@ interface ModalProps {
 
 const cx = classNames.bind(style);
 
-export default function Modal({
-  children,
-  type,
-  modalOpen,
-  setModalClose,
-}: ModalProps) {
+export default function Modal({ children, type, modalOpen, setModalClose }: ModalProps) {
   return (
     <>
       {modalOpen && (

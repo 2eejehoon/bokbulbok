@@ -51,12 +51,7 @@ export default function Roulette({ data }: RouletteProps) {
       </ul>
       {!spin && (
         <div className={style.buttonContainer}>
-          <Button
-            type="button"
-            color="black"
-            size="large"
-            onClick={handleClick}
-          >
+          <Button type="button" color="black" size="large" onClick={handleClick}>
             돌려 돌려 돌림판
           </Button>
         </div>

@@ -14,19 +14,10 @@ export default function RouletteModal() {
 
   return (
     <>
-      <Button
-        type="button"
-        color="black"
-        size="small"
-        onClick={handleModalOpen}
-      >
+      <Button type="button" color="black" size="small" onClick={handleModalOpen}>
         돌림판
       </Button>
-      <Modal
-        type="roulette"
-        modalOpen={modalOpen}
-        setModalClose={handleModalClose}
-      >
+      <Modal type="roulette" modalOpen={modalOpen} setModalClose={handleModalClose}>
         <Roulette data={["1", "2", "3", "4", "5", "6"]} />
       </Modal>
     </>
