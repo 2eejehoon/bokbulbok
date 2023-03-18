@@ -2,7 +2,7 @@ import { atom, selector } from "recoil";
 
 export const rangeState = atom<number>({
   key: "rangeState",
-  default: 3.0,
+  default: 5.0,
 });
 
 export const radiusState = selector<number>({

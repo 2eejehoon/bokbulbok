@@ -32,11 +32,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   );
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(
+  return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
         </Hydrate>
         <ReactQueryDevtools />
       </QueryClientProvider>

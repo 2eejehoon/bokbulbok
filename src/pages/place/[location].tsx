@@ -6,15 +6,9 @@ import { QUERY_KEY } from "@/contant";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import NestedLayout from "@/layout/NestedLayout/NestedLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
-import SelectGroup from "@/components/SelectGroup/SelectGroup";
 
 export default function Place() {
-  return (
-    <>
-      <SelectGroup />
-      <PlaceList />
-    </>
-  );
+  return <PlaceList />;
 }
 
 Place.getLayout = function getLayout(page: ReactElement) {

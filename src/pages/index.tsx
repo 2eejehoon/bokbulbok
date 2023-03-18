@@ -2,9 +2,9 @@ import { ReactElement, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { useGeolocation } from "@/hooks/useGeolocation";
-import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import { radiusState } from "@/recoil/range";
 import { arrangeState } from "@/recoil/sort";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 
 export default function Home() {
   const router = useRouter();

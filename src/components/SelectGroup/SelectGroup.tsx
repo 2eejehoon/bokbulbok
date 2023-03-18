@@ -1,7 +1,7 @@
+import RouletteModal from "../RouletteModal/RouletteModal";
 import style from "./SelectGroup.module.scss";
 import RangeSliderModal from "@/components/RangeSliderModal/RangeSliderModal";
-import SortSelectModal from "@/components/common/SortSelectModal/SortSelectModal";
-import RouletteModal from "@/components/common/RouletteModal/RouletteModal";
+import SortSelectModal from "@/components/SortSelectModal/SortSelectModal";
 
 export default function SelectGroup() {
   return (

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
@@ -8,7 +8,7 @@ import { rangeState } from "@/recoil/range";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [value, setValue] = useState(3 || rangeState);
+  const [value, setValue] = useState(5 || rangeState);
   const [range, setRange] = useRecoilState(rangeState);
 
   const handleModalOpen = useCallback(() => setModalOpen(true), []);

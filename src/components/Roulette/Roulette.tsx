@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import classNames from "classnames/bind";
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 import style from "./Roulette.module.scss";
 
 const cx = classNames.bind(style);

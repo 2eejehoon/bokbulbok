@@ -38,3 +38,5 @@ export const getPlaceData = async (
     prevCursor: pageNo - 1,
   };
 };
+
+export const getPlaceDataById = async (id: number) => {};

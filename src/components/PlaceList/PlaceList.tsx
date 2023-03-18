@@ -36,6 +36,7 @@ export default function PlaceList() {
               image={place.firstimage}
               title={place.title}
               address={place.addr1}
+              category={place.cat3}
             />
           );
         })

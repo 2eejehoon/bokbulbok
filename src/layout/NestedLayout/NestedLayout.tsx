@@ -1,14 +1,15 @@
 import { ReactNode } from "react";
 import style from "./NestedLayout.module.scss";
+import SelectGroup from "@/components/SelectGroup/SelectGroup";
 
-interface NavLayoutProps {
+interface NestedLayoutProps {
   children: ReactNode;
 }
 
-export default function NavLayout({ children }: NavLayoutProps) {
+export default function NestedLayout({ children }: NestedLayoutProps) {
   return (
     <>
-      <div className={style.title}>현재 위치 : 서울시 중구</div>
+      <SelectGroup />
       <section className={style.section}>{children}</section>
     </>
   );

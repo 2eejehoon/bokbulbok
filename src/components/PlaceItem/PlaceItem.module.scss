@@ -1,34 +1,51 @@
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 220px;
-  height: 450px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  &:first-child {
+    border-top: 1px solid lightgrey;
+  }
+}
+
+.link {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .thumbnail {
   border-radius: 10px;
   overflow: hidden;
-  width: 220px;
-  height: 220px;
-  margin-bottom: 5px;
+  width: 120px;
+  height: 120px;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 15px;
+  padding: 5px;
+}
+
+.category {
+  padding: 2px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .title {
+  padding: 2px;
   font-size: 14px;
   font-weight: 600;
 }
 
 .text {
+  padding: 2px;
+  color: gray;
   font-size: 12px;
   font-weight: 400;
 }
