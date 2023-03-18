@@ -8,7 +8,7 @@ import { rangeState } from "@/recoil/range";
 
 export default function RangeSliderModal() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [value, setValue] = useState(5 || rangeState);
+  const [value, setValue] = useState(5);
   const [range, setRange] = useRecoilState(rangeState);
 
   const handleModalOpen = useCallback(() => setModalOpen(true), []);
@@ -34,10 +34,10 @@ export default function RangeSliderModal() {
               value={value}
               setValue={setValue}
               id="거리"
-              text={`${value} km 이내`}
-              min="1"
-              max="10"
-              step="1"
+              text={`${value} km`}
+              min="0"
+              max="50"
+              step="5"
             />
           </div>
           <div className={style.buttonContainer}>

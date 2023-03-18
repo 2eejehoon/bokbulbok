@@ -9,11 +9,6 @@ interface BaseLayoutProps {
 export default function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <>
-      <header className={style.header}>
-        <Link href="/">
-          <span className={style.logo}>복불복</span>
-        </Link>
-      </header>
       <main className={style.main}>{children}</main>
       <footer className={style.footer}>
         <Link href="https://api.visitkorea.or.kr/#/" target="_blank">

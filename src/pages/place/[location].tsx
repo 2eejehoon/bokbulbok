@@ -4,7 +4,7 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getPlaceData } from "../api/place";
 import { QUERY_KEY } from "@/contant";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
-import NestedLayout from "@/layout/NestedLayout/NestedLayout";
+import NestedLayout from "@/layout/ListLayout/ListLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
 
 export default function Place() {

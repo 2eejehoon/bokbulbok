@@ -21,10 +21,10 @@ export const getPlaceData = async (
   nextCursor: number;
   prevCursor: number;
 }> => {
-  const mapX = lng || "126.981611";
-  const mapY = lat || "37.568477";
-  const radius = range || "5000";
-  const arrange = sort || "C";
+  const mapX = lng;
+  const mapY = lat;
+  const radius = range;
+  const arrange = sort;
 
   const response = await AxiosInstance.get(
     `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${mapX}&mapY=${mapY}&radius=${radius}`

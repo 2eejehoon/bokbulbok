@@ -6,12 +6,12 @@ import style from "./PlaceList.module.scss";
 import { getPlaceData } from "@/pages/api/place";
 import { QUERY_KEY } from "@/contant";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { useGeolocation } from "@/hooks/useGeolocation";
 import { arrangeState } from "@/recoil/sort";
 import { radiusState } from "@/recoil/range";
+import { locationState } from "@/recoil/location";
 
 export default function PlaceList() {
-  const { lng, lat } = useGeolocation();
+  const { lng, lat } = useRecoilValue(locationState);
   const radius = useRecoilValue(radiusState);
   const arrange = useRecoilValue(arrangeState);
 
