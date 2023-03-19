@@ -9,9 +9,9 @@ export default function Home() {
   const location = useGeolocation();
 
   const handleClick = () => {
-    if (!location.loaded) return alert("위치정보 X");
+    if (!location.loaded) return alert("위치 정보가 확인되지 않았습니다.");
 
-    if (location.error) return alert("위치정보 Error");
+    if (location.error) return alert(location.errorMessage);
 
     if (location.lng && location.lat) {
       router.push(
@@ -22,9 +22,11 @@ export default function Home() {
 
   return (
     <>
-      <Button type="button" color="black" size="medium" onClick={handleClick}>
-        내 주변 음식점 정보 확인하기
-      </Button>
+      {location.loaded && (
+        <Button type="button" color="black" size="medium" onClick={handleClick}>
+          내 주변 음식점 정보 확인하기
+        </Button>
+      )}
     </>
   );
 }

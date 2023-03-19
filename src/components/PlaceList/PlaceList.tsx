@@ -15,13 +15,13 @@ export default function PlaceList() {
   const radius = useRecoilValue(radiusState);
   const arrange = useRecoilValue(arrangeState);
 
+  const ref = useRef(null);
+
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: [QUERY_KEY.PLACE],
+    queryKey: [QUERY_KEY.PLACELIST],
     queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, radius, arrange),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
-
-  const ref = useRef(null);
 
   useInfiniteScroll({ ref, hasNextPage, fetchNextPage });
 

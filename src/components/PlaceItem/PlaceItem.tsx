@@ -24,7 +24,7 @@ export default function PlaceItem({ id, image, title, address, category }: Place
           <Image src={image} alt={title} width="120" height="120" />
         </div>
         <div className={style.body}>
-          <span className={style.category}>&bull; {getCategory(category)}</span>
+          <span className={style.category}>{getCategory(category)}</span>
           <span className={style.title}>{title}</span>
           <span className={style.text}>{address}</span>
         </div>

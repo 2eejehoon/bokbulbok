@@ -25,7 +25,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { lng, lat, range, sort } = context.query;
 
   await queryClient.prefetchInfiniteQuery({
-    queryKey: [QUERY_KEY.PLACE],
+    queryKey: [QUERY_KEY.PLACELIST],
     queryFn: ({ pageParam = 1 }) =>
       getPlaceData(pageParam, Number(lng), Number(lat), Number(range), String(sort)),
   });

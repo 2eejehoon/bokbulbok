@@ -7,27 +7,21 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const AxiosInstance = axios.create({
   baseURL,
-  timeout: 5000,
 });
 
 export const getPlaceData = async (
   pageParam: number,
   lng?: number,
   lat?: number,
-  range?: number,
-  sort?: string
+  radius?: number,
+  arrange?: string
 ): Promise<{
   placeList: PlaceDataType[];
   nextCursor: number;
   prevCursor: number;
 }> => {
-  const mapX = lng;
-  const mapY = lat;
-  const radius = range;
-  const arrange = sort;
-
   const response = await AxiosInstance.get(
-    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${mapX}&mapY=${mapY}&radius=${radius}`
+    `B551011/KorService1/locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${lng}&mapY=${lat}&radius=${radius}`
   );
 
   const { items, pageNo } = await response.data.response.body;
@@ -39,4 +33,22 @@ export const getPlaceData = async (
   };
 };
 
-export const getPlaceDataById = async (id: number) => {};
+export const getPlaceCommonDataById = async (contentId: number) => {
+  const response = await AxiosInstance.get(
+    `B551011/KorService1/detailCommon1?ServiceKey=${key}&contentTypeId=12&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&_type=json`
+  );
+
+  const data = await response.data.response.body;
+
+  return data;
+};
+
+export const getPlaceIntroDataById = async (id: string) => {
+  const response = await AxiosInstance.get(
+    `B551011/KorService1/detailIntro1?ServiceKey=${key}&contentTypeId=39&contentId=${id}&MobileOS=ETC&MobileApp=AppTest&_type=json`
+  );
+
+  const data = await response.data;
+
+  return data;
+};

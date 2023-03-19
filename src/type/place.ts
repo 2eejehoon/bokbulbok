@@ -21,3 +21,10 @@ export interface PlaceDataType {
   tel: string;
   title: string;
 }
+
+export interface PlaceCommonDataType extends PlaceDataType {
+  homepage: string;
+  overview: string;
+  telname: string;
+  zipcode: string;
+}
