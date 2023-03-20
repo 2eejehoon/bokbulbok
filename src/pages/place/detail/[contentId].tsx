@@ -15,8 +15,6 @@ export default function PlaceDetail() {
     queryFn: () => getPlaceCommonDataById(Number(id)),
   });
 
-  console.log(data);
-
   return <></>;
 }
 

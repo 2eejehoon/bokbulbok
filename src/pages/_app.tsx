@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           queries: {
             refetchOnWindowFocus: false,
             refetchOnMount: false,
+            refetchOnReconnect: false,
             retry: true,
           },
         },

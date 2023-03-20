@@ -22,8 +22,6 @@ Place.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  console.log(context.query);
-
   const { lng, lat, range, sort } = context.query;
 
   await queryClient.prefetchInfiniteQuery({

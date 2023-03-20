@@ -41,7 +41,7 @@ export default function PlaceList() {
           );
         })
       )}
-      <li ref={ref} />
+      <li className={style.target} ref={ref} />
     </ul>
   );
 }

@@ -13,9 +13,10 @@ interface ListLayoutProps {
 
 export default function ListLayout({ children }: ListLayoutProps) {
   const router = useRouter();
-  const { lng, lat } = useRecoilValue(locationState);
+
   const radius = useRecoilValue(radiusState);
   const arrange = useRecoilValue(arrangeState);
+  const { lng, lat } = useRecoilValue(locationState);
 
   useEffect(() => {
     if (lng && lat && radius && arrange) {
