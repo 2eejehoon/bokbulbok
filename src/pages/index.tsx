@@ -9,8 +9,6 @@ export default function Home() {
   const location = useGeolocation();
 
   const handleClick = () => {
-    if (!location.loaded) return alert("위치 정보가 확인되지 않았습니다.");
-
     if (location.error) return alert(location.errorMessage);
 
     if (location.lng && location.lat) {

@@ -1,4 +1,4 @@
-export const getCategory = (category: string) => {
+export const getCategoryText = (category: string) => {
   switch (category) {
     case "A05020100":
       return "한식";

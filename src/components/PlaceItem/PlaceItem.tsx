@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
+import BlurImage from "../common/BlurImage/BlurImage";
 import style from "./PlaceItem.module.scss";
-import { getCategory } from "@/utils/place";
+import { getCategoryText } from "@/utils/place";
 
 interface PlaceItemProps {
   id: string;
@@ -21,10 +21,10 @@ export default function PlaceItem({ id, image, title, address, category }: Place
     <li className={style.container}>
       <Link href={`/place/detail/${id}`} className={style.link}>
         <div className={style.thumbnail}>
-          <Image src={image} alt={title} width="120" height="120" />
+          <BlurImage src={image} alt={title} width={120} height={120} />
         </div>
         <div className={style.body}>
-          <span className={style.category}>{getCategory(category)}</span>
+          <span className={style.category}>{getCategoryText(category)}</span>
           <span className={style.title}>{title}</span>
           <span className={style.text}>{address}</span>
         </div>
