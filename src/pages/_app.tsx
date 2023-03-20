@@ -27,6 +27,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             refetchOnMount: false,
             refetchOnReconnect: false,
             retry: true,
+            networkMode: "always",
           },
         },
       })
