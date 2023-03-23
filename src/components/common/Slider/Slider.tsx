@@ -11,7 +11,15 @@ interface SliderProps {
   step: string;
 }
 
-export default function Slider({ value, setValue, id, text, min, max, step }: SliderProps) {
+export default function Slider({
+  value,
+  setValue,
+  id,
+  text,
+  min,
+  max,
+  step,
+}: SliderProps) {
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setValue(Number(e.target.value)),
     [setValue]

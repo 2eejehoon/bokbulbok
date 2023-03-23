@@ -8,12 +8,14 @@ import { QUERY_KEY } from "@/contant";
 
 export default function PlaceDetail() {
   const router = useRouter();
-  const id = router.query.id;
+  const contentId = router.query.contentId;
 
   const { data } = useQuery({
-    queryKey: [QUERY_KEY.PLACECOMMON, id],
-    queryFn: () => getPlaceCommonDataById(Number(id)),
+    queryKey: [QUERY_KEY.PLACECOMMON, contentId],
+    queryFn: () => getPlaceCommonDataById(String(contentId)),
   });
+
+  console.log(data);
 
   return <></>;
 }
@@ -25,11 +27,11 @@ PlaceDetail.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const contentId = context.query.contentId as string;
+  const contentId = context.query.contentId;
 
   await queryClient.prefetchQuery({
     queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-    queryFn: () => getPlaceCommonDataById(Number(contentId)),
+    queryFn: () => getPlaceCommonDataById(String(contentId)),
   });
 
   return {

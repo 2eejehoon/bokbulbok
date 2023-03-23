@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PlaceDataType } from "../../type/place";
+import { PlaceDataType } from "../../types/place";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -33,22 +33,12 @@ export const getPlaceData = async (
   };
 };
 
-export const getPlaceCommonDataById = async (contentId: number) => {
+export const getPlaceCommonDataById = async (contentId: string) => {
   const response = await AxiosInstance.get(
-    `detailCommon1?ServiceKey=${key}&contentTypeId=12&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&_type=json`
+    `detailCommon1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`
   );
 
-  const data = await response.data.response.body;
-
-  return data;
-};
-
-export const getPlaceIntroDataById = async (id: string) => {
-  const response = await AxiosInstance.get(
-    `detailIntro1?ServiceKey=${key}&contentTypeId=39&contentId=${id}&MobileOS=ETC&MobileApp=AppTest&_type=json`
-  );
-
-  const data = await response.data;
+  const data = await response.data.response.body.items.item[0];
 
   return data;
 };

@@ -1,33 +1,32 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useRecoilState } from "recoil";
+import { useRouter } from "next/router";
+import useQueryRouter from "../../hooks/useQueryRouter";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
 import { rangeState } from "@/recoil/range";
+import useModal from "@/hooks/useModal";
 
 export default function RangeSliderModal() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const valueRef = useRef(null);
   const [value, setValue] = useState(5);
-  const [range, setRange] = useRecoilState(rangeState);
+  const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
-  const handleModalOpen = useCallback(() => setModalOpen(true), []);
-  const handleModalClose = useCallback(() => {
-    setModalOpen(false);
-    setValue(range);
-  }, [range]);
+  const handleRouterPush = useQueryRouter();
 
-  const handleConfirm = useCallback(() => {
-    setModalOpen(false);
-    setRange(value);
-  }, [value]);
+  const handleConfirm = () => {
+    handleModalClose();
+    handleRouterPush(value);
+  };
 
   return (
     <>
       <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
-        {`${range} km`}
+        {`${value} km`}
       </Button>
-      <Modal type="slider" modalOpen={modalOpen} setModalClose={handleModalClose}>
+      <Modal type="slider" modalOpen={isModalOpen} setModalClose={handleModalClose}>
         <div className={style.container}>
           <div className={style.sliderContainer}>
             <Slider

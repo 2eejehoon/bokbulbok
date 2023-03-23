@@ -1,4 +1,4 @@
-import "../style/global.scss";
+import "../styles/global.scss";
 import { RecoilEnv } from "recoil";
 import { ReactElement, ReactNode, useState } from "react";
 import type { NextPage } from "next";
