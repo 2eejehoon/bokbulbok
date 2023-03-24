@@ -11,10 +11,10 @@ const AxiosInstance = axios.create({
 
 export const getPlaceData = async (
   pageParam: number,
-  lng?: number,
-  lat?: number,
-  radius?: number,
-  arrange?: string
+  lng: string,
+  lat: string,
+  radius: string,
+  arrange: string
 ): Promise<{
   placeList: PlaceDataType[];
   nextCursor: number;

@@ -1,25 +1,22 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef } from "react";
-import { useRecoilValue } from "recoil";
+import { useRouter } from "next/router";
 import PlaceItem from "../PlaceItem/PlaceItem";
 import style from "./PlaceList.module.scss";
 import { getPlaceData } from "@/pages/api/place";
 import { QUERY_KEY } from "@/contant";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { arrangeState } from "@/recoil/sort";
-import { radiusState } from "@/recoil/range";
-import { locationState } from "@/recoil/location";
+import { QueryType } from "@/types/query";
 
 export default function PlaceList() {
-  const { lng, lat } = useRecoilValue(locationState);
-  const radius = useRecoilValue(radiusState);
-  const arrange = useRecoilValue(arrangeState);
+  const router = useRouter();
+  const { lng, lat, range, sort } = router.query as QueryType;
 
   const ref = useRef(null);
 
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, radius, arrange),
+    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, range, sort),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
@@ -41,7 +38,7 @@ export default function PlaceList() {
           );
         })
       )}
-      <li className={style.target} ref={ref} />
+      <li ref={ref} />
     </ul>
   );
 }
