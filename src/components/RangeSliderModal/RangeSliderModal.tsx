@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useQueryRouter from "../../hooks/useQueryRouter";
+import useCustomRouter from "../../hooks/useCustomRouter";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
@@ -7,29 +7,29 @@ import Slider from "@/components/common/Slider/Slider";
 import useModal from "@/hooks/useModal";
 
 export default function RangeSliderModal() {
-  const [value, setValue] = useState(5);
+  const [range, setRange] = useState(5);
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
-  const handleRouterPush = useQueryRouter();
+  const customRouterPush = useCustomRouter();
 
   const handleConfirm = () => {
+    customRouterPush(range);
     handleModalClose();
-    handleRouterPush(value);
   };
 
   return (
     <>
       <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
-        {`${value} km`}
+        {`${range} km`}
       </Button>
       <Modal type="slider" modalOpen={isModalOpen} setModalClose={handleModalClose}>
         <div className={style.container}>
           <div className={style.sliderContainer}>
             <Slider
-              value={value}
-              setValue={setValue}
+              value={range}
+              setValue={setRange}
               id="거리"
-              text={`${value} km`}
+              text={`${range} km`}
               min="0"
               max="50"
               step="5"

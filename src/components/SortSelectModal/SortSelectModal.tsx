@@ -4,18 +4,19 @@ import Modal from "../common/Modal/Modal";
 import Select from "../common/Select/Select";
 import { SORT_ARRAY } from "@/contant";
 import useModal from "@/hooks/useModal";
-import useQueryRouter from "@/hooks/useQueryRouter";
+import useCustomRouter from "@/hooks/useCustomRouter";
 
 export default function SortSelectModal() {
   const [sort, setSort] = useState("제목순");
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
-  const handleRouterPush = useQueryRouter();
+
+  const customRouterPush = useCustomRouter();
 
   const handleClick = useCallback((e: MouseEvent<HTMLLIElement>) => {
     const currentValue = e.currentTarget.innerHTML;
-    handleModalClose();
     setSort(currentValue);
-    handleRouterPush(undefined, currentValue);
+    customRouterPush(undefined, currentValue);
+    handleModalClose();
   }, []);
 
   return (
