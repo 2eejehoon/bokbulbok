@@ -6,6 +6,7 @@ import { QUERY_KEY } from "@/contant";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import NestedLayout from "@/layout/ListLayout/ListLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
+import { QueryType } from "@/types/query";
 
 export default function Place() {
   return <PlaceList />;
@@ -22,12 +23,11 @@ Place.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const { lng, lat, range, sort } = context.query;
+  const { lng, lat, range, sort } = context.query as QueryType;
 
   await queryClient.prefetchInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) =>
-      getPlaceData(pageParam, Number(lng), Number(lat), Number(range), String(sort)),
+    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, range, sort),
   });
 
   return {

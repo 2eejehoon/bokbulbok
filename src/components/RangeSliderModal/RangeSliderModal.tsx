@@ -1,16 +1,12 @@
-import { useState, useCallback, useRef } from "react";
-import { useRecoilState } from "recoil";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import useQueryRouter from "../../hooks/useQueryRouter";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import { rangeState } from "@/recoil/range";
 import useModal from "@/hooks/useModal";
 
 export default function RangeSliderModal() {
-  const valueRef = useRef(null);
   const [value, setValue] = useState(5);
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 

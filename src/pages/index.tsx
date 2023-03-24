@@ -13,7 +13,9 @@ export default function Home() {
 
     if (location.lng && location.lat) {
       router.push(
-        `/place/location?lng=${location.lng}&lat=${location.lat}&range=${5000}&sort=${"A"}`
+        `/place/location?lng=${location.lng}&lat=${
+          location.lat
+        }&range=${5000}&sort=${"A"}`
       );
     }
   };

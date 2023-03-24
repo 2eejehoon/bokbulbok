@@ -12,7 +12,13 @@ interface PlaceItemProps {
   category: string;
 }
 
-export default function PlaceItem({ id, image, title, address, category }: PlaceItemProps) {
+export default function PlaceItem({
+  id,
+  image,
+  title,
+  address,
+  category,
+}: PlaceItemProps) {
   const handleAdd = useCallback(() => console.log(`${id} 추가`), []);
   const handleRemove = useCallback(() => console.log(`${id} 제거`), []);
 
