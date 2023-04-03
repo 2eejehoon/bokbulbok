@@ -1,11 +1,13 @@
 import "../styles/global.scss";
 import { RecoilEnv } from "recoil";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useRouter } from "next/router";
+import { setPathToSessionStorage } from "@/utils/setPathToSessionStorage";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -18,6 +20,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const router = useRouter();
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -32,7 +35,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         },
       })
   );
+
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  useEffect(() => setPathToSessionStorage(), [router.asPath]);
 
   return (
     <QueryClientProvider client={queryClient}>

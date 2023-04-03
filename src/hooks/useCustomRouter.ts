@@ -29,8 +29,6 @@ export default function useCustomRouter() {
     const latValue = type === "location" ? value.lat : lat;
     const rangeValue = type === "range" ? rangeConverter(value) : range;
     const sortValue = type === "sort" ? sortConverter(value) : sort;
-    console.log(lng, lat, range, sort);
-    console.log(lngValue, latValue, rangeValue, sortValue);
 
     router.push(
       `/place/location?lng=${lngValue}&lat=${latValue}&range=${rangeValue || 5000}&sort=${

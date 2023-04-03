@@ -3,8 +3,8 @@ import { ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 import { getPlaceCommonDataById } from "@/pages/api/place";
-import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import { QUERY_KEY } from "@/contant";
+import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 
 export default function PlaceDetail() {
   const router = useRouter();
@@ -15,13 +15,11 @@ export default function PlaceDetail() {
     queryFn: () => getPlaceCommonDataById(String(contentId)),
   });
 
-  console.log(data);
-
   return <></>;
 }
 
 PlaceDetail.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <DetailLayout>{page}</DetailLayout>;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

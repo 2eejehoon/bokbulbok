@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useCallback } from "react";
 import BlurImage from "../common/BlurImage/BlurImage";
 import style from "./PlaceItem.module.scss";
-import { getCategoryText } from "@/utils/place";
+import { getCategoryText } from "@/utils/getCategoryText";
 
 interface PlaceItemProps {
   id: string;

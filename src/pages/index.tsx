@@ -1,5 +1,3 @@
-import { ReactElement } from "react";
-import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import { useGeolocation } from "@/hooks/useGeolocation";
 import Button from "@/components/common/Button/Button";
 import useCustomRouter from "@/hooks/useCustomRouter";
@@ -22,7 +20,3 @@ export default function Home() {
     </>
   );
 }
-
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
-};
