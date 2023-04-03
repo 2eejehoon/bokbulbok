@@ -1,4 +1,4 @@
-import { useState, useCallback, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import Button from "../common/Button/Button";
 import Modal from "../common/Modal/Modal";
 import Select from "../common/Select/Select";
@@ -12,12 +12,12 @@ export default function SortSelectModal() {
 
   const customRouterPush = useCustomRouter();
 
-  const handleClick = useCallback((e: MouseEvent<HTMLLIElement>) => {
+  const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     const currentValue = e.currentTarget.innerHTML;
     setSort(currentValue);
-    customRouterPush(undefined, currentValue);
+    customRouterPush("sort", currentValue);
     handleModalClose();
-  }, []);
+  };
 
   return (
     <>

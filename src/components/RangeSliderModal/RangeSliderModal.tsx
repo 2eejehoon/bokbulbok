@@ -13,7 +13,7 @@ export default function RangeSliderModal() {
   const customRouterPush = useCustomRouter();
 
   const handleConfirm = () => {
-    customRouterPush(range);
+    customRouterPush("range", range);
     handleModalClose();
   };
 
