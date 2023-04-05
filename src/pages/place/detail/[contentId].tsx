@@ -5,21 +5,26 @@ import { useRouter } from "next/router";
 import { getPlaceCommonDataById } from "@/pages/api/place";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 
 export default function PlaceDetail() {
   const router = useRouter();
-  const contentId = router.query.contentId;
+  const contentId = router.query.contentId as string;
 
   const { data } = useQuery({
     queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-    queryFn: () => getPlaceCommonDataById(String(contentId)),
+    queryFn: () => getPlaceCommonDataById(contentId),
   });
 
   return <></>;
 }
 
 PlaceDetail.getLayout = function getLayout(page: ReactElement) {
-  return <DetailLayout>{page}</DetailLayout>;
+  return (
+    <BaseLayout>
+      <DetailLayout>{page}</DetailLayout>
+    </BaseLayout>
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

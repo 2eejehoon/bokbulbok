@@ -19,10 +19,10 @@ export default function useInfiniteScroll({
       return;
     }
 
-    const options = { root: null, rootMargin: "0px", threshold: 0 };
-
     const callback = (entries: IntersectionObserverEntry[]) =>
       entries.forEach((entry) => entry.isIntersecting && fetchNextPage());
+
+    const options = { root: null, rootMargin: "10px", threshold: 0 };
 
     const observer = new IntersectionObserver(callback, options);
 

@@ -11,7 +11,7 @@ export default function GoBackButton() {
   }, []);
 
   useEffect(() => {
-    const storage = globalThis?.sessionStorage;
+    const storage = window.sessionStorage;
     if (!storage) return;
 
     const prevPath = storage.getItem("prevPath");

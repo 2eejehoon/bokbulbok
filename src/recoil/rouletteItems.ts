@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { PlaceDataType } from "@/types/place";
+import { PlaceCommonDataType } from "@/types/place";
 
-export const rouletteItemsState = atom<PlaceDataType[]>({
+export const rouletteItemsState = atom<PlaceCommonDataType[]>({
   key: "rouletteItemsState",
   default: [],
 });

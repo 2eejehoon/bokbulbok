@@ -2,20 +2,21 @@ import { useState, useCallback, useMemo } from "react";
 import classNames from "classnames/bind";
 import Button from "../common/Button/Button";
 import style from "./Roulette.module.scss";
+import { PlaceCommonDataType } from "@/types/place";
 
 const cx = classNames.bind(style);
 
 interface RouletteProps {
-  data: string[];
+  rouletteItems: PlaceCommonDataType[];
 }
 
-export default function Roulette({ data }: RouletteProps) {
+export default function Roulette({ rouletteItems }: RouletteProps) {
   const [start, setStart] = useState("");
   const [stop, setStop] = useState("stop");
   const [spin, setSpin] = useState(false);
 
   const length = useMemo(() => {
-    const len = data.length;
+    const len = rouletteItems.length;
     if (len === 0) return "zero";
     if (len === 1) return "one";
     if (len === 2) return "two";
@@ -23,7 +24,7 @@ export default function Roulette({ data }: RouletteProps) {
     if (len === 4) return "four";
     if (len === 5) return "five";
     if (len === 6) return "six";
-  }, [data]);
+  }, [rouletteItems]);
 
   const handleClick = useCallback(() => {
     setStop("");
@@ -36,15 +37,14 @@ export default function Roulette({ data }: RouletteProps) {
   }, []);
 
   if (length === "zero") return null;
-
   return (
     <>
       <div className={style.arrow} />
       <ul className={cx("circle", start, stop)}>
-        {data.map((title) => {
+        {rouletteItems.map((item) => {
           return (
-            <li key={title} className={cx("li", length)}>
-              <div className={cx("text", length)}>{title}</div>
+            <li key={item.contentid} className={cx("li", length)}>
+              <div className={cx("text", length)}>{item.title}</div>
             </li>
           );
         })}
