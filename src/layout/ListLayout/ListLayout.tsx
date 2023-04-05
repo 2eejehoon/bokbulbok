@@ -20,7 +20,7 @@ export default function ListLayout({ children }: ListLayoutProps) {
           <RouletteModal />
         </div>
       </header>
-      <section className={style.section}>{children}</section>
+      <main className={style.main}>{children}</main>
     </>
   );
 }

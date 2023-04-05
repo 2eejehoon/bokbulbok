@@ -30,11 +30,11 @@ PlaceDetail.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const contentId = context.query.contentId;
+  const contentId = context.query.contentId as string;
 
   await queryClient.prefetchQuery({
     queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-    queryFn: () => getPlaceCommonDataById(String(contentId)),
+    queryFn: () => getPlaceCommonDataById(contentId),
   });
 
   return {
