@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Button from "../common/Button/Button";
 
 export default function GoBackButton() {
-  const [mount, setMount] = useState(false);
   const router = useRouter();
-
-  const prevPath = typeof window && mount && sessionStorage.getItem("prevPath");
+  const prevPathRef = useRef<string | null>(null);
 
   const handleGoBackClick = () => {
-    router.push(prevPath as string);
+    router.push(prevPathRef.current as string);
   };
 
   useEffect(() => {
-    setMount(true);
+    const prevPath = typeof window && window.sessionStorage.getItem("prevPath");
+
+    prevPathRef.current = prevPath;
   }, []);
 
   return (
