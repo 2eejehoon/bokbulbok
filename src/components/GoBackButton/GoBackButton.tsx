@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Button from "../common/Button/Button";
 
 export default function GoBackButton() {
   const router = useRouter();
-  const prevPathRef = useRef<string | null>(null);
+  const [prevPath, setPrevPath] = useState("");
 
   const handleGoBackClick = () => {
-    router.push(prevPathRef.current as string);
+    router.push(prevPath);
   };
 
   useEffect(() => {
@@ -15,8 +15,8 @@ export default function GoBackButton() {
     if (!storage) return;
 
     const prevPath = storage.getItem("prevPath");
-    console.log(prevPath);
-    prevPathRef.current = prevPath;
+
+    setPrevPath(prevPath as string);
   }, []);
 
   return (
