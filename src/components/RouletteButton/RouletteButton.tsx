@@ -1,36 +1,32 @@
 import { useRecoilState } from "recoil";
-import { useQuery } from "@tanstack/react-query";
 import { useLayoutEffect, useState } from "react";
 import Button from "../common/Button/Button";
+import style from "./RouletteButton.module.scss";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
-import { QUERY_KEY } from "@/contant";
-import { getPlaceCommonDataById } from "@/pages/api/place";
 
 interface RouletteButtonProps {
   contentId: string;
+  title: string;
 }
 
-export default function RouletteButton({ contentId }: RouletteButtonProps) {
+export default function RouletteButton({ contentId, title }: RouletteButtonProps) {
   const [isIncluded, setIsIncluded] = useState(false);
   const [rouletteItems, setRouletteItems] = useRecoilState(rouletteItemsState);
 
-  const { data } = useQuery({
-    queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-    queryFn: () => getPlaceCommonDataById(contentId),
-  });
-
-  const handleAddClick = () => {
+  const handlePlusClick = () => {
     if (rouletteItems.length === 6) {
       return alert("최대 6개까지 가능합니다");
     }
 
-    setRouletteItems([...rouletteItems, data]);
+    const item = { contentId, title };
+
+    setRouletteItems([...rouletteItems, item]);
     setIsIncluded(true);
   };
 
-  const handleDeleteClick = () => {
+  const handleMinusClick = () => {
     const filteredRouletteItems = rouletteItems.filter(
-      (item) => item.contentid !== contentId
+      (item) => item.contentId !== contentId
     );
 
     setRouletteItems(filteredRouletteItems);
@@ -38,32 +34,23 @@ export default function RouletteButton({ contentId }: RouletteButtonProps) {
   };
 
   useLayoutEffect(() => {
-    if (rouletteItems.findIndex((item) => item.contentid == contentId) > -1) {
+    if (rouletteItems.findIndex((item) => item.contentId == contentId) > -1) {
       setIsIncluded(true);
     }
   }, []);
 
-  switch (isIncluded) {
-    case false:
-      return (
-        <Button type={"button"} onClick={handleAddClick} color={"white"} size={"small"}>
+  return (
+    <div className={style.buttonContainer}>
+      {!isIncluded && (
+        <Button type={"button"} onClick={handlePlusClick} color={"white"} size={"small"}>
           &#10133;
         </Button>
-      );
-
-    case true:
-      return (
-        <Button
-          type={"button"}
-          onClick={handleDeleteClick}
-          color={"white"}
-          size={"small"}
-        >
+      )}
+      {isIncluded && (
+        <Button type={"button"} onClick={handleMinusClick} color={"white"} size={"small"}>
           &#10134;
         </Button>
-      );
-
-    default:
-      return null;
-  }
+      )}
+    </div>
+  );
 }

@@ -21,10 +21,10 @@ export default function SortSelectModal() {
 
   return (
     <>
-      <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
+      <Button type={"button"} color={"grey"} size={"small"} onClick={handleModalOpen}>
         {sort}
       </Button>
-      <Modal type="sort" modalOpen={isModalOpen} setModalClose={handleModalClose}>
+      <Modal type={"sort"} modalOpen={isModalOpen} setModalClose={handleModalClose}>
         <Select options={SORT_ARRAY} onClick={handleClick} />
       </Modal>
     </>

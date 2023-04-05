@@ -33,7 +33,7 @@ export default function Slider({
         </label>
         <input
           id={id}
-          type="range"
+          type={"range"}
           value={value}
           onChange={handleChange}
           min={min}

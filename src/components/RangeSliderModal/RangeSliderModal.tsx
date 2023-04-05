@@ -19,27 +19,37 @@ export default function RangeSliderModal() {
 
   return (
     <>
-      <Button type="button" color="grey" size="small" onClick={handleModalOpen}>
+      <Button type={"button"} color={"grey"} size={"small"} onClick={handleModalOpen}>
         {`${range} km`}
       </Button>
-      <Modal type="slider" modalOpen={isModalOpen} setModalClose={handleModalClose}>
+      <Modal type={"slider"} modalOpen={isModalOpen} setModalClose={handleModalClose}>
         <div className={style.container}>
           <div className={style.sliderContainer}>
             <Slider
               value={range}
               setValue={setRange}
-              id="거리"
+              id={"거리"}
               text={`${range} km`}
-              min="0"
-              max="50"
-              step="5"
+              min={"0"}
+              max={"50"}
+              step={"5"}
             />
           </div>
           <div className={style.buttonContainer}>
-            <Button type="button" color="white" size="small" onClick={handleModalClose}>
+            <Button
+              type={"button"}
+              color={"white"}
+              size={"small"}
+              onClick={handleModalClose}
+            >
               취소
             </Button>
-            <Button type="button" color="white" size="small" onClick={handleConfirm}>
+            <Button
+              type={"button"}
+              color={"white"}
+              size={"small"}
+              onClick={handleConfirm}
+            >
               확인
             </Button>
           </div>

@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       {location.loaded && (
-        <Button type="button" color="black" size="medium" onClick={handleClick}>
+        <Button type={"button"} color={"black"} size={"medium"} onClick={handleClick}>
           내 주변 음식점 정보 확인하기
         </Button>
       )}

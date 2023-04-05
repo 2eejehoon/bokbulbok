@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="ko">
       <Head />
       <body>
-        <div id="portal" />
+        <div id={"portal"} />
         <Main />
         <NextScript />
       </body>
