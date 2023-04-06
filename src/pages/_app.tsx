@@ -7,6 +7,7 @@ import { RecoilRoot } from "recoil";
 import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { setPathToSessionStorage } from "@/utils/setPathToSessionStorage";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
@@ -42,6 +43,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Script
+        strategy={"beforeInteractive"}
+        type={"text/javascript"}
+        src={
+          "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=" +
+          process.env.NEXT_PUBLIC_MAP_KEY
+        }
+      />
       <RecoilRoot>
         <Hydrate state={pageProps.dehydratedState}>
           {getLayout(<Component {...pageProps} />)}

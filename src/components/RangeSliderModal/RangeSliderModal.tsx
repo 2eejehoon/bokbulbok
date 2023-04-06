@@ -30,7 +30,7 @@ export default function RangeSliderModal() {
               setValue={setRange}
               id={"거리"}
               text={`${range} km`}
-              min={"0"}
+              min={"5"}
               max={"50"}
               step={"5"}
             />

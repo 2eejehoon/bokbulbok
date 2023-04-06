@@ -1,25 +1,19 @@
-import { useRef } from "react";
-import { useRouter } from "next/router";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { InfiniteData } from "@tanstack/react-query";
 import PlaceItem from "../PlaceItem/PlaceItem";
 import style from "./PlaceList.module.scss";
-import { QueryType } from "@/types/query";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { getPlaceData } from "@/pages/api/place";
-import { QUERY_KEY } from "@/contant";
+import { PlaceDataType } from "@/types/place";
 
-export default function PlaceList() {
-  const ref = useRef(null);
-  const router = useRouter();
-  const { lng, lat, range, sort } = router.query as QueryType;
+interface PlaceListProps {
+  data:
+    | InfiniteData<{
+        placeList: PlaceDataType[];
+        nextCursor: number;
+        prevCursor: number;
+      }>
+    | undefined;
+}
 
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) => getPlaceData(pageParam, lng, lat, range, sort),
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
-
-  useInfiniteScroll({ ref, hasNextPage, fetchNextPage });
+export default function PlaceList({ data }: PlaceListProps) {
   return (
     <ul className={style.container}>
       {data?.pages.map((place) =>
@@ -36,7 +30,6 @@ export default function PlaceList() {
           );
         })
       )}
-      <li ref={ref} />
     </ul>
   );
 }

@@ -3,11 +3,13 @@ export const setPathToSessionStorage = () => {
   if (!storage) return;
 
   const prevPath = storage.getItem("currentPath") || "/";
-  storage.setItem("prevPath", prevPath);
 
   const currentPath = globalThis.location.search
     ? globalThis.location.pathname + globalThis.location.search
     : globalThis.location.pathname;
 
+  if (prevPath === currentPath) return;
+
+  storage.setItem("prevPath", prevPath);
   storage.setItem("currentPath", currentPath);
 };

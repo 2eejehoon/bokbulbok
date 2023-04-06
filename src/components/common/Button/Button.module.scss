@@ -11,13 +11,12 @@
   &.white {
     color: black;
     background-color: white;
-    border: none;
   }
 
   &.grey {
     color: black;
     background-color: white;
-    border: 1px solid lightgrey;
+    outline: 1px solid lightgrey;
   }
 
   &.black {
@@ -27,13 +26,16 @@
 
   &.large {
     font-size: 16px;
+    height: 40px;
   }
 
   &.medium {
     font-size: 14px;
+    height: 37px;
   }
 
   &.small {
     font-size: 12px;
+    height: 35px;
   }
 }
