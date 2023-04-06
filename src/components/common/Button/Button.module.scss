@@ -26,16 +26,22 @@
 
   &.large {
     font-size: 16px;
-    height: 40px;
   }
 
   &.medium {
     font-size: 14px;
-    height: 37px;
   }
 
   &.small {
     font-size: 12px;
-    height: 35px;
+  }
+
+  &.carousel {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    font-weight: 700;
+    margin: 2px;
+    padding: 6px;
   }
 }

@@ -28,3 +28,37 @@ export interface PlaceCommonDataType extends PlaceDataType {
   telname: string;
   zipcode: string;
 }
+
+export interface PlaceIntroDataType {
+  chkcreditcardfood: string;
+  contentid: string;
+  contenttypeid: string;
+  discountinfofood: string;
+  firstmenu: string;
+  infocenterfood: string;
+  kidsfacility: string;
+  lcnsno: string;
+  opendatefood: string;
+  opentimefood: string;
+  packing: string;
+  parkingfood: string;
+  reservationfood: string;
+  restdatefood: string;
+  scalefood: string;
+  seat: string;
+  smoking: string;
+  treatmenu: string;
+}
+
+export type PlaceImageItemType = {
+  contentid: string;
+  cpyrhtDivCd: string;
+  imgname: string;
+  originimgurl: string;
+  serialnum: string;
+  smallimageurl: string;
+};
+
+export interface PlaceImageDataType {
+  item: PlaceImageItemType[];
+}

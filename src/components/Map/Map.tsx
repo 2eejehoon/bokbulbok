@@ -2,11 +2,11 @@ import { useRef, useEffect } from "react";
 import style from "./Map.module.scss";
 
 interface MapProps {
-  lat: string;
-  lng: string;
+  lng?: string;
+  lat?: string;
 }
 
-function Map({ lat, lng }: MapProps) {
+function Map({ lng, lat }: MapProps) {
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   const location = new naver.maps.LatLng(Number(lat), Number(lng));

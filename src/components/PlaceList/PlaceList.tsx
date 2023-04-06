@@ -4,13 +4,11 @@ import style from "./PlaceList.module.scss";
 import { PlaceDataType } from "@/types/place";
 
 interface PlaceListProps {
-  data:
-    | InfiniteData<{
-        placeList: PlaceDataType[];
-        nextCursor: number;
-        prevCursor: number;
-      }>
-    | undefined;
+  data?: InfiniteData<{
+    placeList: PlaceDataType[];
+    nextCursor: number;
+    prevCursor: number;
+  }>;
 }
 
 export default function PlaceList({ data }: PlaceListProps) {

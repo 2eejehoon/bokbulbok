@@ -2,7 +2,7 @@ import { FetchNextPageOptions, InfiniteQueryObserverResult } from "@tanstack/rea
 import { useEffect, MutableRefObject } from "react";
 
 interface useInfiniteScrollProps {
-  ref: MutableRefObject<HTMLElement | null>;
+  targetRef: MutableRefObject<HTMLElement | null>;
   hasNextPage: boolean | undefined;
   fetchNextPage: (
     options?: FetchNextPageOptions | undefined
@@ -10,7 +10,7 @@ interface useInfiniteScrollProps {
 }
 
 export default function useInfiniteScroll({
-  ref,
+  targetRef,
   hasNextPage,
   fetchNextPage,
 }: useInfiniteScrollProps) {
@@ -26,7 +26,7 @@ export default function useInfiniteScroll({
 
     const observer = new IntersectionObserver(callback, options);
 
-    const target = ref && ref.current;
+    const target = targetRef && targetRef.current;
 
     if (!target) {
       return;
@@ -35,5 +35,5 @@ export default function useInfiniteScroll({
     observer.observe(target);
 
     return () => observer.unobserve(target);
-  }, [ref, hasNextPage, fetchNextPage]);
+  }, [targetRef, hasNextPage, fetchNextPage]);
 }

@@ -1,0 +1,103 @@
+.container {
+  position: relative;
+  display: flex;
+  height: 300px;
+
+  &.one {
+    width: 100%;
+  }
+
+  &.two {
+    width: 200%;
+  }
+
+  &.three {
+    width: 300%;
+  }
+
+  &.four {
+    width: 400%;
+  }
+
+  &.five {
+    width: 500%;
+  }
+
+  &.six {
+    width: 600%;
+  }
+
+  &.seven {
+    width: 700%;
+  }
+
+  &.eight {
+    width: 800%;
+  }
+
+  &.nine {
+    width: 900%;
+  }
+
+  &.ten {
+    width: 1000%;
+  }
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 15px;
+  margin: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+
+  &.one {
+    transform: translate(calc((0)));
+  }
+
+  &.two {
+    transform: translate(calc((-100% - 20px)));
+  }
+
+  &.three {
+    transform: translate(calc((-200% - 40px)));
+  }
+
+  &.four {
+    transform: translate(calc((-300% - 60px)));
+  }
+
+  &.five {
+    transform: translate(calc((-400% - 80px)));
+  }
+
+  &.six {
+    transform: translate(calc((-500% - 100px)));
+  }
+
+  &.seven {
+    transform: translate(calc((-600% - 120px)));
+  }
+
+  &.eight {
+    transform: translate(calc((-700% - 140px)));
+  }
+
+  &.nine {
+    transform: translate(calc((-800% - 160px)));
+  }
+
+  &.ten {
+    transform: translate(calc((-900% - 180px)));
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 400px;
+  bottom: 15px;
+}

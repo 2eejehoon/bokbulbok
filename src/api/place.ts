@@ -1,5 +1,10 @@
 import axios from "axios";
-import { PlaceDataType } from "../../types/place";
+import {
+  PlaceCommonDataType,
+  PlaceDataType,
+  PlaceImageDataType,
+  PlaceIntroDataType,
+} from "@/types/place";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -9,7 +14,7 @@ const AxiosInstance = axios.create({
   baseURL,
 });
 
-export const getPlaceData = async (
+export const getPlacelistData = async (
   pageParam: number,
   lng: string,
   lat: string,
@@ -33,12 +38,38 @@ export const getPlaceData = async (
   };
 };
 
-export const getPlaceCommonDataById = async (contentId: string) => {
+export const getPlaceCommonDataById = async (
+  contentId: string
+): Promise<PlaceCommonDataType> => {
   const response = await AxiosInstance.get(
     `detailCommon1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`
   );
 
   const data = await response.data.response.body.items.item[0];
+
+  return data;
+};
+
+export const getPlaceIntroDataById = async (
+  contentId: string
+): Promise<PlaceIntroDataType> => {
+  const response = await AxiosInstance.get(
+    `detailIntro1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest`
+  );
+
+  const data = await response.data.response.body.items.item[0];
+
+  return data;
+};
+
+export const getPlaceImageDataById = async (
+  contentId: string
+): Promise<PlaceImageDataType> => {
+  const response = await AxiosInstance.get(
+    `detailImage1?ServiceKey=${key}&_type=json&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10`
+  );
+
+  const data = await response.data.response.body.items;
 
   return data;
 };
