@@ -13,6 +13,7 @@ import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
 import Carousel from "@/components/Carousel/Carousel";
+import { PlaceImageDataType } from "@/types/place";
 
 export default function PlaceDetail() {
   const router = useRouter();
@@ -31,18 +32,17 @@ export default function PlaceDetail() {
       {
         queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
+        select: (data: PlaceImageDataType) => data.item.map((item) => item.originimgurl),
       },
     ],
   });
 
-  console.log("common", common);
-  console.log("intro", intro);
-  console.log("image", image);
-  const images = image.data?.item.map((item) => item.originimgurl);
+  console.log(common);
+  console.log(intro);
 
   return (
     <>
-      <Carousel images={images} />
+      <Carousel images={image.data} />
       <Map lng={common.data?.mapx} lat={common.data?.mapy} />
     </>
   );

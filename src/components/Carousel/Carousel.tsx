@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import Button from "../common/Button/Button";
 import BlurImage from "../common/BlurImage/BlurImage";
 import style from "./Carousel.module.scss";
-import { convertImageIndex, convertLength } from "@/utils/convert";
+import { convertImageIndex } from "@/utils/convert";
 
 interface CarouselProps {
   images?: string[];
@@ -19,14 +19,16 @@ function Carousel({ images }: CarouselProps) {
   }, []);
 
   return (
-    <div className={cx("container", convertLength(images?.length))}>
-      {images?.map((image) => {
-        return (
-          <div key={image} className={cx("image", convertImageIndex(imageIndex))}>
-            <BlurImage src={image} alt={"음식점"} />
-          </div>
-        );
-      })}
+    <div className={style.container}>
+      <div className={style.carousel}>
+        {images?.map((image) => {
+          return (
+            <div key={image} className={cx("image", convertImageIndex(imageIndex))}>
+              <BlurImage src={image} alt={"음식점"} />
+            </div>
+          );
+        })}
+      </div>
       <div className={style.buttonContainer}>
         {images?.map((_, index) => {
           return (

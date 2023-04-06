@@ -65,6 +65,9 @@ export const convertImageIndex = (index: string) => {
 
 export const convertLength = (length?: number) => {
   switch (length) {
+    case 0:
+      return "zero";
+
     case 1:
       return "one";
 
@@ -83,19 +86,7 @@ export const convertLength = (length?: number) => {
     case 6:
       return "six";
 
-    case 7:
-      return "seven";
-
-    case 8:
-      return "eight";
-
-    case 9:
-      return "nine";
-
-    case 10:
-      return "ten";
-
     default:
-      return "one";
+      return "zero";
   }
 };
