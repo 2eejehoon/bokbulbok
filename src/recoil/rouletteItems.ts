@@ -1,11 +1,7 @@
 import { atom } from "recoil";
+import { RouletteItemType } from "@/types/roulette";
 
-type RouletteItemsType = {
-  contentId: string;
-  title: string;
-};
-
-export const rouletteItemsState = atom<RouletteItemsType[]>({
+export const rouletteItemsState = atom<RouletteItemType[]>({
   key: "rouletteItemsState",
   default: [],
 });

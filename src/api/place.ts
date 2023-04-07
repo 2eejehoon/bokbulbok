@@ -64,12 +64,12 @@ export const getPlaceIntroDataById = async (
 
 export const getPlaceImageDataById = async (
   contentId: string
-): Promise<PlaceImageDataType> => {
+): Promise<PlaceImageDataType[]> => {
   const response = await AxiosInstance.get(
     `detailImage1?ServiceKey=${key}&_type=json&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10`
   );
 
-  const data = await response.data.response.body.items;
+  const data = await response.data.response.body.items.item;
 
   return data;
 };

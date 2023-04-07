@@ -50,15 +50,11 @@ export interface PlaceIntroDataType {
   treatmenu: string;
 }
 
-export type PlaceImageItemType = {
+export interface PlaceImageDataType {
   contentid: string;
   cpyrhtDivCd: string;
   imgname: string;
   originimgurl: string;
   serialnum: string;
   smallimageurl: string;
-};
-
-export interface PlaceImageDataType {
-  item: PlaceImageItemType[];
 }

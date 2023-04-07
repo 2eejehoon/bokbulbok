@@ -1,8 +1,5 @@
 .container {
   position: relative;
-  display: flex;
-  height: 280px;
-  overflow: hidden;
 }
 
 .carousel {
@@ -11,6 +8,7 @@
 
 .image {
   flex: none;
+  display: block;
   position: relative;
   border: 1px solid lightgrey;
   width: 380px;
@@ -61,6 +59,6 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  width: 400px;
+  width: 100%;
   bottom: 15px;
 }

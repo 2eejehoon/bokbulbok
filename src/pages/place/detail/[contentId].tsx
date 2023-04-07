@@ -3,6 +3,7 @@ import { useQueries } from "@tanstack/react-query";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
+import PlaceInfo from "@/components/PlaceInfo/PlaceInfo";
 import {
   getPlaceCommonDataById,
   getPlaceIntroDataById,
@@ -32,17 +33,24 @@ export default function PlaceDetail() {
       {
         queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
-        select: (data: PlaceImageDataType) => data.item.map((item) => item.originimgurl),
+        select: (data: PlaceImageDataType[]) => data.map((item) => item.originimgurl),
       },
     ],
   });
 
-  console.log(common);
-  console.log(intro);
-
   return (
     <>
       <Carousel images={image.data} />
+      <PlaceInfo
+        title={common.data?.title}
+        category={common.data?.cat3}
+        address={common.data?.addr1}
+        menu={intro.data?.treatmenu}
+        tel={intro.data?.infocenterfood}
+        businessday={intro.data?.restdatefood}
+        businesshour={intro.data?.opentimefood}
+        overview={common.data?.overview}
+      />
       <Map lng={common.data?.mapx} lat={common.data?.mapy} />
     </>
   );
