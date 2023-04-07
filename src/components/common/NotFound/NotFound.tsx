@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import style from "./NotFound.module.scss";
 
-export default function NotFound() {
+function NotFound() {
   const router = useRouter();
 
   useEffect(() => {
@@ -18,3 +18,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound;

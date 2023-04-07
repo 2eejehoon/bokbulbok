@@ -8,7 +8,7 @@ interface DetailLayoutProps {
 }
 
 export default function DetailLayout({ children }: DetailLayoutProps) {
-  const { handleGoBackClick } = usePreviousPath();
+  const handleGoBackClick = usePreviousPath();
 
   return (
     <>

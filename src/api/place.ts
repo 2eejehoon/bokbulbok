@@ -7,9 +7,7 @@ import {
 } from "@/types/place";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
-
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
-
 const AxiosInstance = axios.create({
   baseURL,
 });

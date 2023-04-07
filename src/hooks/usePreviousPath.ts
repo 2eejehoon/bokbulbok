@@ -14,5 +14,5 @@ export default function GoBackButton() {
     setMount(true);
   }, []);
 
-  return { handleGoBackClick };
+  return handleGoBackClick;
 }

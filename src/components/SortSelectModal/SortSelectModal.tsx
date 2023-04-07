@@ -13,9 +13,8 @@ export default function SortSelectModal() {
   const customRouterPush = useCustomRouter();
 
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
-    const currentValue = e.currentTarget.innerHTML;
-    setSort(currentValue);
-    customRouterPush("sort", currentValue);
+    setSort((prev) => e.currentTarget.innerHTML);
+    customRouterPush("sort", sort);
     handleModalClose();
   };
 

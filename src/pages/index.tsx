@@ -1,22 +1,17 @@
+import { useEffect } from "react";
 import { useGeolocation } from "@/hooks/useGeolocation";
-import Button from "@/components/common/Button/Button";
 import useCustomRouter from "@/hooks/useCustomRouter";
+import Loading from "@/components/common/Loading/Loading";
 
 export default function Home() {
   const location = useGeolocation();
   const customRouterPush = useCustomRouter();
 
-  const handleClick = () => {
-    customRouterPush("location", location);
-  };
+  useEffect(() => {
+    if (location === null) return;
 
-  return (
-    <>
-      {location.loaded && (
-        <Button type={"button"} color={"black"} size={"medium"} onClick={handleClick}>
-          내 주변 음식점 정보 확인하기
-        </Button>
-      )}
-    </>
-  );
+    customRouterPush("location", location);
+  }, [location]);
+
+  return <Loading />;
 }

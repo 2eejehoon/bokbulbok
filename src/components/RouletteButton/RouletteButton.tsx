@@ -34,9 +34,9 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   };
 
   useLayoutEffect(() => {
-    if (rouletteItems.findIndex((item) => item.contentId == contentId) > -1) {
-      setIsIncluded(true);
-    }
+    if (rouletteItems.findIndex((item) => item.contentId === contentId) < 0) return;
+
+    setIsIncluded(true);
   }, []);
 
   return (

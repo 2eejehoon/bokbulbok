@@ -5,6 +5,7 @@ import Button from "../common/Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
 import style from "./Roulette.module.scss";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
+import { convertLength } from "@/utils/convert";
 
 const cx = classNames.bind(style);
 
@@ -14,35 +15,10 @@ export default function Roulette() {
   const [stop, setStop] = useState("stop");
   const [spin, setSpin] = useState(false);
 
-  const length = useMemo(() => {
-    const len = rouletteItems.length;
-
-    switch (len) {
-      case 0:
-        return "zero";
-
-      case 1:
-        return "one";
-
-      case 2:
-        return "two";
-
-      case 3:
-        return "three";
-
-      case 4:
-        return "four";
-
-      case 5:
-        return "five";
-
-      case 6:
-        return "six";
-
-      default:
-        break;
-    }
-  }, [rouletteItems]);
+  const length = useMemo(
+    () => convertLength(rouletteItems.length),
+    [rouletteItems.length]
+  );
 
   const handleSpinClick = useCallback(() => {
     setStop("");
@@ -58,14 +34,14 @@ export default function Roulette() {
   return (
     <>
       <div className={style.arrow} />
-      <ul className={cx("circle", start, stop)}>
+      <ul className={cx("circle", [start, stop])}>
         {rouletteItems.map((item) => {
           return (
             <RouletteItem
               key={item.contentId}
               contentId={item.contentId}
               title={item.title}
-              length={length as string}
+              length={length}
             />
           );
         })}

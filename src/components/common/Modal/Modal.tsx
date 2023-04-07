@@ -1,4 +1,4 @@
-import { ReactNode, MouseEventHandler } from "react";
+import { ReactNode, MouseEventHandler, memo } from "react";
 import classNames from "classnames/bind";
 import Portal from "../Portal/Portal";
 import style from "./Modal.module.scss";
@@ -12,7 +12,7 @@ interface ModalProps {
 
 const cx = classNames.bind(style);
 
-export default function Modal({ children, type, modalOpen, setModalClose }: ModalProps) {
+function Modal({ children, type, modalOpen, setModalClose }: ModalProps) {
   return (
     <>
       {modalOpen && (
@@ -24,3 +24,5 @@ export default function Modal({ children, type, modalOpen, setModalClose }: Moda
     </>
   );
 }
+
+export default memo(Modal);

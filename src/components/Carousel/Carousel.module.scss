@@ -8,7 +8,6 @@
 
 .image {
   flex: none;
-  display: block;
   position: relative;
   border: 1px solid lightgrey;
   width: 380px;
@@ -19,39 +18,39 @@
   transition: 0.5s;
 
   &.two {
-    transform: translate(calc((-100% - 20px)));
+    transform: translate(-400px);
   }
 
   &.three {
-    transform: translate(calc((-200% - 40px)));
+    transform: translate(-800px);
   }
 
   &.four {
-    transform: translate(calc((-300% - 60px)));
+    transform: translate(-1200px);
   }
 
   &.five {
-    transform: translate(calc((-400% - 80px)));
+    transform: translate(-1600px);
   }
 
   &.six {
-    transform: translate(calc((-500% - 100px)));
+    transform: translate(-2000px);
   }
 
   &.seven {
-    transform: translate(calc((-600% - 120px)));
+    transform: translate(-2400px);
   }
 
   &.eight {
-    transform: translate(calc((-700% - 140px)));
+    transform: translate(-2800px);
   }
 
   &.nine {
-    transform: translate(calc((-800% - 160px)));
+    transform: translate(-3200px);
   }
 
   &.ten {
-    transform: translate(calc((-900% - 180px)));
+    transform: translate(-3600px);
   }
 }
 

@@ -5,7 +5,7 @@ interface BlurImageProps {
   alt: string;
 }
 
-export default function BlurImage({ src, alt }: BlurImageProps) {
+function BlurImage({ src, alt }: BlurImageProps) {
   return (
     <Image
       src={src}
@@ -19,3 +19,5 @@ export default function BlurImage({ src, alt }: BlurImageProps) {
     />
   );
 }
+
+export default BlurImage;

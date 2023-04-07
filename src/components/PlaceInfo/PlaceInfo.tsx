@@ -66,7 +66,7 @@ function PlaceInfo({
 
       {overview !== "" && (
         <p className={style.textContainer}>
-          <span className={style.text}>{overview}</span>
+          <span className={style.text}>{overview?.replaceAll("<br>", "")}</span>
         </p>
       )}
     </div>

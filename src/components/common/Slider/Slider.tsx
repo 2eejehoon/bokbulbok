@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import style from "./Slider.module.scss";
 
 interface SliderProps {
@@ -11,19 +11,10 @@ interface SliderProps {
   step: string;
 }
 
-export default function Slider({
-  value,
-  setValue,
-  id,
-  text,
-  min,
-  max,
-  step,
-}: SliderProps) {
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setValue(Number(e.target.value)),
-    [setValue]
-  );
+function Slider({ value, setValue, id, text, min, max, step }: SliderProps) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(Number(e.target.value));
+  };
 
   return (
     <>
@@ -45,3 +36,5 @@ export default function Slider({
     </>
   );
 }
+
+export default Slider;

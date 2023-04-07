@@ -6,7 +6,7 @@ interface SelectProps {
   onClick: (e: MouseEvent<HTMLLIElement>) => void;
 }
 
-export default function Select({ options, onClick }: SelectProps) {
+function Select({ options, onClick }: SelectProps) {
   return (
     <ul className={style.ul}>
       {options.map((el) => {
@@ -19,3 +19,5 @@ export default function Select({ options, onClick }: SelectProps) {
     </ul>
   );
 }
+
+export default Select;
