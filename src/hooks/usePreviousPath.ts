@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function GoBackButton() {
+export default function usePreviousPath() {
   const [mount, setMount] = useState(false);
   const router = useRouter();
   const prevPath = typeof window && mount && window.sessionStorage.getItem("prevPath");

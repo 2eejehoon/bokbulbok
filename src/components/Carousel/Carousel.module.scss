@@ -4,13 +4,14 @@
 
 .carousel {
   display: flex;
+  overflow: hidden;
 }
 
 .image {
   flex: none;
   position: relative;
   border: 1px solid lightgrey;
-  width: 380px;
+  width: calc(100% - 20px);
   height: 260px;
   border-radius: 15px;
   margin: 10px;
@@ -18,39 +19,39 @@
   transition: 0.5s;
 
   &.two {
-    transform: translate(-400px);
+    transform: translate(calc(-100% - 20px));
   }
 
   &.three {
-    transform: translate(-800px);
+    transform: translate(calc(-200% - 40px));
   }
 
   &.four {
-    transform: translate(-1200px);
+    transform: translate(calc(-300% - 60px));
   }
 
   &.five {
-    transform: translate(-1600px);
+    transform: translate(calc(-400% - 80px));
   }
 
   &.six {
-    transform: translate(-2000px);
+    transform: translate(calc(-500% - 100px));
   }
 
   &.seven {
-    transform: translate(-2400px);
+    transform: translate(calc(-600% - 120px));
   }
 
   &.eight {
-    transform: translate(-2800px);
+    transform: translate(calc(-700% - 140px));
   }
 
   &.nine {
-    transform: translate(-3200px);
+    transform: translate(calc(-800% - 160px));
   }
 
   &.ten {
-    transform: translate(-3600px);
+    transform: translate(calc(-900% - 180px));
   }
 }
 

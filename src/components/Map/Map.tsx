@@ -9,9 +9,9 @@ interface MapProps {
 function Map({ lng, lat }: MapProps) {
   const mapRef = useRef<HTMLElement | null | any>(null);
 
-  const location = new naver.maps.LatLng(Number(lat), Number(lng));
-
   useEffect(() => {
+    const location = new naver.maps.LatLng(Number(lat), Number(lng));
+
     const map = new naver.maps.Map("map", {
       center: location,
     });
