@@ -8,7 +8,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { setPathToSessionStorage } from "@/utils/setPathToSessionStorage";
+import { setPathToSessionStorage } from "@/utils/storage";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 

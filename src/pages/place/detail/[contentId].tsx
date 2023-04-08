@@ -15,6 +15,7 @@ import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
 import Carousel from "@/components/Carousel/Carousel";
 import { PlaceImageDataType } from "@/types/place";
+import Seo from "@/components/common/Seo/Seo";
 
 export default function PlaceDetail() {
   const router = useRouter();
@@ -40,6 +41,12 @@ export default function PlaceDetail() {
 
   return (
     <>
+      <Seo
+        title={common.data?.title}
+        description={common.data?.overview}
+        url={router.asPath}
+        image={common.data?.firstimage}
+      />
       <Carousel images={image.data} />
       <PlaceInfo
         title={common.data?.title}
