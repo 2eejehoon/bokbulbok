@@ -10,6 +10,7 @@ import ListLayout from "@/layout/ListLayout/ListLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
 import { QueryType } from "@/types/query";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import Seo from "@/components/common/Seo/Seo";
 
 export default function Place() {
   const targetRef = useRef(null);
@@ -26,6 +27,7 @@ export default function Place() {
 
   return (
     <>
+      <Seo title={"복불복"} description={"주변 음식점 리스트"} url={router.asPath} />
       <PlaceList data={data} />
       <div ref={targetRef} />
     </>

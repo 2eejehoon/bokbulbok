@@ -43,7 +43,7 @@ export default function PlaceDetail() {
     <>
       <Seo
         title={common.data?.title}
-        description={common.data?.overview}
+        description={common.data?.overview.replaceAll("<br>", "")}
         url={router.asPath}
         image={common.data?.firstimage}
       />

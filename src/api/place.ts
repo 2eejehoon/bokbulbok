@@ -23,51 +23,79 @@ export const getPlacelistData = async (
   nextCursor: number;
   prevCursor: number;
 }> => {
-  const response = await AxiosInstance.get(
-    `locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${lng}&mapY=${lat}&radius=${radius}`
-  );
+  try {
+    const response = await AxiosInstance.get(
+      `locationBasedList1?serviceKey=${key}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${lng}&mapY=${lat}&radius=${radius}`
+    );
 
-  const { items, pageNo } = await response.data.response.body;
+    const { items, pageNo } = await response.data.response.body;
 
-  return {
-    placeList: items.item,
-    nextCursor: pageNo + 1,
-    prevCursor: pageNo - 1,
-  };
+    return {
+      placeList: items.item,
+      nextCursor: pageNo + 1,
+      prevCursor: pageNo - 1,
+    };
+  } catch (err) {
+    console.log(err);
+
+    return {
+      placeList: [],
+      nextCursor: 0,
+      prevCursor: 0,
+    };
+  }
 };
 
 export const getPlaceCommonDataById = async (
   contentId: string
 ): Promise<PlaceCommonDataType> => {
-  const response = await AxiosInstance.get(
-    `detailCommon1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`
-  );
+  try {
+    const response = await AxiosInstance.get(
+      `detailCommon1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`
+    );
 
-  const data = await response.data.response.body.items.item[0];
+    const data = await response.data.response.body.items.item[0];
 
-  return data;
+    return data;
+  } catch (err) {
+    console.log(err);
+
+    return {} as PlaceCommonDataType;
+  }
 };
 
 export const getPlaceIntroDataById = async (
   contentId: string
 ): Promise<PlaceIntroDataType> => {
-  const response = await AxiosInstance.get(
-    `detailIntro1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest`
-  );
+  try {
+    const response = await AxiosInstance.get(
+      `detailIntro1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest`
+    );
 
-  const data = await response.data.response.body.items.item[0];
+    const data = await response.data.response.body.items.item[0];
 
-  return data;
+    return data;
+  } catch (err) {
+    console.log(err);
+
+    return {} as PlaceIntroDataType;
+  }
 };
 
 export const getPlaceImageDataById = async (
   contentId: string
 ): Promise<PlaceImageDataType[]> => {
-  const response = await AxiosInstance.get(
-    `detailImage1?ServiceKey=${key}&_type=json&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10`
-  );
+  try {
+    const response = await AxiosInstance.get(
+      `detailImage1?ServiceKey=${key}&_type=json&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10`
+    );
 
-  const data = await response.data.response.body.items.item;
+    const data = await response.data.response.body.items.item;
 
-  return data;
+    return data;
+  } catch (err) {
+    console.log(err);
+
+    return [] as PlaceImageDataType[];
+  }
 };
