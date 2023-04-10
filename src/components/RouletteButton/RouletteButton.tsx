@@ -42,12 +42,12 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   return (
     <div className={style.buttonContainer}>
       {!isIncluded && (
-        <Button type={"button"} onClick={handlePlusClick} color={"white"} size={"small"}>
+        <Button type={"button"} onClick={handlePlusClick} color={"white"} size={"large"}>
           &#10133;
         </Button>
       )}
       {isIncluded && (
-        <Button type={"button"} onClick={handleMinusClick} color={"white"} size={"small"}>
+        <Button type={"button"} onClick={handleMinusClick} color={"white"} size={"large"}>
           &#10134;
         </Button>
       )}

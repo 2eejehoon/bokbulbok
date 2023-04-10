@@ -2,14 +2,14 @@ import style from "./PlaceInfo.module.scss";
 import { convertCategory } from "@/utils/convert";
 
 interface PlaceInfoProps {
-  title?: string;
-  category?: string;
-  menu?: string;
-  address?: string;
-  tel?: string;
-  businessday?: string;
-  businesshour?: string;
-  overview?: string;
+  title: string;
+  category: string;
+  menu: string;
+  address: string;
+  tel: string;
+  businessday: string;
+  businesshour: string;
+  overview: string;
 }
 
 function PlaceInfo({
@@ -26,7 +26,7 @@ function PlaceInfo({
     <div className={style.container}>
       <p className={style.titleContainer}>
         <span className={style.title}>{title}</span>
-        <span className={style.category}>{convertCategory(category as string)}</span>
+        <span className={style.category}>{convertCategory(category)}</span>
       </p>
 
       {address !== "" && (

@@ -9,10 +9,10 @@ interface SelectProps {
 function Select({ options, onClick }: SelectProps) {
   return (
     <ul className={style.ul}>
-      {options.map((el) => {
+      {options.map((option) => {
         return (
-          <li key={el} className={style.li} onClick={onClick}>
-            {el}
+          <li key={option} className={style.li} onClick={onClick}>
+            {option}
           </li>
         );
       })}

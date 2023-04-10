@@ -30,7 +30,7 @@ export default function Roulette() {
     }, Math.random() * 5000 + 1000);
   }, []);
 
-  if (length === "zero") return <p>돌려 돌려 돌림판! 어..? 돌릴게 없잖아! &#128555;</p>;
+  if (length === "zero") return <p>음식점을 추가해보세요 &#128555;</p>;
   return (
     <>
       <div className={style.arrow} />

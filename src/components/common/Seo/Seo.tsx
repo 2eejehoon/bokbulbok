@@ -1,8 +1,8 @@
 import { NextSeo } from "next-seo";
 
 interface SeoProps {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   url: string;
   image?: string;
 }

@@ -19,7 +19,7 @@ import Seo from "@/components/common/Seo/Seo";
 
 export default function PlaceDetail() {
   const router = useRouter();
-  const contentId = router.query.contentId as string;
+  const contentId = String(router.query.contentId);
 
   const [common, intro, image] = useQueries({
     queries: [
@@ -42,23 +42,26 @@ export default function PlaceDetail() {
   return (
     <>
       <Seo
-        title={common.data?.title}
-        description={common.data?.overview.replaceAll("<br>", "")}
+        title={common.data?.title ?? ""}
+        description={common.data?.overview.replaceAll("<br>", "") ?? ""}
         url={router.asPath}
-        image={common.data?.firstimage}
+        image={common.data?.firstimage ?? ""}
       />
-      <Carousel images={image.data} />
+      <Carousel images={image.data ?? []} />
       <PlaceInfo
-        title={common.data?.title}
-        category={common.data?.cat3}
-        address={common.data?.addr1}
-        menu={intro.data?.treatmenu}
-        tel={intro.data?.infocenterfood}
-        businessday={intro.data?.restdatefood}
-        businesshour={intro.data?.opentimefood}
-        overview={common.data?.overview}
+        title={common.data?.title ?? ""}
+        category={common.data?.cat3 ?? ""}
+        address={common.data?.addr1 ?? ""}
+        menu={intro.data?.treatmenu ?? ""}
+        tel={intro.data?.infocenterfood ?? ""}
+        businessday={intro.data?.restdatefood ?? ""}
+        businesshour={intro.data?.opentimefood ?? ""}
+        overview={common.data?.overview ?? ""}
       />
-      <Map lng={common.data?.mapx} lat={common.data?.mapy} />
+      <Map
+        lng={common.data?.mapx ?? "126.969655"}
+        lat={common.data?.mapy ?? "37.553760"}
+      />
     </>
   );
 }

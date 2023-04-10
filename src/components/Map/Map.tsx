@@ -2,8 +2,8 @@ import { useRef, useEffect } from "react";
 import style from "./Map.module.scss";
 
 interface MapProps {
-  lng?: string;
-  lat?: string;
+  lng: string;
+  lat: string;
 }
 
 function Map({ lng, lat }: MapProps) {
