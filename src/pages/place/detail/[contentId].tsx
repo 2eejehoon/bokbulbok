@@ -19,7 +19,7 @@ import Seo from "@/components/common/Seo/Seo";
 
 export default function PlaceDetail() {
   const router = useRouter();
-  const contentId = String(router.query.contentId);
+  const contentId = router.query.contentId as string;
 
   const [common, intro, image] = useQueries({
     queries: [
@@ -38,6 +38,8 @@ export default function PlaceDetail() {
       },
     ],
   });
+
+  console.log(common, intro, image);
 
   return (
     <>
