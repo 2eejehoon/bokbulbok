@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import useCustomRouter from "../../hooks/useCustomRouter";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
@@ -11,6 +11,10 @@ export default function RangeSliderModal() {
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
   const customRouterPush = useCustomRouter();
+
+  const handleRangeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setRange(Number(e.target.value));
+  }, []);
 
   const handleConfirm = () => {
     customRouterPush("range", range);
@@ -27,7 +31,7 @@ export default function RangeSliderModal() {
           <div className={style.sliderContainer}>
             <Slider
               value={range}
-              setValue={setRange}
+              setValue={handleRangeChange}
               id={"거리"}
               text={`${range} km`}
               min={"5"}

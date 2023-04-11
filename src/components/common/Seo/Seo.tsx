@@ -17,7 +17,7 @@ function Seo({ title, description, url, image }: SeoProps) {
         locale: "ko_KR",
         url,
         title,
-        images: [{ url: image || "", width: 300, height: 200, alt: title }],
+        images: [{ url: image ?? "", width: 300, height: 200, alt: title }],
       }}
     />
   );

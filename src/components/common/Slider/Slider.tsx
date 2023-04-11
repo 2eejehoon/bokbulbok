@@ -1,9 +1,9 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, memo } from "react";
 import style from "./Slider.module.scss";
 
 interface SliderProps {
   value: number;
-  setValue: Dispatch<SetStateAction<number>>;
+  setValue: (e: ChangeEvent<HTMLInputElement>) => void;
   id: string;
   text: string;
   min: string;
@@ -12,10 +12,6 @@ interface SliderProps {
 }
 
 function Slider({ value, setValue, id, text, min, max, step }: SliderProps) {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value));
-  };
-
   return (
     <>
       <div className={style.container}>
@@ -26,7 +22,7 @@ function Slider({ value, setValue, id, text, min, max, step }: SliderProps) {
           id={id}
           type={"range"}
           value={value}
-          onChange={handleChange}
+          onChange={setValue}
           min={min}
           max={max}
           step={step}
@@ -37,4 +33,4 @@ function Slider({ value, setValue, id, text, min, max, step }: SliderProps) {
   );
 }
 
-export default Slider;
+export default memo(Slider);

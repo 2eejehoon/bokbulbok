@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, useCallback } from "react";
+import { useRouter } from "next/router";
 import style from "./DetailLayout.module.scss";
-import usePreviousPath from "@/hooks/usePreviousPath";
 import Button from "@/components/common/Button/Button";
 
 interface DetailLayoutProps {
@@ -8,7 +8,11 @@ interface DetailLayoutProps {
 }
 
 export default function DetailLayout({ children }: DetailLayoutProps) {
-  const handleGoBackClick = usePreviousPath();
+  const router = useRouter();
+
+  const handleGoBackClick = useCallback(() => {
+    router.back();
+  }, []);
 
   return (
     <>
