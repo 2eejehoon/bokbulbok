@@ -7,7 +7,7 @@ import useModal from "@/hooks/useModal";
 import useCustomRouter from "@/hooks/useCustomRouter";
 
 export default function SortSelectModal() {
-  const [sort, setSort] = useState("제목순");
+  const [sort, setSort] = useState("등록순");
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
   const customRouterPush = useCustomRouter();

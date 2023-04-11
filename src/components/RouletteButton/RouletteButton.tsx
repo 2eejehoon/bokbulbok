@@ -53,7 +53,7 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
         </Button>
       );
     }
-  }, [isIncluded]);
+  }, [isIncluded, rouletteItems]);
 
   return <div className={style.buttonContainer}>{ButtonRenderer}</div>;
 }

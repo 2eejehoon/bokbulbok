@@ -1,6 +1,5 @@
 import { ReactNode, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import style from "./DetailLayout.module.scss";
 import Button from "@/components/common/Button/Button";
 import usePreviousPath from "@/hooks/usePreviousPath";

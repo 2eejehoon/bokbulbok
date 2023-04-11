@@ -21,8 +21,8 @@ export default function PlaceItem({
 }: PlaceItemProps) {
   if (image === "") return null;
   return (
-    <li className={style.container}>
-      <Link href={`/place/detail/${contentId}`} className={style.link}>
+    <Link href={`/place/detail/${contentId}`} className={style.link}>
+      <li className={style.container}>
         <div className={style.thumbnail}>
           <BlurImage src={image} alt={title} />
         </div>
@@ -31,8 +31,9 @@ export default function PlaceItem({
           <span className={style.title}>{title}</span>
           <span className={style.text}>{address}</span>
         </div>
-      </Link>
-      <RouletteButton contentId={contentId} title={title} />
-    </li>
+
+        <RouletteButton contentId={contentId} title={title} />
+      </li>
+    </Link>
   );
 }
