@@ -13,7 +13,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/common/Seo/Seo";
 
 export default function Place() {
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
   const { lng, lat, range, sort } = router.query as QueryType;
 

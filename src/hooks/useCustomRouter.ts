@@ -30,11 +30,11 @@ export default function useCustomRouter() {
     const rangeValue = type === "range" ? rangeConverter(value) : range;
     const sortValue = type === "sort" ? sortConverter(value) : sort;
 
-    router.push(
-      `/place/location?lng=${lngValue}&lat=${latValue}&range=${rangeValue || 5000}&sort=${
-        sortValue || "A"
-      }`
-    );
+    const path = `/place/location?lng=${lngValue}&lat=${latValue}&range=${
+      rangeValue || 5000
+    }&sort=${sortValue || "A"}`;
+
+    router.push(path);
   };
 
   return customRouterPush;
