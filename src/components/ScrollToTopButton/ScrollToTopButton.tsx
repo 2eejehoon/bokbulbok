@@ -10,8 +10,8 @@ export default function ScrollToTopButton() {
     if (!isScrolled) return null;
 
     return (
-      <Button type={"button"} onClick={handleButtonClick} color={"black"} size={"medium"}>
-        위로 이동
+      <Button type={"button"} onClick={handleButtonClick} color={"black"} size={"large"}>
+        맨 위로 이동
       </Button>
     );
   }, [isScrolled]);

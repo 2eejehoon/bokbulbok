@@ -31,7 +31,6 @@ export default function Place() {
       <Seo title={"복불복"} description={"주변 음식점 리스트"} url={router.asPath} />
       <PlaceList data={data} />
       <div ref={targetRef} />
-      <ScrollToTopButton />
     </>
   );
 }
