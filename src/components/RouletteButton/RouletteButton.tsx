@@ -42,14 +42,14 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   const ButtonRenderer = useMemo(() => {
     if (isIncluded) {
       return (
-        <Button type={"button"} onClick={handleMinusClick} color={"white"} size={"large"}>
-          &#10134;
+        <Button type={"button"} onClick={handleMinusClick} color={"black"} size={"small"}>
+          삭제
         </Button>
       );
     } else {
       return (
-        <Button type={"button"} onClick={handlePlusClick} color={"white"} size={"large"}>
-          &#10133;
+        <Button type={"button"} onClick={handlePlusClick} color={"grey"} size={"small"}>
+          추가
         </Button>
       );
     }

@@ -32,7 +32,7 @@ export default function useCustomRouter() {
 
     const path = `/place/location?lng=${lngValue}&lat=${latValue}&range=${
       rangeValue || 5000
-    }&sort=${sortValue || "A"}`;
+    }&sort=${sortValue || "B"}`;
 
     router.push(path);
   };

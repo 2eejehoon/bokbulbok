@@ -39,8 +39,6 @@ export default function PlaceDetail() {
     ],
   });
 
-  console.log(common, intro, image);
-
   return (
     <>
       <Seo
