@@ -3,6 +3,7 @@ import style from "./ListLayout.module.scss";
 import RangeSliderModal from "@/components/RangeSliderModal/RangeSliderModal";
 import SortSelectModal from "@/components/SortSelectModal/SortSelectModal";
 import RouletteModal from "@/components/RouletteModal/RouletteModal";
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 
 interface ListLayoutProps {
   children: ReactNode;

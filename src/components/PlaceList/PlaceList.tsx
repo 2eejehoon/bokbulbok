@@ -20,7 +20,7 @@ export default function PlaceList({ data }: PlaceListProps) {
             <PlaceItem
               key={place.contentid}
               contentId={place.contentid}
-              image={place.firstimage}
+              image={place.firstimage === "" ? "/noimg.png" : place.firstimage}
               title={place.title}
               address={place.addr1}
               category={place.cat3}

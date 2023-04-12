@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useState } from "react";
 
 interface BlurImageProps {
   src: string;
@@ -7,15 +6,9 @@ interface BlurImageProps {
 }
 
 function BlurImage({ src, alt }: BlurImageProps) {
-  const [imageSrc, setImageSrc] = useState(src);
-
-  const handleError = () => {
-    setImageSrc("/noimg.png");
-  };
-
   return (
     <Image
-      src={imageSrc}
+      src={src}
       alt={alt}
       fill
       sizes={"100%"}
@@ -23,7 +16,6 @@ function BlurImage({ src, alt }: BlurImageProps) {
       blurDataURL={
         "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       }
-      onError={handleError}
     />
   );
 }

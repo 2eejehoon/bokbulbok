@@ -1,31 +1,16 @@
-import { ReactNode, useCallback, useEffect } from "react";
-import { useRouter } from "next/router";
+import { ReactNode } from "react";
 import style from "./DetailLayout.module.scss";
-import Button from "@/components/common/Button/Button";
-import usePreviousPath from "@/hooks/usePreviousPath";
+import GobackButton from "@/components/GobackButton/GobackButton";
 
 interface DetailLayoutProps {
   children: ReactNode;
 }
 
 export default function DetailLayout({ children }: DetailLayoutProps) {
-  const router = useRouter();
-  const prevPath = usePreviousPath();
-
-  const handleGoBackClick = useCallback(() => {
-    router.back();
-  }, []);
-
-  useEffect(() => {
-    if (prevPath) router.prefetch(prevPath);
-  }, []);
-
   return (
     <>
       <header className={style.header}>
-        <Button type={"button"} onClick={handleGoBackClick} color={"grey"} size={"small"}>
-          뒤로가기
-        </Button>
+        <GobackButton />
       </header>
       <main className={style.main}>{children}</main>
     </>

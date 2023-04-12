@@ -11,6 +11,7 @@ import PlaceList from "@/components/PlaceList/PlaceList";
 import { QueryType } from "@/types/query";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/common/Seo/Seo";
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 
 export default function Place() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -30,6 +31,7 @@ export default function Place() {
       <Seo title={"복불복"} description={"주변 음식점 리스트"} url={router.asPath} />
       <PlaceList data={data} />
       <div ref={targetRef} />
+      <ScrollToTopButton />
     </>
   );
 }

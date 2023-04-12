@@ -15,11 +15,6 @@ export default function Roulette() {
   const [stop, setStop] = useState("stop");
   const [spin, setSpin] = useState(false);
 
-  const length = useMemo(
-    () => convertLength(rouletteItems.length),
-    [rouletteItems.length]
-  );
-
   const handleSpinClick = useCallback(() => {
     setStop("");
     setStart("start");
@@ -29,6 +24,21 @@ export default function Roulette() {
       setSpin(false);
     }, Math.random() * 5000 + 1000);
   }, []);
+
+  const length = useMemo(
+    () => convertLength(rouletteItems.length),
+    [rouletteItems.length]
+  );
+
+  const spinButton = useMemo(() => {
+    if (spin) return null;
+
+    return (
+      <Button type={"button"} color={"black"} size={"large"} onClick={handleSpinClick}>
+        돌려 돌려 돌림판
+      </Button>
+    );
+  }, [spin]);
 
   if (length === "zero") return <p>음식점을 추가해보세요 &#128555;</p>;
   return (
@@ -46,18 +56,7 @@ export default function Roulette() {
           );
         })}
       </ul>
-      {!spin && (
-        <div className={style.buttonContainer}>
-          <Button
-            type={"button"}
-            color={"black"}
-            size={"large"}
-            onClick={handleSpinClick}
-          >
-            돌려 돌려 돌림판
-          </Button>
-        </div>
-      )}
+      <div className={style.buttonContainer}>{spinButton}</div>
     </>
   );
 }
