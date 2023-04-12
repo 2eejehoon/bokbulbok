@@ -90,3 +90,7 @@ export const convertLength = (length?: number) => {
       return "zero";
   }
 };
+
+export const convertBr = (text: string) => {
+  return text.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
+};

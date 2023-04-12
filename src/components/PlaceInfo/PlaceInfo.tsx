@@ -1,5 +1,5 @@
 import style from "./PlaceInfo.module.scss";
-import { convertCategory } from "@/utils/convert";
+import { convertCategory, convertBr } from "@/utils/convert";
 
 interface PlaceInfoProps {
   title: string;
@@ -60,13 +60,13 @@ function PlaceInfo({
       {businesshour !== "" && (
         <p className={style.textContainer}>
           <span className={style.icon}>&#128338;</span>
-          <span className={style.text}>{businesshour}</span>
+          <span className={style.text}>{convertBr(businesshour)}</span>
         </p>
       )}
 
       {overview !== "" && (
         <p className={style.textContainer}>
-          <span className={style.text}>{overview?.replaceAll("<br>", "")}</span>
+          <span className={style.text}>{convertBr(overview)}</span>
         </p>
       )}
     </div>
