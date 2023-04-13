@@ -7,13 +7,15 @@ export default function useCustomRouter(type: string) {
   const { lng, lat, range, sort } = router.query;
 
   const handleSortPush = useCallback((value: string) => {
-    const newSort = sortConverter(value);
-    router.push(`/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${newSort}`);
+    router.push(
+      `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${sortConverter(value)}`
+    );
   }, []);
 
   const handleRangePush = useCallback((value: number) => {
-    const newRange = rangeConverter(value);
-    router.push(`/place/location?lng=${lng}&lat=${lat}&range=${newRange}&sort=${sort}`);
+    router.push(
+      `/place/location?lng=${lng}&lat=${lat}&range=${rangeConverter(value)}&sort=${sort}`
+    );
   }, []);
 
   switch (type) {

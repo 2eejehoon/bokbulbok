@@ -1,4 +1,4 @@
-export const convertCategory = (category: string) => {
+export const convertCategory = (category?: string) => {
   switch (category) {
     case "A05020100":
       return "한식";
@@ -91,8 +91,8 @@ export const convertLength = (length?: number) => {
   }
 };
 
-export const convertBr = (text: string) => {
-  return text.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
+export const convertBr = (text?: string) => {
+  return text?.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
 };
 
 export const rangeConverter = (range: number) => {

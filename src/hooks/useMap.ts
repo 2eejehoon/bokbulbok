@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export default function useMap(lat: number, lng: number) {
+export default function useMap(lat: number, lng: number): void {
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   useEffect(() => {

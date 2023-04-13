@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function usePreviousPath() {
+export default function usePreviousPath(): string {
   const [mount, setMount] = useState(false);
   const prevPath = typeof window && mount && window.sessionStorage.getItem("prevPath");
 
@@ -8,5 +8,5 @@ export default function usePreviousPath() {
     setMount(true);
   }, []);
 
-  return prevPath;
+  return prevPath as string;
 }

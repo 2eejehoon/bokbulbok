@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useQueries } from "@tanstack/react-query";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { ReactElement } from "react";
+import { type ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
 import PlaceInfo from "@/components/PlaceInfo/PlaceInfo";
 import {
@@ -42,21 +42,21 @@ export default function PlaceDetail() {
   return (
     <>
       <Seo
-        title={common.data?.title ?? ""}
-        description={common.data?.overview ?? ""}
+        title={common.data?.title}
+        description={common.data?.overview}
         url={router.asPath}
-        image={common.data?.firstimage ?? ""}
+        image={common.data?.firstimage}
       />
-      <Carousel images={image.data ?? []} />
+      <Carousel images={image.data} />
       <PlaceInfo
-        title={common.data?.title ?? ""}
-        category={common.data?.cat3 ?? ""}
-        address={common.data?.addr1 ?? ""}
-        menu={intro.data?.treatmenu ?? ""}
-        tel={intro.data?.infocenterfood ?? ""}
-        businessday={intro.data?.restdatefood ?? ""}
-        businesshour={intro.data?.opentimefood ?? ""}
-        overview={common.data?.overview ?? ""}
+        title={common.data?.title}
+        category={common.data?.cat3}
+        address={common.data?.addr1}
+        menu={intro.data?.treatmenu}
+        tel={intro.data?.infocenterfood}
+        businessday={intro.data?.restdatefood}
+        businesshour={intro.data?.opentimefood}
+        overview={common.data?.overview}
       />
       <Map
         lng={Number(common.data?.mapx) ?? 126.969655}

@@ -13,7 +13,7 @@ export default function useInfiniteScroll({
   targetRef,
   hasNextPage,
   fetchNextPage,
-}: useInfiniteScrollArgs) {
+}: useInfiniteScrollArgs): void {
   useEffect(() => {
     if (!hasNextPage) {
       return;

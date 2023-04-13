@@ -6,7 +6,7 @@ import style from "./Carousel.module.scss";
 import { convertImageIndex } from "@/utils/convert";
 
 interface CarouselProps {
-  images: string[];
+  images?: string[];
 }
 
 const cx = classNames.bind(style);
@@ -20,8 +20,8 @@ function Carousel({ images }: CarouselProps) {
 
   return (
     <div className={style.container}>
-      <div className={style.carousel}>
-        {images.map((image) => {
+      <div className={style.imageContainer}>
+        {(images ?? ["/noimg.png"]).map((image) => {
           return (
             <div key={image} className={cx("image", convertImageIndex(imageIndex))}>
               <BlurImage src={image} alt={"음식점"} />
@@ -30,7 +30,7 @@ function Carousel({ images }: CarouselProps) {
         })}
       </div>
       <div className={style.buttonContainer}>
-        {images.map((_, index) => {
+        {(images ?? []).map((_, index) => {
           return (
             <Button
               key={index}
