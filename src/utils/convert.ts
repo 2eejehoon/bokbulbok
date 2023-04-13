@@ -94,3 +94,23 @@ export const convertLength = (length?: number) => {
 export const convertBr = (text: string) => {
   return text.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
 };
+
+export const rangeConverter = (range: number) => {
+  return range * 1000;
+};
+
+export const sortConverter = (sort: string) => {
+  switch (sort) {
+    case "제목순":
+      return "A";
+
+    case "수정순":
+      return "B";
+
+    case "등록순":
+      return "D";
+
+    default:
+      return "A";
+  }
+};

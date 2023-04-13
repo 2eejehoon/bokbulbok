@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, memo } from "react";
 import style from "./Select.module.scss";
 
 interface SelectProps {
@@ -20,4 +20,4 @@ function Select({ options, onClick }: SelectProps) {
   );
 }
 
-export default Select;
+export default memo(Select);

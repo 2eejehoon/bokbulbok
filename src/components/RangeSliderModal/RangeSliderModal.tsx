@@ -10,14 +10,14 @@ export default function RangeSliderModal() {
   const [range, setRange] = useState(5);
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
-  const customRouterPush = useCustomRouter();
+  const handleRangePush = useCustomRouter("range") as (type: number) => void;
 
   const handleRangeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setRange(Number(e.target.value));
   }, []);
 
   const handleConfirm = () => {
-    customRouterPush("range", range);
+    handleRangePush(range);
     handleModalClose();
   };
 
@@ -31,7 +31,7 @@ export default function RangeSliderModal() {
           <div className={style.sliderContainer}>
             <Slider
               value={range}
-              setValue={handleRangeChange}
+              onChange={handleRangeChange}
               id={"거리"}
               text={`${range} km`}
               min={"5"}

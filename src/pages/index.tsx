@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useGeolocation } from "@/hooks/useGeolocation";
-import useCustomRouter from "@/hooks/useCustomRouter";
 import Loading from "@/components/common/Loading/Loading";
 import Seo from "@/components/common/Seo/Seo";
 
 export default function Home() {
   const router = useRouter();
   const location = useGeolocation();
-  const customRouterPush = useCustomRouter();
 
   useEffect(() => {
     if (location === null) return;
 
-    customRouterPush("location", location);
+    router.push(
+      `/place/location?lng=${location.lng}&lat=${location.lat}&range=${5000}&sort=${"B"}`
+    );
   }, [location]);
 
   return (
