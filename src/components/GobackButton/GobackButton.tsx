@@ -1,22 +1,11 @@
-import { useRouter } from "next/router";
-import { useCallback, useEffect } from "react";
 import Button from "../common/Button/Button";
-import usePreviousPath from "@/hooks/usePreviousPath";
+import useGoback from "@/hooks/useGoback";
 
 export default function GobackButton() {
-  const router = useRouter();
-  const prevPath = usePreviousPath();
-
-  const handleGoBackClick = useCallback(() => {
-    router.back();
-  }, []);
-
-  useEffect(() => {
-    if (prevPath) router.prefetch(prevPath);
-  }, []);
+  const handleGobackClick = useGoback();
 
   return (
-    <Button type={"button"} onClick={handleGoBackClick} color={"grey"} size={"small"}>
+    <Button type={"button"} onClick={handleGobackClick} color={"grey"} size={"small"}>
       뒤로가기
     </Button>
   );

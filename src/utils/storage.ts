@@ -13,3 +13,5 @@ export const setPathToSessionStorage = () => {
   storage.setItem("prevPath", prevPath);
   storage.setItem("currentPath", currentPath);
 };
+
+export const setLocationToStroage = () => {};
