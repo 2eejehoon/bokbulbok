@@ -59,8 +59,8 @@ export default function PlaceDetail() {
         overview={common.data?.overview ?? ""}
       />
       <Map
-        lng={common.data?.mapx ?? "126.969655"}
-        lat={common.data?.mapy ?? "37.553760"}
+        lng={Number(common.data?.mapx) ?? 126.969655}
+        lat={Number(common.data?.mapy) ?? 37.55376}
       />
     </>
   );

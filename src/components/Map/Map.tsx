@@ -1,26 +1,13 @@
-import { useRef, useEffect } from "react";
 import style from "./Map.module.scss";
+import useMap from "@/hooks/useMap";
 
 interface MapProps {
-  lng: string;
-  lat: string;
+  lng: number;
+  lat: number;
 }
 
 function Map({ lng, lat }: MapProps) {
-  const mapRef = useRef<HTMLElement | null | any>(null);
-
-  useEffect(() => {
-    const location = new naver.maps.LatLng(Number(lat), Number(lng));
-
-    const map = new naver.maps.Map("map", {
-      center: location,
-    });
-
-    mapRef.current = new naver.maps.Marker({
-      map,
-      position: location,
-    });
-  }, [lat, lng]);
+  useMap(lat, lng);
 
   return (
     <div className={style.container}>
