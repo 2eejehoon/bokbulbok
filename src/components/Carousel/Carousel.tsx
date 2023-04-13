@@ -1,9 +1,8 @@
-import { MouseEvent, useCallback, useState } from "react";
 import classNames from "classnames/bind";
 import Button from "../common/Button/Button";
 import BlurImage from "../common/BlurImage/BlurImage";
 import style from "./Carousel.module.scss";
-import { convertImageIndex } from "@/utils/convert";
+import useCarousel from "@/hooks/useCarousel";
 
 interface CarouselProps {
   images?: string[];
@@ -12,18 +11,14 @@ interface CarouselProps {
 const cx = classNames.bind(style);
 
 function Carousel({ images }: CarouselProps) {
-  const [imageIndex, setImageIndex] = useState("1");
-
-  const handleButtonClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    setImageIndex(e.currentTarget.innerHTML);
-  }, []);
+  const [imageIndex, handleButtonClick] = useCarousel();
 
   return (
     <div className={style.container}>
       <div className={style.imageContainer}>
         {(images ?? ["/noimg.png"]).map((image) => {
           return (
-            <div key={image} className={cx("image", convertImageIndex(imageIndex))}>
+            <div key={image} className={cx("image", imageIndex)}>
               <BlurImage src={image} alt={"음식점"} />
             </div>
           );
