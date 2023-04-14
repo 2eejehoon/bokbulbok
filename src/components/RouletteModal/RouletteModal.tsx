@@ -1,13 +1,10 @@
-import { useState, useCallback } from "react";
 import Button from "../common/Button/Button";
 import Modal from "../common/Modal/Modal";
 import Roulette from "../Roulette/Roulette";
+import useModal from "@/hooks/useModal";
 
 export default function RouletteModal() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleModalOpen = useCallback(() => setModalOpen(true), []);
-  const handleModalClose = useCallback(() => setModalOpen(false), []);
+  const [modalOpen, handleModalOpen, handleModalClose] = useModal();
 
   return (
     <>

@@ -1,12 +1,12 @@
 export const setPathToSessionStorage = () => {
-  const storage = globalThis?.sessionStorage;
+  const storage = window?.sessionStorage;
   if (!storage) return;
 
   const prevPath = storage.getItem("currentPath") || "/";
 
-  const currentPath = globalThis.location.search
-    ? globalThis.location.pathname + globalThis.location.search
-    : globalThis.location.pathname;
+  const currentPath = window.location.search
+    ? window.location.pathname + window.location.search
+    : window.location.pathname;
 
   if (prevPath === currentPath) return;
 

@@ -1,28 +1,18 @@
-import { ChangeEvent, useCallback, useState } from "react";
-import { useRouter } from "next/router";
-import useCustomRouter from "../../hooks/useCustomRouter";
 import style from "./RangeSliderModal.module.scss";
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 import Slider from "@/components/common/Slider/Slider";
-import useModal from "@/hooks/useModal";
-import { convertQueryToRange } from "@/utils/convert";
+import useRangeSliderModal from "@/hooks/useRangeSliderModal";
 
 export default function RangeSliderModal() {
-  const router = useRouter();
-  const [range, setRange] = useState(convertQueryToRange(String(router.query.range)));
-  const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
-
-  const handleRangePush = useCustomRouter("range") as (type: number) => void;
-
-  const handleRangeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setRange(Number(e.target.value));
-  }, []);
-
-  const handleConfirm = () => {
-    handleRangePush(range);
-    handleModalClose();
-  };
+  const [
+    range,
+    isModalOpen,
+    handleModalOpen,
+    handleModalClose,
+    handleRangeChange,
+    handleConfirm,
+  ] = useRangeSliderModal();
 
   return (
     <>
