@@ -6,7 +6,7 @@
 
 - TypeScript
 - Next.js
-- React-Query
+- React Query
 - Recoil
 - Sass
 
