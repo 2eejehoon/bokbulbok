@@ -17,7 +17,7 @@ export default function useSortSelect(): useSortSelectReturnType {
   const [sortValue, setSortValue] = useState(convertQueryToSort(String(sort)));
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
-  const handleSortClick = useCallback((e: MouseEvent<HTMLLIElement>) => {
+  const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
     setSortValue(e.currentTarget.innerHTML);
     router.push(
       `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${convertSortToQuery(
@@ -25,7 +25,7 @@ export default function useSortSelect(): useSortSelectReturnType {
       )}`
     );
     handleModalClose();
-  }, []);
+  };
 
   return [sortValue, isModalOpen, handleModalOpen, handleModalClose, handleSortClick];
 }

@@ -22,14 +22,14 @@ export default function useRangeSliderModal(): useRangeSliderModalReturnType {
     setRangeValue(Number(e.target.value));
   }, []);
 
-  const handleConfirm = useCallback(() => {
+  const handleConfirm = () => {
     router.push(
       `/place/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
         rangeValue
       )}&sort=${sort}`
     );
     handleModalClose();
-  }, [rangeValue]);
+  };
 
   return [
     rangeValue,
