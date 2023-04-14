@@ -1,4 +1,4 @@
-export const convertCategory = (category?: string) => {
+export const convertCategoryToText = (category?: string) => {
   switch (category) {
     case "A05020100":
       return "한식";
@@ -26,7 +26,7 @@ export const convertCategory = (category?: string) => {
   }
 };
 
-export const convertImageIndex = (index: string) => {
+export const convertImageIndexToText = (index: string) => {
   switch (index) {
     case "1":
       return "one";
@@ -63,7 +63,7 @@ export const convertImageIndex = (index: string) => {
   }
 };
 
-export const convertLength = (length?: number) => {
+export const convertLengthToText = (length?: number) => {
   switch (length) {
     case 0:
       return "zero";
@@ -91,15 +91,15 @@ export const convertLength = (length?: number) => {
   }
 };
 
-export const convertBr = (text?: string) => {
+export const convertBrToSpace = (text?: string) => {
   return text?.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n");
 };
 
-export const rangeConverter = (range: number) => {
+export const convertRangeToQuery = (range: number) => {
   return range * 1000;
 };
 
-export const sortConverter = (sort: string) => {
+export const convertSortToQuery = (sort: string) => {
   switch (sort) {
     case "제목순":
       return "A";
@@ -111,6 +111,26 @@ export const sortConverter = (sort: string) => {
       return "D";
 
     default:
-      return "A";
+      return "D";
+  }
+};
+
+export const convertQueryToRange = (query: string) => {
+  return Number(query) / 1000;
+};
+
+export const convertQueryToSort = (query: string) => {
+  switch (query) {
+    case "A":
+      return "제목순";
+
+    case "B":
+      return "수정순";
+
+    case "D":
+      return "등록순";
+
+    default:
+      return "D";
   }
 };

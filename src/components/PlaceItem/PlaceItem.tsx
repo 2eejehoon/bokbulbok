@@ -2,7 +2,7 @@ import Link from "next/link";
 import BlurImage from "../common/BlurImage/BlurImage";
 import RouletteButton from "../RouletteButton/RouletteButton";
 import style from "./PlaceItem.module.scss";
-import { convertCategory } from "@/utils/convert";
+import { convertCategoryToText } from "@/utils/convert";
 
 interface PlaceItemProps {
   contentId: string;
@@ -26,7 +26,7 @@ export default function PlaceItem({
           <BlurImage src={image} alt={title} />
         </div>
         <div className={style.body}>
-          <span className={style.category}>{convertCategory(category)}</span>
+          <span className={style.category}>{convertCategoryToText(category)}</span>
           <span className={style.title}>{title}</span>
           <span className={style.text}>{address}</span>
         </div>

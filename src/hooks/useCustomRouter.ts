@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import { rangeConverter, sortConverter } from "@/utils/convert";
+import { convertRangeToQuery, convertSortToQuery } from "@/utils/convert";
 
 export default function useCustomRouter(type: string) {
   const router = useRouter();
@@ -8,13 +8,17 @@ export default function useCustomRouter(type: string) {
 
   const handleSortPush = useCallback((value: string) => {
     router.push(
-      `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${sortConverter(value)}`
+      `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${convertSortToQuery(
+        value
+      )}`
     );
   }, []);
 
   const handleRangePush = useCallback((value: number) => {
     router.push(
-      `/place/location?lng=${lng}&lat=${lat}&range=${rangeConverter(value)}&sort=${sort}`
+      `/place/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
+        value
+      )}&sort=${sort}`
     );
   }, []);
 

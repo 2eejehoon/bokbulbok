@@ -1,5 +1,5 @@
 import { useState, useCallback, MouseEvent } from "react";
-import { convertImageIndex } from "@/utils/convert";
+import { convertImageIndexToText } from "@/utils/convert";
 
 type useCarouselReturnType = [
   imageIndex: string,
@@ -10,8 +10,7 @@ export default function useCarousel(): useCarouselReturnType {
   const [imageIndex, setImageIndex] = useState("one");
 
   const handleButtonClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const index = convertImageIndex(e.currentTarget.innerHTML);
-    setImageIndex(index);
+    setImageIndex(convertImageIndexToText(e.currentTarget.innerHTML));
   }, []);
 
   return [imageIndex, handleButtonClick];

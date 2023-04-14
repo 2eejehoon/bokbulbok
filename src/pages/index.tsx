@@ -12,7 +12,7 @@ export default function Home() {
     if (location === null) return;
 
     router.push(
-      `/place/location?lng=${location.lng}&lat=${location.lat}&range=${5000}&sort=${"B"}`
+      `/place/location?lng=${location.lng}&lat=${location.lat}&range=${5000}&sort=${"D"}`
     );
   }, [location]);
 
