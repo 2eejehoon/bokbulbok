@@ -5,7 +5,7 @@ import Button from "../common/Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
 import style from "./Roulette.module.scss";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
-import { convertLength } from "@/utils/convert";
+import { convertLengthToText } from "@/utils/convert";
 
 const cx = classNames.bind(style);
 
@@ -26,7 +26,7 @@ export default function Roulette() {
   }, []);
 
   const length = useMemo(
-    () => convertLength(rouletteItems.length),
+    () => convertLengthToText(rouletteItems.length),
     [rouletteItems.length]
   );
 
