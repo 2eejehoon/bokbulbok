@@ -1,44 +1,13 @@
-import { useState, useCallback, useMemo } from "react";
 import classNames from "classnames/bind";
-import { useRecoilValue } from "recoil";
 import Button from "../common/Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
 import style from "./Roulette.module.scss";
-import { rouletteItemsState } from "@/recoil/rouletteItems";
-import { convertLengthToText } from "@/utils/convert";
+import useRoulette from "@/hooks/useRoulette";
 
 const cx = classNames.bind(style);
 
 export default function Roulette() {
-  const rouletteItems = useRecoilValue(rouletteItemsState);
-  const [start, setStart] = useState("");
-  const [stop, setStop] = useState("stop");
-  const [spin, setSpin] = useState(false);
-
-  const handleSpinClick = useCallback(() => {
-    setStop("");
-    setStart("start");
-    setSpin(true);
-    setTimeout(() => {
-      setStop("stop");
-      setSpin(false);
-    }, Math.random() * 5000 + 1000);
-  }, []);
-
-  const length = useMemo(
-    () => convertLengthToText(rouletteItems.length),
-    [rouletteItems.length]
-  );
-
-  const spinButton = useMemo(() => {
-    if (spin) return null;
-
-    return (
-      <Button type={"button"} color={"black"} size={"large"} onClick={handleSpinClick}>
-        돌려 돌려 돌림판
-      </Button>
-    );
-  }, [spin]);
+  const [rouletteItems, start, stop, spin, length, handleSpinClick] = useRoulette();
 
   if (length === "zero") return <p>음식점을 추가해보세요 &#128555;</p>;
   return (
@@ -56,7 +25,18 @@ export default function Roulette() {
           );
         })}
       </ul>
-      <div className={style.buttonContainer}>{spinButton}</div>
+      {!spin && (
+        <div className={style.buttonContainer}>
+          <Button
+            type={"button"}
+            color={"black"}
+            size={"large"}
+            onClick={handleSpinClick}
+          >
+            돌려 돌려 돌림판
+          </Button>
+        </div>
+      )}
     </>
   );
 }
