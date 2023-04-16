@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo title={"복불복"} description={"현재 위치 음식점 정보"} url={router.asPath} />
+      <Seo title={"복불복"} description={"현재 위치 음식점 정보"} />
       <Loading />
     </>
   );

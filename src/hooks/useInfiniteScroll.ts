@@ -1,8 +1,7 @@
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from "@tanstack/react-query";
-import { useEffect, MutableRefObject } from "react";
+import { useEffect, MutableRefObject, useRef } from "react";
 
 interface useInfiniteScrollArgs {
-  targetRef: MutableRefObject<HTMLElement | null>;
   hasNextPage: boolean | undefined;
   fetchNextPage: (
     options?: FetchNextPageOptions | undefined
@@ -10,10 +9,11 @@ interface useInfiniteScrollArgs {
 }
 
 export default function useInfiniteScroll({
-  targetRef,
   hasNextPage,
   fetchNextPage,
-}: useInfiniteScrollArgs): void {
+}: useInfiniteScrollArgs): MutableRefObject<HTMLDivElement | null> {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (!hasNextPage) {
       return;
@@ -36,4 +36,6 @@ export default function useInfiniteScroll({
 
     return () => observer.unobserve(target);
   }, [targetRef, hasNextPage, fetchNextPage]);
+
+  return targetRef;
 }

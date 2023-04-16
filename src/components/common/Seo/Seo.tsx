@@ -1,13 +1,16 @@
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 interface SeoProps {
   title?: string;
   description?: string;
-  url: string;
   image?: string;
 }
 
-function Seo({ title, description, url, image }: SeoProps) {
+function Seo({ title, description, image }: SeoProps) {
+  const router = useRouter();
+  const url = router.asPath;
+
   return (
     <NextSeo
       title={title ?? "복불복"}
