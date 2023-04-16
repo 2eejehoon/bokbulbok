@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import Button from "../common/Button/Button";
-import style from "./ScrollToTopButton.module.scss";
 import useScrollToTop from "@/hooks/useScrollToTop";
 
 export default function ScrollToTopButton() {
@@ -10,11 +9,16 @@ export default function ScrollToTopButton() {
     if (!isScrolled) return null;
 
     return (
-      <Button type={"button"} onClick={handleButtonClick} color={"black"} size={"large"}>
-        맨 위로 이동
+      <Button
+        type={"button"}
+        onClick={handleButtonClick}
+        color={"black"}
+        size={"scrollTop"}
+      >
+        &uarr;
       </Button>
     );
   }, [isScrolled]);
 
-  return <div className={style.container}>{ScrollButton}</div>;
+  return <>{ScrollButton}</>;
 }

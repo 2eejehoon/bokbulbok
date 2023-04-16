@@ -26,3 +26,9 @@
   width: 100%;
   height: calc(100% - 50px);
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}

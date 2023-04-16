@@ -22,7 +22,9 @@ export default function ListLayout({ children }: ListLayoutProps) {
         </div>
       </header>
       <main className={style.main}>{children}</main>
-      <ScrollToTopButton />
+      <div className={style.buttonContainer}>
+        <ScrollToTopButton />
+      </div>
     </>
   );
 }

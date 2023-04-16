@@ -1,7 +1,6 @@
 import { useRecoilState } from "recoil";
 import { useLayoutEffect, useMemo, useState } from "react";
 import Button from "../common/Button/Button";
-import style from "./RouletteButton.module.scss";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
 
 interface RouletteButtonProps {
@@ -42,18 +41,28 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   const ButtonRenderer = useMemo(() => {
     if (isIncluded) {
       return (
-        <Button type={"button"} onClick={handleMinusClick} color={"black"} size={"small"}>
+        <Button
+          type={"button"}
+          onClick={handleMinusClick}
+          color={"black"}
+          size={"roulette"}
+        >
           삭제
         </Button>
       );
     } else {
       return (
-        <Button type={"button"} onClick={handlePlusClick} color={"grey"} size={"small"}>
+        <Button
+          type={"button"}
+          onClick={handlePlusClick}
+          color={"grey"}
+          size={"roulette"}
+        >
           추가
         </Button>
       );
     }
   }, [isIncluded, rouletteItems]);
 
-  return <div className={style.buttonContainer}>{ButtonRenderer}</div>;
+  return <>{ButtonRenderer}</>;
 }
