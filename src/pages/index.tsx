@@ -1,25 +1,19 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useGeolocation } from "@/hooks/useGeolocation";
-import Loading from "@/components/common/Loading/Loading";
+import { ReactElement } from "react";
 import Seo from "@/components/common/Seo/Seo";
+import BaseLayout from "@/layout/BaseLayout/BaseLayout";
+import ServiceIntro from "@/components/ServiceIntro/ServiceIntro";
+import ServiceStartButton from "@/components/ServiceStartButton/ServiceStartButton";
 
 export default function Home() {
-  const router = useRouter();
-  const location = useGeolocation();
-
-  useEffect(() => {
-    if (location === null) return;
-
-    router.push(
-      `/place/location?lng=${location.lng}&lat=${location.lat}&range=${5000}&sort=${"D"}`
-    );
-  }, [location]);
-
   return (
     <>
       <Seo title={"복불복"} description={"현재 위치 음식점 정보"} />
-      <Loading />
+      <ServiceIntro />
+      <ServiceStartButton />
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <BaseLayout>{page}</BaseLayout>;
+};

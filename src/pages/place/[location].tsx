@@ -9,16 +9,17 @@ import { QueryType } from "@/types/query";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/common/Seo/Seo";
 import useGetPlaceInfiniteData from "@/hooks/useGetPlaceInfiniteData";
+import Loading from "@/components/common/Loading/Loading";
 
 export default function Place() {
-  const { data, hasNextPage, fetchNextPage } = useGetPlaceInfiniteData();
+  const { data, hasNextPage, fetchNextPage, isFetching } = useGetPlaceInfiniteData();
   const targetRef = useInfiniteScroll({ hasNextPage, fetchNextPage });
 
   return (
     <>
       <Seo title={"복불복"} description={"주변 음식점 리스트"} />
       <PlaceList data={data} />
-      <div ref={targetRef} />
+      <div ref={targetRef}>{isFetching && <Loading />}</div>
     </>
   );
 }

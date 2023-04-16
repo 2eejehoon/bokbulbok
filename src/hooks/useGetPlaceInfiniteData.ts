@@ -25,13 +25,14 @@ interface useGetPlaceInfiniteDataReturnType {
       unknown
     >
   >;
+  isFetching: boolean;
 }
 
 export default function useGetPlaceInfiniteData(): useGetPlaceInfiniteDataReturnType {
   const router = useRouter();
   const { lng, lat, range, sort } = router.query as QueryType;
 
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
+  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
     queryFn: ({ pageParam = 1 }) => getPlacelistData(pageParam, lng, lat, range, sort),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -41,5 +42,6 @@ export default function useGetPlaceInfiniteData(): useGetPlaceInfiniteDataReturn
     data,
     hasNextPage,
     fetchNextPage,
+    isFetching,
   };
 }

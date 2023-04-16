@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { LocationType } from "@/types/location";
 
-export function useGeolocation(): LocationType | null {
-  const [location, setLocation] = useState<LocationType | null>(null);
+export function useGeolocation(): LocationType {
+  const [location, setLocation] = useState<LocationType>({ loaded: false });
 
   useEffect(() => {
     const onSuccess = (location: { coords: { longitude: number; latitude: number } }) => {
       setLocation({
+        loaded: true,
         lng: location.coords.longitude,
         lat: location.coords.latitude,
       });
@@ -14,6 +15,7 @@ export function useGeolocation(): LocationType | null {
 
     const onError = (error: { code: number; message: string }) => {
       setLocation({
+        loaded: true,
         error: true,
         errorMessage: error.message,
       });
