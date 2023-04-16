@@ -14,7 +14,6 @@ function Loading() {
           <div></div>
         </div>
       </div>
-      <div className={style.message}>잠시만 기다려주세요</div>
     </div>
   );
 }

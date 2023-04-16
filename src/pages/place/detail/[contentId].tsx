@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import { useQueries } from "@tanstack/react-query";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { type ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
@@ -14,30 +12,11 @@ import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
 import Carousel from "@/components/Carousel/Carousel";
-import { PlaceImageDataType } from "@/types/place";
 import Seo from "@/components/common/Seo/Seo";
+import useGetPlaceDetailData from "@/hooks/useGetPlaceDetailData";
 
 export default function PlaceDetail() {
-  const router = useRouter();
-  const contentId = router.query.contentId as string;
-
-  const [common, intro, image] = useQueries({
-    queries: [
-      {
-        queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-        queryFn: () => getPlaceCommonDataById(contentId),
-      },
-      {
-        queryKey: [QUERY_KEY.PLACEINTRO, contentId],
-        queryFn: () => getPlaceIntroDataById(contentId),
-      },
-      {
-        queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
-        queryFn: () => getPlaceImageDataById(contentId),
-        select: (data: PlaceImageDataType[]) => data.map((item) => item.originimgurl),
-      },
-    ],
-  });
+  const [common, intro, image] = useGetPlaceDetailData();
 
   return (
     <>
