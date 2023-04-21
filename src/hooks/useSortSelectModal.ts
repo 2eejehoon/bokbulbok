@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useCallback, useState, MouseEvent } from "react";
 import useModal from "./useModal";
 import { convertQueryToSort, convertSortToQuery } from "@/utils/convert";
+import { QueryType } from "@/types/query";
 
 type useSortSelectReturnType = [
   sortValue: string,
@@ -13,8 +14,8 @@ type useSortSelectReturnType = [
 
 export default function useSortSelect(): useSortSelectReturnType {
   const router = useRouter();
-  const { lng, lat, range, sort } = router.query;
-  const [sortValue, setSortValue] = useState(convertQueryToSort(String(sort)));
+  const { lng, lat, range, sort } = router.query as QueryType;
+  const [sortValue, setSortValue] = useState(convertQueryToSort(sort));
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
   const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
