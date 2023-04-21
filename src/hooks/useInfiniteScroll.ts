@@ -35,7 +35,7 @@ export default function useInfiniteScroll({
     observer.observe(target);
 
     return () => observer.unobserve(target);
-  }, [targetRef, hasNextPage, fetchNextPage]);
+  }, [hasNextPage, fetchNextPage]);
 
   return targetRef;
 }
