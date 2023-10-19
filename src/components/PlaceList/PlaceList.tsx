@@ -1,6 +1,6 @@
 import { InfiniteData } from "@tanstack/react-query";
 import PlaceItem from "../PlaceItem/PlaceItem";
-import style from "./PlaceList.module.scss";
+import styled from "styled-components";
 import { PlaceDataType } from "@/types/place";
 
 interface PlaceListProps {
@@ -13,7 +13,7 @@ interface PlaceListProps {
 
 export default function PlaceList({ data }: PlaceListProps) {
   return (
-    <ul className={style.container}>
+    <Container>
       {data?.pages.map((place) =>
         place.placeList?.map((place) => {
           return (
@@ -28,6 +28,21 @@ export default function PlaceList({ data }: PlaceListProps) {
           );
         })
       )}
-    </ul>
+    </Container>
   );
 }
+
+const Container = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 0px;
+  padding: 0px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;

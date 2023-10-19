@@ -1,38 +1,37 @@
 import { useRecoilValue } from "recoil";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
-import { convertLengthToText } from "@/utils/convert";
 import { RouletteItemType } from "@/types/roulette";
 
-type useRouletteReturnType = [
-  rouletteItems: RouletteItemType[],
-  start: string,
-  stop: string,
-  spin: boolean,
-  length: string,
-  handleSpinClick: () => void
-];
+type useRouletteReturnType = {
+  rouletteItems: RouletteItemType[];
+  start: boolean;
+  stop: boolean;
+  spin: boolean;
+  handleSpinClick: () => void;
+};
 
 export default function useRoulette(): useRouletteReturnType {
   const rouletteItems = useRecoilValue(rouletteItemsState);
-  const [start, setStart] = useState("");
-  const [stop, setStop] = useState("stop");
+  const [start, setStart] = useState(false);
+  const [stop, setStop] = useState(true);
   const [spin, setSpin] = useState(false);
 
   const handleSpinClick = useCallback(() => {
-    setStop("");
-    setStart("start");
+    setStop(false);
+    setStart(true);
     setSpin(true);
     setTimeout(() => {
-      setStop("stop");
+      setStop(true);
       setSpin(false);
     }, Math.random() * 5000 + 1000);
   }, []);
 
-  const length = useMemo(
-    () => convertLengthToText(rouletteItems.length),
-    [rouletteItems.length]
-  );
-
-  return [rouletteItems, start, stop, spin, length, handleSpinClick];
+  return {
+    rouletteItems,
+    start,
+    stop,
+    spin,
+    handleSpinClick,
+  };
 }

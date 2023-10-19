@@ -1,4 +1,4 @@
-import style from "./Map.module.scss";
+import styled from "styled-components";
 import useMap from "@/hooks/useMap";
 
 interface MapProps {
@@ -6,14 +6,25 @@ interface MapProps {
   lat: number;
 }
 
-function Map({ lng, lat }: MapProps) {
+export default function Map({ lng, lat }: MapProps) {
   useMap(lat, lng);
 
   return (
-    <div className={style.container}>
-      <div id={"map"} className={style.map} />
-    </div>
+    <Container>
+      <MapDiv id={"map"} />
+    </Container>
   );
 }
 
-export default Map;
+const Container = styled.div`
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+`;
+
+const MapDiv = styled.div`
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  width: 100%;
+  height: 280px;
+`;

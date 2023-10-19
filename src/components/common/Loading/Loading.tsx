@@ -1,12 +1,21 @@
 import Image from "next/image";
-import style from "./Loading.module.scss";
+import styled from "styled-components";
 
-function Loading() {
+export default function Loading() {
   return (
-    <div className={style.container}>
+    <Container>
       <Image src={"/loading.gif"} alt={"로딩"} width={30} height={30} />
-    </div>
+    </Container>
   );
 }
 
-export default Loading;
+const Container = styled.div`
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+`;

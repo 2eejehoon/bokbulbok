@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import Button from "../common/Button/Button";
 import useGoback from "@/hooks/useGoback";
 
@@ -5,8 +6,16 @@ export default function GobackButton() {
   const handleGobackClick = useGoback();
 
   return (
-    <Button type={"button"} onClick={handleGobackClick} color={"grey"} size={"small"}>
+    <BackButton type={"button"} onClick={handleGobackClick}>
       뒤로가기
-    </Button>
+    </BackButton>
   );
 }
+
+const BackButton = styled(Button)`
+  font-size: 12px;
+  color: black;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+`;

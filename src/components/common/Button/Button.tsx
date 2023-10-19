@@ -1,23 +1,32 @@
-import classNames from "classnames/bind";
-import { ReactNode, MouseEventHandler, memo } from "react";
-import style from "./Button.module.scss";
+import {
+  ReactNode,
+  MouseEventHandler,
+  memo,
+  ButtonHTMLAttributes,
+} from "react";
+import styled from "styled-components";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   type: "button" | "submit" | "reset" | undefined;
-  color: string;
-  size: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-const cx = classNames.bind(style);
-
-function Button({ children, type, color, size, onClick }: ButtonProps) {
+function Button({ children, type, onClick, ...props }: ButtonProps) {
   return (
-    <button className={cx("button", [color, size])} type={type} onClick={onClick}>
+    <StyledButton className={props.className} type={type} onClick={onClick}>
       {children}
-    </button>
+    </StyledButton>
   );
 }
+
+const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+`;
 
 export default memo(Button);

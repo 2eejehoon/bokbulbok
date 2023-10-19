@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useCallback, useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import useModal from "./useModal";
 import { convertQueryToSort, convertSortToQuery } from "@/utils/convert";
 import { QueryType } from "@/types/query";
@@ -28,5 +28,11 @@ export default function useSortSelect(): useSortSelectReturnType {
     handleModalClose();
   };
 
-  return [sortValue, isModalOpen, handleModalOpen, handleModalClose, handleSortClick];
+  return [
+    sortValue,
+    isModalOpen,
+    handleModalOpen,
+    handleModalClose,
+    handleSortClick,
+  ];
 }

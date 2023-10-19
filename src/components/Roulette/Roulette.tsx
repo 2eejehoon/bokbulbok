@@ -1,42 +1,77 @@
-import classNames from "classnames/bind";
 import Button from "../common/Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
-import style from "./Roulette.module.scss";
 import useRoulette from "@/hooks/useRoulette";
-
-const cx = classNames.bind(style);
+import styled from "styled-components";
 
 export default function Roulette() {
-  const [rouletteItems, start, stop, spin, length, handleSpinClick] = useRoulette();
+  const { rouletteItems, start, stop, spin, handleSpinClick } = useRoulette();
 
-  if (length === "zero") return <p>음식점을 추가해보세요 &#128555;</p>;
+  if (rouletteItems.length === 0) return <p>음식점을 추가해보세요 &#128555;</p>;
   return (
     <>
-      <div className={style.arrow} />
-      <ul className={cx("circle", [start, stop])}>
+      <Arrow />
+      <Wheel start={start} stop={stop}>
         {rouletteItems.map((item) => {
           return (
             <RouletteItem
               key={item.contentId}
               contentId={item.contentId}
               title={item.title}
-              length={length}
+              length={rouletteItems.length}
             />
           );
         })}
-      </ul>
+      </Wheel>
       {!spin && (
-        <div className={style.buttonContainer}>
-          <Button
-            type={"button"}
-            color={"black"}
-            size={"large"}
-            onClick={handleSpinClick}
-          >
+        <ButtonContainer>
+          <SpinButton type={"button"} onClick={handleSpinClick}>
             돌려 돌려 돌림판
-          </Button>
-        </div>
+          </SpinButton>
+        </ButtonContainer>
       )}
     </>
   );
 }
+
+const Arrow = styled.div`
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 30px solid black;
+  left: 50%;
+  top: 85px;
+  z-index: 1;
+`;
+
+const Wheel = styled.ul<{ start: boolean; stop: boolean }>`
+  width: 330px;
+  height: 330px;
+  position: relative;
+  border: 2px solid black;
+  border-radius: 50%;
+  list-style: none;
+  overflow: hidden;
+
+  animation: ${({ start }) => (start ? "spin 1.5s linear infinite" : "")};
+  animation-play-state: ${({ stop }) => (stop ? "paused" : "")};
+
+  @keyframes spin {
+    100% {
+      transform: rotate(1080deg);
+    }
+  }
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 25px;
+`;
+
+const SpinButton = styled(Button)`
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+`;

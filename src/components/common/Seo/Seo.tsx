@@ -7,7 +7,7 @@ interface SeoProps {
   image?: string;
 }
 
-function Seo({ title, description, image }: SeoProps) {
+export default function Seo({ title, description, image }: SeoProps) {
   const router = useRouter();
   const url = router.asPath;
 
@@ -25,5 +25,3 @@ function Seo({ title, description, image }: SeoProps) {
     />
   );
 }
-
-export default Seo;

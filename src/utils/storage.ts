@@ -14,4 +14,11 @@ export const setPathToSessionStorage = () => {
   storage.setItem("currentPath", currentPath);
 };
 
-export const setLocationToStroage = () => {};
+export const getPrevPathFromSessionStorage = () => {
+  const storage = window?.sessionStorage;
+  if (!storage) return;
+
+  const prevPath = storage.getItem("prevPath") || "/";
+
+  return prevPath;
+};

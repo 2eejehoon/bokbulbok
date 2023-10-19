@@ -1,4 +1,4 @@
-import style from "./PlaceInfo.module.scss";
+import styled from "styled-components";
 import { convertCategoryToText, convertBrToSpace } from "@/utils/convert";
 
 interface PlaceInfoProps {
@@ -12,7 +12,7 @@ interface PlaceInfoProps {
   overview?: string;
 }
 
-function PlaceInfo({
+export default function PlaceInfo({
   title,
   category,
   menu,
@@ -23,54 +23,99 @@ function PlaceInfo({
   overview,
 }: PlaceInfoProps) {
   return (
-    <div className={style.container}>
-      <p className={style.titleContainer}>
-        <span className={style.title}>{title}</span>
-        <span className={style.category}>{convertCategoryToText(category)}</span>
-      </p>
+    <Container>
+      <TitleContainer>
+        <Title>{title}</Title>
+        <Category>{convertCategoryToText(category)}</Category>
+      </TitleContainer>
 
       {address && (
-        <p className={style.textContainer}>
-          <span className={style.icon}>&#128205;</span>
-          <span className={style.text}>{address}</span>
-        </p>
+        <TextContainer>
+          <Icon>&#128205;</Icon>
+          <Text>{address}</Text>
+        </TextContainer>
       )}
 
       {menu && (
-        <p className={style.textContainer}>
-          <span className={style.icon}>&#127859;</span>
-          <span className={style.text}>{menu}</span>
-        </p>
+        <TextContainer>
+          <Icon>&#127859;</Icon>
+          <Text>{menu}</Text>
+        </TextContainer>
       )}
 
       {tel && (
-        <p className={style.textContainer}>
-          <span className={style.icon}>&#128222;</span>
-          <span className={style.text}>{tel}</span>
-        </p>
+        <TextContainer>
+          <Icon>&#128222;</Icon>
+          <Text>{tel}</Text>
+        </TextContainer>
       )}
 
       {businessday && (
-        <p className={style.textContainer}>
-          <span className={style.icon}>&#128197;</span>
-          <span className={style.text}>{businessday}</span>
-        </p>
+        <TextContainer>
+          <Icon>&#128197;</Icon>
+          <Text>{businessday}</Text>
+        </TextContainer>
       )}
 
       {businesshour && (
-        <p className={style.textContainer}>
-          <span className={style.icon}>&#128338;</span>
-          <span className={style.text}>{convertBrToSpace(businesshour)}</span>
-        </p>
+        <TextContainer>
+          <Icon>&#128338;</Icon>
+          <Text>{convertBrToSpace(businesshour)}</Text>
+        </TextContainer>
       )}
 
       {overview && (
-        <p className={style.textContainer}>
-          <span className={style.text}>{convertBrToSpace(overview)}</span>
-        </p>
+        <TextContainer>
+          <Text>{convertBrToSpace(overview)}</Text>
+        </TextContainer>
       )}
-    </div>
+    </Container>
   );
 }
 
-export default PlaceInfo;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 10px;
+`;
+
+const TitleContainer = styled.p`
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  height: 36px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
+
+const Title = styled.span`
+  color: black;
+  margin-right: 5px;
+  font-size: 16px;
+  font-weight: 700;
+`;
+
+const Category = styled.span`
+  color: grey;
+  font-weight: 400;
+  font-size: 14px;
+`;
+
+const TextContainer = styled.p`
+  width: 100%;
+  margin: 0;
+  margin-bottom: 5px;
+`;
+
+const Icon = styled.span`
+  font-size: 12px;
+  margin-right: 5px;
+`;
+
+const Text = styled.text`
+  color: black;
+  font-size: 12px;
+  font-weight: 400;
+`;

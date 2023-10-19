@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import style from "./ListLayout.module.scss";
+import styled from "styled-components";
 import RangeSliderModal from "@/components/RangeSliderModal/RangeSliderModal";
 import SortSelectModal from "@/components/SortSelectModal/SortSelectModal";
 import RouletteModal from "@/components/RouletteModal/RouletteModal";
@@ -12,19 +12,55 @@ interface ListLayoutProps {
 export default function ListLayout({ children }: ListLayoutProps) {
   return (
     <>
-      <header className={style.header}>
-        <div className={style.left}>
+      <Header>
+        <Left>
           <RangeSliderModal />
           <SortSelectModal />
-        </div>
-        <div className={style.right}>
+        </Left>
+        <Right>
           <RouletteModal />
-        </div>
-      </header>
-      <main className={style.main}>{children}</main>
-      <div className={style.buttonContainer}>
+        </Right>
+      </Header>
+      <Main>{children}</Main>
+      <ButtonContainer>
         <ScrollToTopButton />
-      </div>
+      </ButtonContainer>
     </>
   );
 }
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  border-bottom: 1px lightgrey solid;
+`;
+
+const Left = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+`;
+
+const Right = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 50px);
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+`;

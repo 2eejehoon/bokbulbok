@@ -34,7 +34,8 @@ export default function useGetPlaceInfiniteData(): useGetPlaceInfiniteDataReturn
 
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) => getPlacelistData(pageParam, lng, lat, range, sort),
+    queryFn: ({ pageParam = 1 }) =>
+      getPlacelistData(pageParam, lng, lat, range, sort),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 

@@ -1,22 +1,39 @@
+import { getPrevPathFromSessionStorage } from "@/utils/storage";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import style from "./NotFound.module.scss";
+import styled from "styled-components";
 
-function NotFound() {
+export default function NotFound() {
   const router = useRouter();
 
   useEffect(() => {
-    const timeOut = window.setTimeout(() => router.push("/"), 5000);
+    const prevPath = getPrevPathFromSessionStorage() || "/";
+    const timeOut = window.setTimeout(() => router.push(prevPath), 5000);
 
     return () => clearTimeout(timeOut);
-  });
+  }, []);
 
   return (
-    <div className={style.container}>
-      <h1 className={style.title}>404</h1>
-      <p className={style.text}>요청한 페이지를 찾을 수 없습니다</p>
-    </div>
+    <Container>
+      <Title>404</Title>
+      <Text>요청한 페이지를 찾을 수 없습니다</Text>
+    </Container>
   );
 }
 
-export default NotFound;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const Title = styled.h1`
+  color: black;
+`;
+
+const Text = styled.p`
+  color: gray;
+`;

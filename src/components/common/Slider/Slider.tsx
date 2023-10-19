@@ -1,5 +1,5 @@
 import { ChangeEvent, memo } from "react";
-import style from "./Slider.module.scss";
+import styled from "styled-components";
 
 interface SliderProps {
   value: number;
@@ -13,11 +13,9 @@ interface SliderProps {
 
 function Slider({ value, onChange, id, text, min, max, step }: SliderProps) {
   return (
-    <div className={style.container}>
-      <label htmlFor={id} className={style.label}>
-        {text}
-      </label>
-      <input
+    <Containter>
+      <Label htmlFor={id}>{text}</Label>
+      <Input
         id={id}
         type={"range"}
         value={value}
@@ -25,10 +23,40 @@ function Slider({ value, onChange, id, text, min, max, step }: SliderProps) {
         min={min}
         max={max}
         step={step}
-        className={style.input}
       />
-    </div>
+    </Containter>
   );
 }
+
+const Containter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const Label = styled.label`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  margin: 10px;
+  padding-left: 20px;
+`;
+
+const Input = styled.input`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: 10px;
+  margin: 10px;
+  cursor: pointer;
+`;
 
 export default memo(Slider);

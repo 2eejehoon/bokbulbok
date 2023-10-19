@@ -6,7 +6,7 @@ interface PortalProps {
   selector: string;
 }
 
-function Portal({ children, selector }: PortalProps) {
+export default function Portal({ children, selector }: PortalProps) {
   const [mount, setMount] = useState(false);
 
   const element = typeof window && mount && document.getElementById(selector);
@@ -17,5 +17,3 @@ function Portal({ children, selector }: PortalProps) {
 
   return <>{element && children && createPortal(children, element)}</>;
 }
-
-export default Portal;

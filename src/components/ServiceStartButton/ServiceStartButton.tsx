@@ -1,26 +1,41 @@
+import styled from "styled-components";
 import Button from "../common/Button/Button";
 import Loading from "../common/Loading/Loading";
-import style from "./ServiceStartButton.module.scss";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {
-  const { loaded, error, errorMessage, handleButtonClick } = useServiceStartButton();
+  const { loaded, error, errorMessage, handleButtonClick } =
+    useServiceStartButton();
 
-  if (error) <p className={style.error}>{errorMessage}</p>;
+  if (error) <ErrorMessage>{errorMessage}</ErrorMessage>;
   return (
-    <div className={style.buttonContainer}>
+    <Container>
       {loaded ? (
-        <Button
-          type={"button"}
-          onClick={handleButtonClick}
-          size={"large"}
-          color={"black"}
-        >
+        <StartButton type={"button"} onClick={handleButtonClick}>
           시작하기
-        </Button>
+        </StartButton>
       ) : (
         <Loading />
       )}
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const ErrorMessage = styled.p`
+  text-align: center;
+  height: 100px;
+`;
+
+const StartButton = styled(Button)`
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+`;

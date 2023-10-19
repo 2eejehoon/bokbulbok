@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { useLayoutEffect, useMemo, useState } from "react";
 import Button from "../common/Button/Button";
@@ -8,11 +9,14 @@ interface RouletteButtonProps {
   title: string;
 }
 
-export default function RouletteButton({ contentId, title }: RouletteButtonProps) {
+export default function RouletteButton({
+  contentId,
+  title,
+}: RouletteButtonProps) {
   const [isIncluded, setIsIncluded] = useState(false);
   const [rouletteItems, setRouletteItems] = useRecoilState(rouletteItemsState);
 
-  const handlePlusClick = () => {
+  const handleAddClick = () => {
     if (rouletteItems.length === 6) {
       return alert("최대 6개까지 가능합니다");
     }
@@ -23,7 +27,7 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
     setIsIncluded(true);
   };
 
-  const handleMinusClick = () => {
+  const handleRemoveClick = () => {
     const filteredRouletteItems = rouletteItems.filter(
       (item) => item.contentId !== contentId
     );
@@ -33,7 +37,8 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   };
 
   useLayoutEffect(() => {
-    if (rouletteItems.findIndex((item) => item.contentId === contentId) < 0) return;
+    if (rouletteItems.findIndex((item) => item.contentId === contentId) < 0)
+      return;
 
     setIsIncluded(true);
   }, []);
@@ -41,28 +46,40 @@ export default function RouletteButton({ contentId, title }: RouletteButtonProps
   const ButtonRenderer = useMemo(() => {
     if (isIncluded) {
       return (
-        <Button
-          type={"button"}
-          onClick={handleMinusClick}
-          color={"black"}
-          size={"roulette"}
-        >
+        <RemoveButton type={"button"} onClick={handleRemoveClick}>
           삭제
-        </Button>
+        </RemoveButton>
       );
     } else {
       return (
-        <Button
-          type={"button"}
-          onClick={handlePlusClick}
-          color={"grey"}
-          size={"roulette"}
-        >
+        <AddButton type={"button"} onClick={handleAddClick}>
           추가
-        </Button>
+        </AddButton>
       );
     }
   }, [isIncluded, rouletteItems]);
 
   return <>{ButtonRenderer}</>;
 }
+
+const RemoveButton = styled(Button)`
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  right: 5px;
+  bottom: 5px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+`;
+
+const AddButton = styled(Button)`
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  right: 5px;
+  bottom: 5px;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+`;

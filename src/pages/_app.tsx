@@ -1,14 +1,18 @@
-import "../styles/global.scss";
 import { RecoilEnv } from "recoil";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { setPathToSessionStorage } from "@/utils/storage";
+import { GlobalStyle } from "@/styles/GlobalStyle";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -50,6 +54,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           process.env.NEXT_PUBLIC_MAP_KEY
         }
       />
+      <GlobalStyle />
       <RecoilRoot>
         <Hydrate state={pageProps.dehydratedState}>
           {getLayout(<Component {...pageProps} />)}
