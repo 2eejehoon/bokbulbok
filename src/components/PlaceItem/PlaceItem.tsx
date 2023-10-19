@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BlurImage from "../common/BlurImage/BlurImage";
+import BlurImage from "../BlurImage/BlurImage";
 import RouletteButton from "../RouletteButton/RouletteButton";
 import styled from "styled-components";
 import { convertCategoryToText } from "@/utils/convert";

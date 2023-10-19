@@ -1,4 +1,4 @@
-import Button from "../common/Button/Button";
+import Button from "../Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
 import useRoulette from "@/hooks/useRoulette";
 import styled from "styled-components";

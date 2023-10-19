@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Seo from "@/components/common/Seo/Seo";
+import Seo from "@/components/Seo/Seo";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import ServiceIntro from "@/components/ServiceIntro/ServiceIntro";
 import ServiceStartButton from "@/components/ServiceStartButton/ServiceStartButton";

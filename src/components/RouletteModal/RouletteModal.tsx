@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Button from "../common/Button/Button";
-import Modal from "../common/Modal/Modal";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
 import Roulette from "../Roulette/Roulette";
 import useModal from "@/hooks/useModal";
 

@@ -1,5 +1,5 @@
-import Button from "../common/Button/Button";
-import BlurImage from "../common/BlurImage/BlurImage";
+import Button from "../Button/Button";
+import BlurImage from "../BlurImage/BlurImage";
 import useCarousel from "@/hooks/useCarousel";
 import styled from "styled-components";
 

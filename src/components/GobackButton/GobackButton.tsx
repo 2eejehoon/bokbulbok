@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../common/Button/Button";
+import Button from "../Button/Button";
 import useGoback from "@/hooks/useGoback";
 
 export default function GobackButton() {

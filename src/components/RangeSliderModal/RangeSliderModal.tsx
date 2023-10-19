@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Button from "@/components/common/Button/Button";
-import Modal from "@/components/common/Modal/Modal";
-import Slider from "@/components/common/Slider/Slider";
+import Button from "@/components/Button/Button";
+import Modal from "@/components/Modal/Modal";
+import Slider from "@/components/Slider/Slider";
 import useRangeSliderModal from "@/hooks/useRangeSliderModal";
 
 export default function RangeSliderModal() {

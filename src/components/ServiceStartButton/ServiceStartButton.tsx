@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Button from "../common/Button/Button";
-import Loading from "../common/Loading/Loading";
+import Button from "../Button/Button";
+import Loading from "../Loading/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {

@@ -12,7 +12,7 @@ import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
 import Carousel from "@/components/Carousel/Carousel";
-import Seo from "@/components/common/Seo/Seo";
+import Seo from "@/components/Seo/Seo";
 import useGetPlaceDetailData from "@/hooks/useGetPlaceDetailData";
 
 export default function PlaceDetail() {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Button from "../common/Button/Button";
-import Modal from "../common/Modal/Modal";
-import Select from "../common/Select/Select";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import Select from "../Select/Select";
 import { SORT_ARRAY } from "@/contant";
 import useSortSelectModal from "@/hooks/useSortSelectModal";
 

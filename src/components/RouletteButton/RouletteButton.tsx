@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { useLayoutEffect, useMemo, useState } from "react";
-import Button from "../common/Button/Button";
+import Button from "../Button/Button";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
 
 interface RouletteButtonProps {
