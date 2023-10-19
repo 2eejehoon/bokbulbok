@@ -65,6 +65,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
+  gap: 2px;
   width: 100%;
   bottom: 15px;
 `;
@@ -74,7 +75,6 @@ const CarouselButton = styled(Button)`
   height: 25px;
   font-size: 10px;
   font-weight: 700;
-  margin: 2px;
   padding: 6px;
   background-color: white;
   border: 1px solid lightgrey;
