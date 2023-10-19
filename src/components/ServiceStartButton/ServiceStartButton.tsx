@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
-import Loading from "../Loading/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
+import Loading from "../Loading/Loading";
 
 export default function ServiceStartButton() {
   const { loaded, error, errorMessage, handleButtonClick } =
@@ -9,24 +9,11 @@ export default function ServiceStartButton() {
 
   if (error) <ErrorMessage>{errorMessage}</ErrorMessage>;
   return (
-    <Container>
-      {loaded ? (
-        <StartButton type={"button"} onClick={handleButtonClick}>
-          시작하기
-        </StartButton>
-      ) : (
-        <Loading />
-      )}
-    </Container>
+    <StartButton type={"button"} disabled={!loaded} onClick={handleButtonClick}>
+      {loaded ? "시작하기" : <Loading height={20} />}
+    </StartButton>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
 
 const ErrorMessage = styled.p`
   text-align: center;
@@ -38,4 +25,5 @@ const StartButton = styled(Button)`
   color: white;
   background-color: black;
   border-radius: 20px;
+  width: 120px;
 `;
