@@ -3,6 +3,7 @@ import Button from "@/components/Button/Button";
 import Modal from "@/components/Modal/Modal";
 import Slider from "@/components/Slider/Slider";
 import useRangeSliderModal from "@/hooks/useRangeSliderModal";
+import { useRef } from "react";
 
 export default function RangeSliderModal() {
   const [

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ReactNode, MouseEventHandler, memo } from "react";
+import { ReactNode, MouseEventHandler, memo, HTMLAttributes } from "react";
 import Portal from "../Portal/Portal";
 
-interface ModalProps {
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   width?: number;
   height?: number;
@@ -15,12 +15,13 @@ function Modal({
   height,
   modalOpen,
   setModalClose,
+  ...props
 }: ModalProps) {
   return (
     <>
       {modalOpen && (
         <Portal selector="portal">
-          <Container width={width} height={height}>
+          <Container {...props} width={width} height={height}>
             {children}
           </Container>
           <Background onClick={setModalClose} />

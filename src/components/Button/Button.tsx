@@ -3,6 +3,8 @@ import {
   MouseEventHandler,
   memo,
   ButtonHTMLAttributes,
+  forwardRef,
+  ForwardedRef,
 } from "react";
 import styled from "styled-components";
 
@@ -12,13 +14,24 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-function Button({ children, type, onClick, ...props }: ButtonProps) {
-  return (
-    <StyledButton className={props.className} type={type} onClick={onClick}>
-      {children}
-    </StyledButton>
-  );
-}
+const Button = forwardRef(
+  (
+    { children, type, onClick, ...props }: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement>
+  ) => {
+    return (
+      <StyledButton
+        {...props}
+        ref={ref}
+        className={props.className}
+        type={type}
+        onClick={onClick}
+      >
+        {children}
+      </StyledButton>
+    );
+  }
+);
 
 const StyledButton = styled.button`
   display: flex;
