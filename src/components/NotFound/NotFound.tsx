@@ -8,7 +8,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const prevPath = getPrevPathFromSessionStorage() || "/";
-    const timeOut = window.setTimeout(() => router.push(prevPath), 5000);
+    const timeOut = setTimeout(() => router.push(prevPath), 5000);
 
     return () => clearTimeout(timeOut);
   }, []);
