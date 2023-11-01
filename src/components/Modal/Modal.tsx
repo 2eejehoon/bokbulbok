@@ -1,7 +1,6 @@
-import { ReactNode, MouseEventHandler, memo } from "react";
-
-import Portal from "../Portal/Portal";
 import styled from "styled-components";
+import { ReactNode, MouseEventHandler, memo } from "react";
+import Portal from "../Portal/Portal";
 
 interface ModalProps {
   children: ReactNode;

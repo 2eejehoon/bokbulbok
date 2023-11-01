@@ -1,15 +1,15 @@
+import styled from "styled-components";
 import Link from "next/link";
 import BlurImage from "../BlurImage/BlurImage";
 import RouletteButton from "../RouletteButton/RouletteButton";
-import styled from "styled-components";
-import { convertCategoryToText } from "@/utils/convert";
+import { Category, convertCategoryToText } from "@/utils/convert";
 
 interface PlaceItemProps {
   contentId: string;
   image: string;
   title: string;
   address: string;
-  category: string;
+  category: Category;
 }
 
 export default function PlaceItem({
@@ -26,7 +26,7 @@ export default function PlaceItem({
       </Thumbnail>
       <Link href={`/place/detail/${contentId}`}>
         <Body>
-          <Category>{convertCategoryToText(category)}</Category>
+          <CategoryText>{convertCategoryToText(category)}</CategoryText>
           <Title>{title}</Title>
           <Text>{address}</Text>
         </Body>
@@ -62,7 +62,7 @@ const Body = styled.div`
   padding-left: 5px;
 `;
 
-const Category = styled.span`
+const CategoryText = styled.span`
   padding: 5px;
   font-size: 12px;
   background-color: lightgrey;

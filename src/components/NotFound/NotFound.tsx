@@ -1,7 +1,7 @@
-import { getPrevPathFromSessionStorage } from "@/utils/storage";
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import styled from "styled-components";
+import { getPrevPathFromSessionStorage } from "@/utils/storage";
 
 export default function NotFound() {
   const router = useRouter();
@@ -11,7 +11,7 @@ export default function NotFound() {
     const timeOut = setTimeout(() => router.push(prevPath), 5000);
 
     return () => clearTimeout(timeOut);
-  }, []);
+  }, [router]);
 
   return (
     <Container>

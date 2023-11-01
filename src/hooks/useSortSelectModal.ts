@@ -1,12 +1,12 @@
+import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { useState, MouseEvent } from "react";
 import useModal from "./useModal";
 import { LocationQuery } from "@/types/query";
-import { convertQueryToSort, convertSortToQuery } from "@/utils/convert";
-import { ParsedUrlQuery } from "querystring";
+import { Sort, convertQueryToSort, convertSortToQuery } from "@/utils/convert";
 
 type useSortSelectReturnType = [
-  sortValue: string,
+  sortValue: Sort,
   isModalOpen: boolean,
   handleModalOpen: () => void,
   handleModalClose: () => void,
@@ -21,10 +21,10 @@ export default function useSortSelect(): useSortSelectReturnType {
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
   const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
-    setSortValue(e.currentTarget.innerHTML);
+    setSortValue(e.currentTarget.innerHTML as Sort);
     router.push(
       `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${convertSortToQuery(
-        e.currentTarget.innerHTML
+        e.currentTarget.innerHTML as Sort
       )}`
     );
     handleModalClose();

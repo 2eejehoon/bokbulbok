@@ -7,10 +7,8 @@ export const CATEGORY_TO_TEXT = {
   A05020900: "카페",
   A05021000: "클럽",
 } as const;
-
-export const convertCategoryToText = (
-  category?: keyof typeof CATEGORY_TO_TEXT
-) => {
+export type Category = keyof typeof CATEGORY_TO_TEXT;
+export const convertCategoryToText = (category?: Category) => {
   return category ? CATEGORY_TO_TEXT[category] : "기타";
 };
 
@@ -23,8 +21,8 @@ export const LENGTH_TO_TEXT = {
   5: "five",
   6: "six",
 } as const;
-
-export const convertLengthToText = (length?: keyof typeof LENGTH_TO_TEXT) => {
+export type Length = keyof typeof LENGTH_TO_TEXT;
+export const convertLengthToText = (length?: Length) => {
   return length ? LENGTH_TO_TEXT[length] : "zero";
 };
 
@@ -41,14 +39,14 @@ export const SORT_TO_QUERY = {
   수정순: "B",
   등록순: "D",
 } as const;
-
-export const convertSortToQuery = (sort: keyof typeof SORT_TO_QUERY) => {
+export type Sort = keyof typeof SORT_TO_QUERY;
+export const convertSortToQuery = (sort: Sort) => {
   return SORT_TO_QUERY[sort] ?? "D";
 };
 
 export const QUERY_TO_SORT = { A: "제목순", B: "수정순", D: "등록순" } as const;
-
-export const convertQueryToSort = (query: keyof typeof QUERY_TO_SORT) => {
+export type Query = keyof typeof QUERY_TO_SORT;
+export const convertQueryToSort = (query: Query) => {
   return QUERY_TO_SORT[query] ?? "등록순";
 };
 

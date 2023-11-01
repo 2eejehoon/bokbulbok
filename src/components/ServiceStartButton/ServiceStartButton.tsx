@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
-import useServiceStartButton from "@/hooks/useServiceStartButton";
 import Loading from "../Loading/Loading";
+import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {
   const { loaded, error, errorMessage, handleButtonClick } =

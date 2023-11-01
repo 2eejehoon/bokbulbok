@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import { convertCategoryToText, convertBrToSpace } from "@/utils/convert";
+import {
+  convertCategoryToText,
+  convertBrToSpace,
+  Category,
+} from "@/utils/convert";
 
 interface PlaceInfoProps {
   title?: string;
-  category?: string;
+  category?: Category;
   menu?: string;
   address?: string;
   tel?: string;
@@ -26,7 +30,7 @@ export default function PlaceInfo({
     <Container>
       <TitleContainer>
         <Title>{title}</Title>
-        <Category>{convertCategoryToText(category)}</Category>
+        <CategoryText>{convertCategoryToText(category)}</CategoryText>
       </TitleContainer>
 
       {address && (
@@ -97,7 +101,7 @@ const Title = styled.span`
   font-weight: 700;
 `;
 
-const Category = styled.span`
+const CategoryText = styled.span`
   color: grey;
   font-weight: 400;
   font-size: 14px;

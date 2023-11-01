@@ -1,9 +1,9 @@
+import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { useState, useCallback, ChangeEvent } from "react";
 import useModal from "./useModal";
 import { convertQueryToRange, convertRangeToQuery } from "@/utils/convert";
 import { LocationQuery } from "@/types/query";
-import { ParsedUrlQuery } from "querystring";
 
 type useRangeSliderModalReturnType = [
   rangeValue: number,

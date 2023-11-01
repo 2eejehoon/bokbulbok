@@ -41,7 +41,7 @@ export default function RouletteButton({
       return;
 
     setIsIncluded(true);
-  }, []);
+  }, [contentId, rouletteItems]);
 
   const ButtonRenderer = useMemo(() => {
     if (isIncluded) {

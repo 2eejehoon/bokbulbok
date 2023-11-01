@@ -1,9 +1,10 @@
+import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { InfiniteData } from "@tanstack/react-query";
 import { FetchNextPageOptions } from "@tanstack/react-query";
 import { InfiniteQueryObserverResult } from "@tanstack/react-query";
-import { QueryType } from "@/types/query";
+import { LocationQuery } from "@/types/query";
 import { QUERY_KEY } from "@/contant";
 import { getPlacelistData } from "@/api/place";
 import { PlaceDataType } from "@/types/place";
@@ -30,7 +31,8 @@ interface useGetPlaceInfiniteDataReturnType {
 
 export default function useGetPlaceInfiniteData(): useGetPlaceInfiniteDataReturnType {
   const router = useRouter();
-  const { lng, lat, range, sort } = router.query as QueryType;
+  const { lng, lat, range, sort } =
+    router.query as LocationQuery<ParsedUrlQuery>;
 
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],

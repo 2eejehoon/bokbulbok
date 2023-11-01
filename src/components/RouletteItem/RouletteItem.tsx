@@ -1,13 +1,13 @@
+import styled from "styled-components";
 import classNames from "classnames/bind";
 import Link from "next/link";
 import style from "./RouletteItem.module.scss";
-import styled from "styled-components";
-import { convertLengthToText } from "@/utils/convert";
+import { Length, convertLengthToText } from "@/utils/convert";
 
 interface RouletteItemProps {
   contentId: string;
   title: string;
-  length: number;
+  length: Length;
 }
 
 const cx = classNames.bind(style);

@@ -1,3 +1,5 @@
+import { Sort } from "./utils/convert";
+
 export const QUERY_KEY = {
   PLACELIST: "PLACELIST",
   PLACECOMMON: "PLACECOMMON",
@@ -5,4 +7,4 @@ export const QUERY_KEY = {
   PLACEIMAGE: "PLACEIMAGE",
 } as const;
 
-export const SORT_ARRAY = ["등록순", "수정순", "제목순"];
+export const SORT_ARRAY: Sort[] = ["등록순", "수정순", "제목순"];

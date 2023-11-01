@@ -1,3 +1,5 @@
+import { Category } from "@/utils/convert";
+
 export interface PlaceDataType {
   addr1: string;
   addr2: string;
@@ -5,7 +7,7 @@ export interface PlaceDataType {
   booktour: string;
   cat1: string;
   cat2: string;
-  cat3: string;
+  cat3: Category;
   contentid: string;
   contenttypeid: string;
   cpyrhtDivCd: string;

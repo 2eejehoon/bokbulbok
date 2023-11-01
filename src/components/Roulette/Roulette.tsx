@@ -1,7 +1,8 @@
+import styled from "styled-components";
 import Button from "../Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
 import useRoulette from "@/hooks/useRoulette";
-import styled from "styled-components";
+import { Length } from "@/utils/convert";
 
 export default function Roulette() {
   const { rouletteItems, start, stop, spin, handleSpinClick } = useRoulette();
@@ -17,7 +18,7 @@ export default function Roulette() {
               key={item.contentId}
               contentId={item.contentId}
               title={item.title}
-              length={rouletteItems.length}
+              length={rouletteItems.length as Length}
             />
           );
         })}

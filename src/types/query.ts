@@ -1,8 +1,10 @@
+import { Query } from "@/utils/convert";
+
 export type LocationQuery<T> = T & {
   lng: string;
   lat: string;
   range: string;
-  sort: string;
+  sort: Query;
 };
 
 export const isLocationQuery = <T extends {}>(
