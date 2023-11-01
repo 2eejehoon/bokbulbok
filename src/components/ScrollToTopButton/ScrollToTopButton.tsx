@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import Button from "../Button/Button";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import styled from "styled-components";
@@ -6,22 +5,20 @@ import styled from "styled-components";
 export default function ScrollToTopButton() {
   const [isScrolled, handleButtonClick] = useScrollToTop();
 
-  const ButtonRenderer = useMemo(() => {
-    if (!isScrolled) return null;
-
-    return (
-      <ScrollButton type={"button"} onClick={handleButtonClick}>
-        &uarr;
-      </ScrollButton>
-    );
-  }, [isScrolled]);
-
-  return <>{ButtonRenderer}</>;
+  return (
+    <ScrollButton
+      type={"button"}
+      onClick={handleButtonClick}
+      isScrolled={isScrolled}
+    >
+      &uarr;
+    </ScrollButton>
+  );
 }
 
-const ScrollButton = styled(Button)`
+const ScrollButton = styled(Button)<{ isScrolled: boolean }>`
   position: fixed;
-  bottom: 10px;
+  bottom: ${({ isScrolled }) => (isScrolled ? `10px` : "-40px")};
   width: 40px;
   height: 40px;
   font-size: 16px;
@@ -29,4 +26,6 @@ const ScrollButton = styled(Button)`
   color: white;
   background-color: black;
   border-radius: 50%;
+  transition: bottom 0.3s;
+  transition-timing-function: ease;
 `;
