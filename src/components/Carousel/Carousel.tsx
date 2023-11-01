@@ -7,22 +7,22 @@ interface CarouselProps {
   images?: string[];
 }
 
-export default function Carousel({ images }: CarouselProps) {
-  const [imageIndex, handleButtonClick] = useCarousel();
+export default function Carousel({ images = [] }: CarouselProps) {
+  const { imageIndex, handleButtonClick } = useCarousel();
 
   return (
     <Container>
-      <ImageContainer>
-        {(images ?? ["/noimg.png"]).map((image) => {
+      <Cropper>
+        {(images.length === 0 ? ["/noimg.png"] : images).map((image) => {
           return (
-            <Image key={image} index={imageIndex}>
+            <ImageContainer key={image} index={imageIndex}>
               <BlurImage src={image} alt={"음식점"} />
-            </Image>
+            </ImageContainer>
           );
         })}
-      </ImageContainer>
+      </Cropper>
       <ButtonContainer>
-        {(images ?? []).map((_, index) => {
+        {images.map((_, index) => {
           return (
             <CarouselButton
               key={index}
@@ -42,12 +42,12 @@ const Container = styled.div`
   position: relative;
 `;
 
-const ImageContainer = styled.div`
+const Cropper = styled.div`
   display: flex;
   overflow: hidden;
 `;
 
-const Image = styled.div<{ index: number }>`
+const ImageContainer = styled.div<{ index: number }>`
   flex: none;
   position: relative;
   border: 1px solid lightgrey;
