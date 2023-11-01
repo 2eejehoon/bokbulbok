@@ -3,9 +3,9 @@ import { GetServerSidePropsContext } from "next";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getPlacelistData } from "@/api/place";
 import { QUERY_KEY } from "@/contant";
+import { isLocationQuery } from "@/types/query";
 import ListLayout from "@/layout/ListLayout/ListLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
-import { QueryType } from "@/types/query";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/Seo/Seo";
 import useGetPlaceInfiniteData from "@/hooks/useGetPlaceInfiniteData";
@@ -32,12 +32,14 @@ Place.getLayout = function getLayout(page: ReactElement) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const { lng, lat, range, sort } = context.query as QueryType;
-
   await queryClient.prefetchInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) =>
-      getPlacelistData(pageParam, lng, lat, range, sort),
+    queryFn: ({ pageParam = 1 }) => {
+      if (isLocationQuery(context.query)) {
+        const { lng, lat, range, sort } = context.query;
+        return getPlacelistData(pageParam, lng, lat, range, sort);
+      }
+    },
   });
 
   return {

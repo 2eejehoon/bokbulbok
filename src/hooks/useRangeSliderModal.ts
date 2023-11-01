@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useState, useCallback, ChangeEvent } from "react";
 import useModal from "./useModal";
 import { convertQueryToRange, convertRangeToQuery } from "@/utils/convert";
-import { QueryType } from "@/types/query";
+import { LocationQuery } from "@/types/query";
+import { ParsedUrlQuery } from "querystring";
 
 type useRangeSliderModalReturnType = [
   rangeValue: number,
@@ -15,7 +16,8 @@ type useRangeSliderModalReturnType = [
 
 export default function useRangeSliderModal(): useRangeSliderModalReturnType {
   const router = useRouter();
-  const { lng, lat, range, sort } = router.query as QueryType;
+  const { lng, lat, range, sort } =
+    router.query as LocationQuery<ParsedUrlQuery>;
   const [rangeValue, setRangeValue] = useState(convertQueryToRange(range));
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
