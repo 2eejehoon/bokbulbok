@@ -7,11 +7,11 @@ import { InfiniteQueryObserverResult } from "@tanstack/react-query";
 import { LocationQuery } from "@/types/query";
 import { QUERY_KEY } from "@/contant";
 import { getPlacelistData } from "@/api/place";
-import { PlaceDataType } from "@/types/place";
+import { PlaceData } from "@/types/place";
 
 interface useGetPlaceInfiniteDataReturnType {
   data?: InfiniteData<{
-    placeList: PlaceDataType[];
+    placeList: PlaceData[];
     nextCursor: number;
     prevCursor: number;
   }>;
@@ -19,7 +19,7 @@ interface useGetPlaceInfiniteDataReturnType {
   fetchNextPage: (options?: FetchNextPageOptions | undefined) => Promise<
     InfiniteQueryObserverResult<
       {
-        placeList: PlaceDataType[];
+        placeList: PlaceData[];
         nextCursor: number;
         prevCursor: number;
       },

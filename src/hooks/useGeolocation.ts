@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { LocationType } from "@/types/location";
+import { LocationState } from "@/types/location";
 
-export function useGeolocation(): LocationType {
-  const [location, setLocation] = useState<LocationType>({
+export function useGeolocation(): LocationState {
+  const [location, setLocation] = useState<LocationState>({
     lat: 37.55376,
     lng: 126.969655,
     loaded: false,

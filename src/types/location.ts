@@ -1,4 +1,4 @@
-export interface LocationType {
+export interface LocationState {
   loaded: boolean;
   lng: number;
   lat: number;

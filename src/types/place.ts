@@ -1,6 +1,6 @@
 import { Category } from "@/utils/convert";
 
-export interface PlaceDataType {
+export interface PlaceData {
   addr1: string;
   addr2: string;
   areacode: string;
@@ -24,14 +24,14 @@ export interface PlaceDataType {
   title: string;
 }
 
-export interface PlaceCommonDataType extends PlaceDataType {
+export interface PlaceCommonData extends PlaceData {
   homepage: string;
   overview: string;
   telname: string;
   zipcode: string;
 }
 
-export interface PlaceIntroDataType {
+export interface PlaceIntroData {
   chkcreditcardfood: string;
   contentid: string;
   contenttypeid: string;
@@ -52,7 +52,7 @@ export interface PlaceIntroDataType {
   treatmenu: string;
 }
 
-export interface PlaceImageDataType {
+export interface PlaceImageData {
   contentid: string;
   cpyrhtDivCd: string;
   imgname: string;

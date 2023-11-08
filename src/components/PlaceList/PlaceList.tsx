@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { InfiniteData } from "@tanstack/react-query";
 import PlaceItem from "../PlaceItem/PlaceItem";
-import { PlaceDataType } from "@/types/place";
+import { PlaceData } from "@/types/place";
 
 interface PlaceListProps {
   data?: InfiniteData<{
-    placeList: PlaceDataType[];
+    placeList: PlaceData[];
     nextCursor: number;
     prevCursor: number;
   }>;

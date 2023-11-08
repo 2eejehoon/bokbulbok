@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "../Button/Button";
 import { rouletteItemsState } from "@/recoil/rouletteItems";
 
@@ -15,7 +15,7 @@ export default function RouletteButton({
 }: RouletteButtonProps) {
   const [rouletteItems, setRouletteItems] = useRecoilState(rouletteItemsState);
   const [isIncluded, setIsIncluded] = useState(
-    rouletteItems.findIndex((item) => item.contentId === contentId) < 0
+    rouletteItems.findIndex((item) => item.contentId === contentId) > -1
   );
 
   const handleAddClick = () => {

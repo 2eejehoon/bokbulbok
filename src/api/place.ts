@@ -1,9 +1,9 @@
 import axios from "axios";
 import {
-  PlaceCommonDataType,
-  PlaceDataType,
-  PlaceImageDataType,
-  PlaceIntroDataType,
+  PlaceCommonData,
+  PlaceData,
+  PlaceImageData,
+  PlaceIntroData,
 } from "@/types/place";
 
 const key = process.env.NEXT_PUBLIC_API_KEY;
@@ -19,7 +19,7 @@ export const getPlacelistData = async (
   radius: string,
   arrange: string
 ): Promise<{
-  placeList: PlaceDataType[];
+  placeList: PlaceData[];
   nextCursor: number;
   prevCursor: number;
 }> => {
@@ -38,7 +38,7 @@ export const getPlacelistData = async (
 
 export const getPlaceCommonDataById = async (
   contentId: string
-): Promise<PlaceCommonDataType> => {
+): Promise<PlaceCommonData> => {
   const response = await AxiosInstance.get(
     `detailCommon1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`
   );
@@ -50,7 +50,7 @@ export const getPlaceCommonDataById = async (
 
 export const getPlaceIntroDataById = async (
   contentId: string
-): Promise<PlaceIntroDataType> => {
+): Promise<PlaceIntroData> => {
   const response = await AxiosInstance.get(
     `detailIntro1?ServiceKey=${key}&_type=json&contentTypeId=39&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest`
   );
@@ -62,7 +62,7 @@ export const getPlaceIntroDataById = async (
 
 export const getPlaceImageDataById = async (
   contentId: string
-): Promise<PlaceImageDataType[]> => {
+): Promise<PlaceImageData[]> => {
   const response = await AxiosInstance.get(
     `detailImage1?ServiceKey=${key}&_type=json&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10`
   );

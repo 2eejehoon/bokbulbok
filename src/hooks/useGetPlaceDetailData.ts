@@ -7,15 +7,11 @@ import {
   getPlaceIntroDataById,
   getPlaceImageDataById,
 } from "@/api/place";
-import {
-  PlaceImageDataType,
-  PlaceCommonDataType,
-  PlaceIntroDataType,
-} from "@/types/place";
+import { PlaceImageData, PlaceCommonData, PlaceIntroData } from "@/types/place";
 
 type useGetPlaceDetailDataReturnType = [
-  common: UseQueryResult<PlaceCommonDataType>,
-  intro: UseQueryResult<PlaceIntroDataType>,
+  common: UseQueryResult<PlaceCommonData>,
+  intro: UseQueryResult<PlaceIntroData>,
   image: UseQueryResult<string[]>
 ];
 
@@ -36,7 +32,7 @@ export default function useGetPlaceDetailData(): useGetPlaceDetailDataReturnType
       {
         queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
-        select: (data: PlaceImageDataType[]) =>
+        select: (data: PlaceImageData[]) =>
           data.map((item) => item.originimgurl),
       },
     ],
