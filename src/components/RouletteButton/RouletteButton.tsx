@@ -13,8 +13,10 @@ export default function RouletteButton({
   contentId,
   title,
 }: RouletteButtonProps) {
-  const [isIncluded, setIsIncluded] = useState(false);
   const [rouletteItems, setRouletteItems] = useRecoilState(rouletteItemsState);
+  const [isIncluded, setIsIncluded] = useState(
+    rouletteItems.findIndex((item) => item.contentId === contentId) < 0
+  );
 
   const handleAddClick = () => {
     if (rouletteItems.length === 6) {
@@ -35,13 +37,6 @@ export default function RouletteButton({
     setRouletteItems(filteredRouletteItems);
     setIsIncluded(false);
   };
-
-  useLayoutEffect(() => {
-    if (rouletteItems.findIndex((item) => item.contentId === contentId) < 0)
-      return;
-
-    setIsIncluded(true);
-  }, [contentId, rouletteItems]);
 
   const ButtonRenderer = useMemo(() => {
     if (isIncluded) {

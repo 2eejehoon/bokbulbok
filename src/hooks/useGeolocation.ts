@@ -2,10 +2,16 @@ import { useEffect, useState } from "react";
 import { LocationType } from "@/types/location";
 
 export function useGeolocation(): LocationType {
-  const [location, setLocation] = useState<LocationType>({ loaded: false });
+  const [location, setLocation] = useState<LocationType>({
+    lat: 37.55376,
+    lng: 126.969655,
+    loaded: false,
+  });
 
   useEffect(() => {
-    const onSuccess = (location: { coords: { longitude: number; latitude: number } }) => {
+    const onSuccess = (location: {
+      coords: { longitude: number; latitude: number };
+    }) => {
       setLocation({
         loaded: true,
         lng: location.coords.longitude,
@@ -15,6 +21,7 @@ export function useGeolocation(): LocationType {
 
     const onError = (error: { code: number; message: string }) => {
       setLocation({
+        ...location,
         loaded: true,
         error: true,
         errorMessage: error.message,
@@ -23,7 +30,7 @@ export function useGeolocation(): LocationType {
 
     const options = {
       enableHighAccuracy: true,
-      maximumAge: 60000,
+      maximumAge: 5000,
     };
 
     const { geolocation } = navigator;

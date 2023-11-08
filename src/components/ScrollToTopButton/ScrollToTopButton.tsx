@@ -9,16 +9,16 @@ export default function ScrollToTopButton() {
     <ScrollButton
       type={"button"}
       onClick={handleButtonClick}
-      isScrolled={isScrolled}
+      isscrolled={isScrolled ? "true" : "false"}
     >
       &uarr;
     </ScrollButton>
   );
 }
 
-const ScrollButton = styled(Button)<{ isScrolled: boolean }>`
+const ScrollButton = styled(Button)<{ isscrolled: string }>`
   position: fixed;
-  bottom: ${({ isScrolled }) => (isScrolled ? `10px` : "-40px")};
+  bottom: ${({ isscrolled }) => (isscrolled === "true" ? `10px` : "-40px")};
   width: 40px;
   height: 40px;
   font-size: 16px;

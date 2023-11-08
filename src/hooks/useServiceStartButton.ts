@@ -13,7 +13,9 @@ export default function useServiceStartButton(): useServiceStartButtonReturnType
   const { loaded, lng, lat, error, errorMessage } = useGeolocation();
 
   const handleButtonClick = () => {
-    router.push(`/place/location?lng=${lng}&lat=${lat}&range=${5000}&sort=${"D"}`);
+    router.push(
+      `/place/location?lng=${lng}&lat=${lat}&range=${5000}&sort=${"D"}`
+    );
   };
 
   return { loaded, error, errorMessage, handleButtonClick };

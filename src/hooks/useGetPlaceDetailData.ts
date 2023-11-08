@@ -36,7 +36,8 @@ export default function useGetPlaceDetailData(): useGetPlaceDetailDataReturnType
       {
         queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
-        select: (data: PlaceImageDataType[]) => data.map((item) => item.originimgurl),
+        select: (data: PlaceImageDataType[]) =>
+          data.map((item) => item.originimgurl),
       },
     ],
   });
