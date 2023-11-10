@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@plaiceholder/next": "^3.0.0",
     "@tanstack/react-query": "^4.24.10",
     "@tanstack/react-query-devtools": "^4.24.12",
     "@types/navermaps": "^3.6.4",
@@ -22,10 +23,12 @@
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "next-seo": "^6.0.0",
+    "plaiceholder": "^3.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "recoil": "^0.7.6",
     "sass": "^1.58.3",
+    "sharp": "^0.32.6",
     "styled-components": "^6.1.0",
     "typescript": "4.9.5"
   },
