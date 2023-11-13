@@ -1,22 +1,20 @@
 import { useRouter } from "next/router";
 import { useGeolocation } from "./useGeolocation";
+import { isSuccess } from "@/utils/location";
 
-interface useServiceStartButtonReturnType {
-  loaded: boolean;
-  error?: boolean;
-  errorMessage?: string;
-  handleButtonClick: () => void;
-}
-
-export default function useServiceStartButton(): useServiceStartButtonReturnType {
+export default function useServiceStartButton() {
   const router = useRouter();
-  const { loaded, lng, lat, error, errorMessage } = useGeolocation();
+  const locationData = useGeolocation();
 
   const handleButtonClick = () => {
-    router.push(
-      `/place/location?lng=${lng}&lat=${lat}&range=${5000}&sort=${"D"}`
-    );
+    if (isSuccess(locationData)) {
+      router.push(
+        `/place/location?lng=${locationData.coords.longitude}&lat=${
+          locationData.coords.latitude
+        }&range=${5000}&sort=${"D"}`
+      );
+    }
   };
 
-  return { loaded, error, errorMessage, handleButtonClick };
+  return { locationData, handleButtonClick };
 }

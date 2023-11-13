@@ -4,13 +4,17 @@ import Loading from "../Loading/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {
-  const { loaded, error, errorMessage, handleButtonClick } =
-    useServiceStartButton();
+  const { locationData, handleButtonClick } = useServiceStartButton();
 
-  if (error) <ErrorMessage>{errorMessage}</ErrorMessage>;
+  if (locationData.status === "error")
+    <ErrorMessage>{locationData.error.message}</ErrorMessage>;
   return (
-    <StartButton type={"button"} disabled={!loaded} onClick={handleButtonClick}>
-      {loaded ? "시작하기" : <Loading height={20} />}
+    <StartButton
+      type={"button"}
+      disabled={locationData.status !== "success"}
+      onClick={handleButtonClick}
+    >
+      {locationData.status === "success" ? "시작하기" : <Loading height={20} />}
     </StartButton>
   );
 }

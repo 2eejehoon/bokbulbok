@@ -1,10 +1,9 @@
-import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { InfiniteData } from "@tanstack/react-query";
 import { FetchNextPageOptions } from "@tanstack/react-query";
 import { InfiniteQueryObserverResult } from "@tanstack/react-query";
-import { LocationQuery } from "@/types/query";
+import { isLocationQuery } from "@/types/query";
 import { QUERY_KEY } from "@/contant";
 import { getPlacelistData } from "@/api/place";
 import { PlaceData } from "@/types/place";
@@ -16,7 +15,7 @@ interface useGetPlaceInfiniteDataReturnType {
     prevCursor: number;
   }>;
   hasNextPage?: boolean;
-  fetchNextPage: (options?: FetchNextPageOptions | undefined) => Promise<
+  fetchNextPage: (options?: FetchNextPageOptions) => Promise<
     InfiniteQueryObserverResult<
       {
         placeList: PlaceData[];
@@ -31,13 +30,16 @@ interface useGetPlaceInfiniteDataReturnType {
 
 export default function useGetPlaceInfiniteData(): useGetPlaceInfiniteDataReturnType {
   const router = useRouter();
-  const { lng, lat, range, sort } =
-    router.query as LocationQuery<ParsedUrlQuery>;
 
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
     queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) =>
-      getPlacelistData(pageParam, lng, lat, range, sort),
+    queryFn: ({ pageParam = 1 }) => {
+      if (isLocationQuery(router.query)) {
+        const { lng, lat, range, sort } = router.query;
+        return getPlacelistData(pageParam, lng, lat, range, sort);
+      }
+      return getPlacelistData(1, "126.969655", "37.55376", "5000", "D");
+    },
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 

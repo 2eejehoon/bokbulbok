@@ -1,43 +1,14 @@
 import { useEffect, useState } from "react";
-import { LocationState } from "@/types/location";
+import { LocationData, getGeolocationData } from "@/utils/location";
 
-export function useGeolocation(): LocationState {
-  const [location, setLocation] = useState<LocationState>({
-    lat: 37.55376,
-    lng: 126.969655,
-    loaded: false,
-  });
+export function useGeolocation() {
+  const [location, setLocation] = useState<LocationData>({ status: "loading" });
 
   useEffect(() => {
-    const onSuccess = (location: {
-      coords: { longitude: number; latitude: number };
-    }) => {
-      setLocation({
-        loaded: true,
-        lng: location.coords.longitude,
-        lat: location.coords.latitude,
-      });
-    };
-
-    const onError = (error: { code: number; message: string }) => {
-      setLocation({
-        ...location,
-        loaded: true,
-        error: true,
-        errorMessage: error.message,
-      });
-    };
-
-    const options = {
-      enableHighAccuracy: true,
-      maximumAge: 5000,
-    };
-
-    const { geolocation } = navigator;
-
-    if (!geolocation) return;
-
-    geolocation.getCurrentPosition(onSuccess, onError, options);
+    (async () => {
+      const location = await getGeolocationData();
+      setLocation(location);
+    })();
   }, []);
 
   return location;
