@@ -20,13 +20,7 @@ const Button = forwardRef(
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
     return (
-      <StyledButton
-        {...props}
-        ref={ref}
-        className={props.className}
-        type={type}
-        onClick={onClick}
-      >
+      <StyledButton {...props} ref={ref} type={type} onClick={onClick}>
         {children}
       </StyledButton>
     );

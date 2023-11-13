@@ -1,9 +1,13 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-interface BlurImageProps {
+type BlurImageProps = {
   src: string;
   alt: string;
-}
+};
+
+const DEFAULT_BASE64 =
+  "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==";
 
 export default function BlurImage({ src, alt }: BlurImageProps) {
   return (
@@ -13,9 +17,7 @@ export default function BlurImage({ src, alt }: BlurImageProps) {
       fill
       sizes={"100%"}
       placeholder={"blur"}
-      blurDataURL={
-        "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-      }
+      blurDataURL={DEFAULT_BASE64}
     />
   );
 }
