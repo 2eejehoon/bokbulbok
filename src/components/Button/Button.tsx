@@ -27,6 +27,8 @@ const Button = forwardRef(
   }
 );
 
+Button.displayName = "Button";
+
 const StyledButton = styled.button`
   display: flex;
   justify-content: center;
