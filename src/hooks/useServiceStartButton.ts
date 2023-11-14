@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { useGeolocation } from "./useGeolocation";
-import { isSuccess } from "@/utils/location";
+import { isSuccessLocationData } from "@/utils/location";
 
 export default function useServiceStartButton() {
   const router = useRouter();
   const locationData = useGeolocation();
 
   const handleButtonClick = () => {
-    if (isSuccess(locationData)) {
+    if (isSuccessLocationData(locationData)) {
       router.push(
         `/place/location?lng=${locationData.coords.longitude}&lat=${
           locationData.coords.latitude
