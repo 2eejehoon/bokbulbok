@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import Link from "next/link";
 import {
   convertCategoryToText,
   convertBrToSpace,
   Category,
 } from "@/utils/convert";
-import Link from "next/link";
 
 interface PlaceInfoProps {
   title?: string;
