@@ -4,6 +4,7 @@ import {
   convertBrToSpace,
   Category,
 } from "@/utils/convert";
+import Link from "next/link";
 
 interface PlaceInfoProps {
   title?: string;
@@ -48,10 +49,12 @@ export default function PlaceInfo({
       )}
 
       {tel && (
-        <TextContainer>
-          <Icon>&#128222;</Icon>
-          <Text>{tel}</Text>
-        </TextContainer>
+        <Link href={`tel:${tel}`}>
+          <TextContainer>
+            <Icon>&#128222;</Icon>
+            <Address>{tel}</Address>
+          </TextContainer>
+        </Link>
       )}
 
       {businessday && (
@@ -108,6 +111,7 @@ const CategoryText = styled.span`
 `;
 
 const TextContainer = styled.p`
+  display: flex;
   width: 100%;
   margin: 0;
   margin-bottom: 5px;
@@ -119,6 +123,12 @@ const Icon = styled.span`
 `;
 
 const Text = styled.text`
+  color: black;
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+const Address = styled.address`
   color: black;
   font-size: 12px;
   font-weight: 400;
