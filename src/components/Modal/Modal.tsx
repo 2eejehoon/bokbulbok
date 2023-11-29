@@ -4,6 +4,7 @@ import Portal from "../Portal/Portal";
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
+  rect?: DOMRect;
   width?: number;
   height?: number;
   modalOpen: boolean;
@@ -11,6 +12,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 }
 function Modal({
   children,
+  rect,
   width,
   height,
   modalOpen,
@@ -21,7 +23,16 @@ function Modal({
     <>
       {modalOpen && (
         <Portal selector="portal">
-          <Container {...props} width={width} height={height}>
+          <Container
+            {...props}
+            style={
+              rect
+                ? { left: rect.left, top: rect.bottom }
+                : { left: 0, right: 0, top: 0, bottom: 0, margin: "auto" }
+            }
+            width={width}
+            height={height}
+          >
             {children}
           </Container>
           <Background onClick={setModalClose} />
@@ -33,11 +44,6 @@ function Modal({
 
 const Container = styled.div<{ width?: number; height?: number }>`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -58,8 +64,6 @@ const Background = styled.div`
   margin: auto;
   width: 100%;
   height: 100vh;
-  background-color: black;
-  opacity: 60%;
   z-index: 1;
 `;
 

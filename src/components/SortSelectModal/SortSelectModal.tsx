@@ -6,20 +6,23 @@ import { SORT_ARRAY } from "@/contant";
 import useSortSelectModal from "@/hooks/useSortSelectModal";
 
 export default function SortSelectModal() {
-  const [
-    sort,
+  const {
+    buttonRef,
+    buttonRect,
+    sortValue,
     isModalOpen,
     handleModalOpen,
     handleModalClose,
     handleSortClick,
-  ] = useSortSelectModal();
+  } = useSortSelectModal();
 
   return (
     <>
-      <ModalButton type={"button"} onClick={handleModalOpen}>
-        {sort}
+      <ModalButton ref={buttonRef} type={"button"} onClick={handleModalOpen}>
+        {sortValue}
       </ModalButton>
       <Modal
+        rect={buttonRect}
         width={160}
         height={150}
         modalOpen={isModalOpen}

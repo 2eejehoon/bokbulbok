@@ -1,22 +1,26 @@
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, useRef, RefObject, useEffect } from "react";
 import useModal from "./useModal";
 import { LocationQuery } from "@/types/query";
 import { Sort, convertQueryToSort, convertSortToQuery } from "@/utils/convert";
 
-type useSortSelectReturnType = [
-  sortValue: Sort,
-  isModalOpen: boolean,
-  handleModalOpen: () => void,
-  handleModalClose: () => void,
-  handleSortClick: (e: MouseEvent<HTMLLIElement>) => void
-];
+type useSortSelectReturnType = {
+  buttonRef: RefObject<HTMLButtonElement>;
+  buttonRect?: DOMRect;
+  sortValue: Sort;
+  isModalOpen: boolean;
+  handleModalOpen: () => void;
+  handleModalClose: () => void;
+  handleSortClick: (e: MouseEvent<HTMLLIElement>) => void;
+};
 
 export default function useSortSelect(): useSortSelectReturnType {
   const router = useRouter();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const { lng, lat, range, sort } =
     router.query as LocationQuery<ParsedUrlQuery>;
+  const [buttonRect, setButtonRect] = useState<DOMRect>();
   const [sortValue, setSortValue] = useState(convertQueryToSort(sort));
   const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
@@ -30,11 +34,17 @@ export default function useSortSelect(): useSortSelectReturnType {
     handleModalClose();
   };
 
-  return [
+  useEffect(() => {
+    setButtonRect(buttonRef.current?.getBoundingClientRect());
+  }, []);
+
+  return {
+    buttonRef,
+    buttonRect,
     sortValue,
     isModalOpen,
     handleModalOpen,
     handleModalClose,
     handleSortClick,
-  ];
+  };
 }
