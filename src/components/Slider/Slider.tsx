@@ -42,6 +42,8 @@ const Slider = forwardRef(
   }
 );
 
+Slider.displayName = "Slider";
+
 const Containter = styled.div`
   display: flex;
   flex-direction: column;
