@@ -1,32 +1,46 @@
-import { ChangeEvent, memo } from "react";
+import {
+  ChangeEvent,
+  ForwardedRef,
+  HTMLAttributes,
+  forwardRef,
+  memo,
+} from "react";
 import styled from "styled-components";
 
-interface SliderProps {
-  value: number;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+interface SliderProps extends HTMLAttributes<HTMLInputElement> {
+  defaultValue?: number;
+  value?: number;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   id: string;
   text: string;
-  min: string;
-  max: string;
-  step: string;
+  min: number;
+  max: number;
+  step: number;
 }
 
-function Slider({ value, onChange, id, text, min, max, step }: SliderProps) {
-  return (
-    <Containter>
-      <Label htmlFor={id}>{text}</Label>
-      <Input
-        id={id}
-        type={"range"}
-        value={value}
-        onChange={onChange}
-        min={min}
-        max={max}
-        step={step}
-      />
-    </Containter>
-  );
-}
+const Slider = forwardRef(
+  (
+    { defaultValue, value, onChange, id, text, min, max, step }: SliderProps,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
+    return (
+      <Containter>
+        <Label htmlFor={id}>{text}</Label>
+        <Input
+          defaultValue={defaultValue}
+          ref={ref}
+          id={id}
+          type={"range"}
+          value={value}
+          onChange={onChange}
+          min={min}
+          max={max}
+          step={step}
+        />
+      </Containter>
+    );
+  }
+);
 
 const Containter = styled.div`
   display: flex;

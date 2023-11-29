@@ -8,6 +8,7 @@ type useSortSelectReturnType = {
   sortValue: Sort;
   isSelectOpen: boolean;
   handleButtonClick: () => void;
+  handleBackgroundClick: () => void;
   handleSortClick: (e: MouseEvent<HTMLLIElement>) => void;
 };
 
@@ -23,6 +24,8 @@ export default function useSortSelect(): useSortSelectReturnType {
     []
   );
 
+  const handleBackgroundClick = useCallback(() => setIsSelectOpen(false), []);
+
   const handleSortClick = (e: MouseEvent<HTMLLIElement>) => {
     setSortValue(e.currentTarget.innerHTML as Sort);
     router.push(
@@ -36,6 +39,7 @@ export default function useSortSelect(): useSortSelectReturnType {
   return {
     sortValue,
     isSelectOpen,
+    handleBackgroundClick,
     handleButtonClick,
     handleSortClick,
   };

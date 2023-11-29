@@ -1,16 +1,15 @@
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
-import { useState, useCallback, ChangeEvent } from "react";
-import useModal from "./useModal";
+import { useRef, useState, useCallback, RefObject, useEffect } from "react";
 import { convertQueryToRange, convertRangeToQuery } from "@/utils/convert";
 import { LocationQuery } from "@/types/query";
 
 type useRangeSliderModalReturnType = [
   rangeValue: number,
-  isModalOpen: boolean,
-  handleModalOpen: () => void,
-  handleModalClose: () => void,
-  handleRangeChange: (e: ChangeEvent<HTMLInputElement>) => void,
+  sliderInputRef: RefObject<HTMLInputElement>,
+  isSliderOpen: boolean,
+  handleButtonClick: () => void,
+  handleSliderClose: () => void,
   handleConfirm: () => void
 ];
 
@@ -18,28 +17,33 @@ export default function useRangeSliderModal(): useRangeSliderModalReturnType {
   const router = useRouter();
   const { lng, lat, range, sort } =
     router.query as LocationQuery<ParsedUrlQuery>;
+  const sliderInputRef = useRef<HTMLInputElement>(null);
+  const [isSliderOpen, setIsSliderOpen] = useState(false);
   const [rangeValue, setRangeValue] = useState(convertQueryToRange(range));
-  const [isModalOpen, handleModalOpen, handleModalClose] = useModal();
 
-  const handleRangeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setRangeValue(Number(e.target.value));
-  }, []);
+  const handleButtonClick = useCallback(
+    () => setIsSliderOpen((prev) => !prev),
+    []
+  );
+
+  const handleSliderClose = useCallback(() => setIsSliderOpen(false), []);
 
   const handleConfirm = () => {
+    setRangeValue(Number(sliderInputRef.current?.value));
     router.push(
       `/place/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
-        rangeValue
+        Number(sliderInputRef.current?.value)
       )}&sort=${sort}`
     );
-    handleModalClose();
+    setIsSliderOpen(false);
   };
 
   return [
     rangeValue,
-    isModalOpen,
-    handleModalOpen,
-    handleModalClose,
-    handleRangeChange,
+    sliderInputRef,
+    isSliderOpen,
+    handleButtonClick,
+    handleSliderClose,
     handleConfirm,
   ];
 }
