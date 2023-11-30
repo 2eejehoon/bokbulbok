@@ -1,38 +1,55 @@
 import {
-  ChangeEvent,
   ForwardedRef,
   HTMLAttributes,
   forwardRef,
   memo,
+  useEffect,
+  useId,
 } from "react";
 import styled from "styled-components";
 
 interface SliderProps extends HTMLAttributes<HTMLInputElement> {
-  defaultValue?: number;
-  value?: number;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  id: string;
-  text: string;
-  min: number;
-  max: number;
-  step: number;
+  min: string;
+  max: string;
+  step: string;
 }
 
 const Slider = forwardRef(
   (
-    { defaultValue, value, onChange, id, text, min, max, step }: SliderProps,
+    { min, max, step, ...props }: SliderProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
+    const labelId = useId();
+    const inputId = useId();
+
+    useEffect(() => {
+      const label = document.getElementById(labelId);
+      const input = document.getElementById(inputId);
+      const onInput = (e: Event) => {
+        if (!label) {
+          return;
+        }
+        // @ts-ignore
+        label.innerHTML = `${e.target?.value as string}km`;
+      };
+      input?.addEventListener("input", onInput);
+
+      return () => {
+        input?.removeEventListener("input", onInput);
+      };
+    }, []);
+
     return (
       <Containter>
-        <Label htmlFor={id}>{text}</Label>
+        <Label
+          id={labelId}
+          htmlFor={inputId}
+        >{`${props.defaultValue}km`}</Label>
         <Input
-          defaultValue={defaultValue}
+          {...props}
+          id={inputId}
           ref={ref}
-          id={id}
           type={"range"}
-          value={value}
-          onChange={onChange}
           min={min}
           max={max}
           step={step}
@@ -49,6 +66,7 @@ const Containter = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5px;
   width: 100%;
   height: 100%;
 `;
@@ -61,17 +79,14 @@ const Label = styled.label`
   font-size: 14px;
   font-weight: 600;
   width: 100%;
-  margin: 10px;
-  padding-left: 20px;
 `;
 
 const Input = styled.input`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 100%;
   height: 10px;
-  margin: 10px;
   cursor: pointer;
 `;
 

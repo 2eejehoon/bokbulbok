@@ -25,11 +25,9 @@ export default function RangeSliderModal() {
               <Slider
                 defaultValue={range}
                 ref={sliderInputRef}
-                id={"거리"}
-                text={`${range} km`}
-                min={5}
-                max={50}
-                step={5}
+                min={"5"}
+                max={"50"}
+                step={"5"}
               />
             </SliderContainer>
             <ButtonContainer>
