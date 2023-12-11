@@ -24,11 +24,13 @@ export const getGeolocationData = (): Promise<LocationData> => {
       });
     }
 
-    const onSuccess = (location: { coords: GeolocationCoordinates }) =>
+    const onSuccess = (location: { coords: GeolocationCoordinates }) => {
       resolve({ status: "success", coords: location.coords });
+    };
 
-    const onError = (error: { code: number; message: string }) =>
+    const onError = (error: { code: number; message: string }) => {
       resolve({ status: "error", error });
+    };
 
     const options = {
       enableHighAccuracy: true,
@@ -42,20 +44,17 @@ export const getGeolocationData = (): Promise<LocationData> => {
 export const isSuccessLocationData = (
   location: LocationData
 ): location is SuccessLocationData => {
-  if (location.status === "success") return true;
-  else return false;
+  return location.status === "success";
 };
 
 export const isLoadingLocationData = (
   location: LocationData
 ): location is LoadingLocationData => {
-  if (location.status === "loading") return true;
-  else return false;
+  return location.status === "loading";
 };
 
 export const isErrorLocationData = (
   location: LocationData
 ): location is ErrorLocationData => {
-  if (location.status === "error") return true;
-  else return false;
+  return location.status === "error";
 };

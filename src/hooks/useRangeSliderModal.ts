@@ -1,6 +1,6 @@
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
-import { useRef, useState, useCallback, RefObject, useEffect } from "react";
+import { useRef, useState, useCallback, RefObject } from "react";
 import { convertQueryToRange, convertRangeToQuery } from "@/utils/convert";
 import { LocationQuery } from "@/types/query";
 

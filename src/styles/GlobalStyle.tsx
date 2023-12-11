@@ -27,9 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: black;
     text-decoration: none;
-    &:hover {
-      color: grey;
-    }
+
   }
 
   ul {
@@ -38,6 +36,15 @@ export const GlobalStyle = createGlobalStyle`
 
   li {
     list-style: none;
+  }
+
+  button {
+    border: none;
+    background: none;
+  }
+
+  .swiper-pagination-bullet {
+    opacity: 1;
   }
 `;
 

@@ -6,8 +6,10 @@ import useServiceStartButton from "@/hooks/useServiceStartButton";
 export default function ServiceStartButton() {
   const { locationData, handleButtonClick } = useServiceStartButton();
 
-  if (locationData.status === "error")
+  if (locationData.status === "error") {
     <ErrorMessage>{locationData.error.message}</ErrorMessage>;
+  }
+
   return (
     <StartButton
       type={"button"}

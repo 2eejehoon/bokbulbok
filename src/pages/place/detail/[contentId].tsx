@@ -11,9 +11,9 @@ import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
-import Carousel from "@/components/Carousel/Carousel";
 import Seo from "@/components/Seo/Seo";
 import useGetPlaceDetailData from "@/hooks/useGetPlaceDetailData";
+import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 
 export default function PlaceDetail() {
   const [common, intro, image] = useGetPlaceDetailData();
@@ -25,7 +25,7 @@ export default function PlaceDetail() {
         description={common.data?.overview}
         image={common.data?.firstimage}
       />
-      <Carousel images={image.data} />
+      <ImageCarousel images={image.data} />
       <PlaceInfo
         title={common.data?.title}
         category={common.data?.cat3}
@@ -45,11 +45,7 @@ export default function PlaceDetail() {
 }
 
 PlaceDetail.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <BaseLayout>
-      <DetailLayout>{page}</DetailLayout>
-    </BaseLayout>
-  );
+  return <DetailLayout>{page}</DetailLayout>;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

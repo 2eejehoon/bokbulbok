@@ -50,10 +50,12 @@ export default function PlaceInfo({
 
       {tel && (
         <Link href={`tel:${tel}`}>
-          <TextContainer>
-            <Icon>&#128222;</Icon>
-            <Address>{tel}</Address>
-          </TextContainer>
+          <Address>
+            <TextContainer>
+              <Icon>&#128222;</Icon>
+              <Text>{tel}</Text>
+            </TextContainer>
+          </Address>
         </Link>
       )}
 
@@ -122,14 +124,10 @@ const Icon = styled.span`
   margin-right: 5px;
 `;
 
-const Text = styled.text`
+const Text = styled.span`
   color: black;
   font-size: 12px;
   font-weight: 400;
 `;
 
-const Address = styled.address`
-  color: black;
-  font-size: 12px;
-  font-weight: 400;
-`;
+const Address = styled.address``;
