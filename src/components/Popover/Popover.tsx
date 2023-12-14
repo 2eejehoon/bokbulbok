@@ -5,9 +5,14 @@ const _Trigger = styled(_Popover.Trigger)``;
 
 const _Close = styled(_Popover.Close)``;
 
-const _Content = styled(_Popover.Content)<{ width?: number; height?: number }>`
-  width: ${({ width }) => (width ? `${width}px` : "320px")};
-  height: ${({ height }) => (height ? `${height}px` : "250px")};
+const _Content = styled(_Popover.Content)<{
+  width: string | number;
+  height: string | number;
+}>`
+  width: ${({ width }) =>
+    typeof width === "string" ? `${width}` : `${width}px`};
+  height: ${({ height }) =>
+    typeof height === "string" ? `${height}` : `${height}px`};
   padding: 10px;
   background-color: white;
   border: 1px solid lightgrey;
