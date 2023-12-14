@@ -13,7 +13,6 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { setPathToSessionStorage } from "@/utils/storage";
 import { GlobalStyle } from "@/styles/GlobalStyle";
-import { PopoverProvider } from "@/components/Popover/Popover";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 

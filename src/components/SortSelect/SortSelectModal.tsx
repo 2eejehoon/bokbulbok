@@ -14,8 +14,12 @@ export default function SortSelect() {
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content width={150}>
-          {SORT_ARRAY.map((option) => {
-            return <Option onClick={onSortClick}>{option}</Option>;
+          {SORT_ARRAY.map((option, index) => {
+            return (
+              <Option key={index} onClick={onSortClick}>
+                {option}
+              </Option>
+            );
           })}
         </Popover.Content>
       </Popover.Portal>
