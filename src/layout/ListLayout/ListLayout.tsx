@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import RangeSliderModal from "@/components/RangeSliderModal/RangeSliderModal";
 import SortSelectModal from "@/components/SortSelect/SortSelectModal";
 import RouletteModal from "@/components/RouletteModal/RouletteModal";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
+import RangeSliderPopover from "@/components/RangeSliderPopover/RangeSliderPopover";
 
 interface ListLayoutProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ export default function ListLayout({ children }: ListLayoutProps) {
     <>
       <Header>
         <Left>
-          <RangeSliderModal />
+          <RangeSliderPopover />
           <SortSelectModal />
         </Left>
         <Right>

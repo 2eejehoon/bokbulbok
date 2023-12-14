@@ -13,10 +13,6 @@ export default function RangeSliderModal() {
     handleConfirm,
   ] = useRangeSliderModal();
 
-  // 모달
-  // 슬라이더
-  // 라우터
-
   return (
     <Wrapper>
       <RangeButton type={"button"} onClick={handleButtonClick}>

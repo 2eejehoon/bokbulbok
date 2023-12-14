@@ -1,14 +1,16 @@
 import {
+  ChangeEvent,
   ForwardedRef,
   HTMLAttributes,
   forwardRef,
   memo,
-  useEffect,
   useId,
 } from "react";
 import styled from "styled-components";
 
 interface SliderProps extends HTMLAttributes<HTMLInputElement> {
+  value?: number;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   min: string;
   max: string;
   step: string;
@@ -16,35 +18,16 @@ interface SliderProps extends HTMLAttributes<HTMLInputElement> {
 
 const Slider = forwardRef(
   (
-    { min, max, step, ...props }: SliderProps,
+    { value, onChange, min, max, step, ...props }: SliderProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     const labelId = useId();
     const inputId = useId();
-
-    useEffect(() => {
-      const label = document.getElementById(labelId);
-      const input = document.getElementById(inputId);
-      const onInput = (e: Event) => {
-        if (!label) {
-          return;
-        }
-        // @ts-ignore
-        label.innerHTML = `${e.target?.value as string}km`;
-      };
-      input?.addEventListener("input", onInput);
-
-      return () => {
-        input?.removeEventListener("input", onInput);
-      };
-    }, []);
-
     return (
       <Containter>
-        <Label
-          id={labelId}
-          htmlFor={inputId}
-        >{`${props.defaultValue}km`}</Label>
+        <Label id={labelId} htmlFor={inputId}>
+          {value && `${value}km`}
+        </Label>
         <Input
           {...props}
           id={inputId}
@@ -53,6 +36,8 @@ const Slider = forwardRef(
           min={min}
           max={max}
           step={step}
+          value={value}
+          onChange={onChange}
         />
       </Containter>
     );
@@ -73,8 +58,9 @@ const Containter = styled.div`
 
 const Label = styled.label`
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   color: black;
   font-size: 14px;
   font-weight: 600;

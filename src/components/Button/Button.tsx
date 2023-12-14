@@ -1,6 +1,5 @@
 import {
   ReactNode,
-  MouseEventHandler,
   memo,
   ButtonHTMLAttributes,
   forwardRef,
@@ -10,17 +9,15 @@ import styled from "styled-components";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  type: "button" | "submit" | "reset" | undefined;
-  onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = forwardRef(
   (
-    { children, type, onClick, ...props }: ButtonProps,
+    { children, ...props }: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ) => {
     return (
-      <StyledButton {...props} ref={ref} type={type} onClick={onClick}>
+      <StyledButton {...props} ref={ref}>
         {children}
       </StyledButton>
     );
