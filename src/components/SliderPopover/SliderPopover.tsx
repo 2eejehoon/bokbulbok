@@ -33,7 +33,7 @@ export default function SliderPopover({
         <Trigger>{`${buttonValue}${unit}`}</Trigger>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content width={350} height={150}>
+        <Popover.Content width={350} height={150} onInteractOutside={onCancle}>
           <SliderWrapper>
             <Slider
               value={inputValue}
