@@ -1,26 +1,23 @@
-import { MouseEvent, memo } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import styled from "styled-components";
 
-interface SelectProps {
-  options: string[];
-  onClick: (e: MouseEvent<HTMLLIElement>) => void;
+type SelectProps = {
+  children: ReactNode;
+} & HTMLAttributes<HTMLUListElement>;
+
+type OptionProps = {
+  children: ReactNode;
+} & HTMLAttributes<HTMLLIElement>;
+
+function _Select({ children, ...props }: SelectProps) {
+  return <Wrapper {...props}>{children}</Wrapper>;
 }
 
-function Select({ options, onClick }: SelectProps) {
-  return (
-    <Container>
-      {options.map((option) => {
-        return (
-          <Option key={option} onClick={onClick}>
-            {option}
-          </Option>
-        );
-      })}
-    </Container>
-  );
-}
+const Option = ({ children, ...props }: OptionProps) => {
+  return <_Option {...props}>{children}</_Option>;
+};
 
-const Container = styled.ul`
+const Wrapper = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,9 +25,10 @@ const Container = styled.ul`
   width: 100%;
   height: 100%;
   padding: 0;
+  margin: 0;
 `;
 
-const Option = styled.li`
+const _Option = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,4 +42,7 @@ const Option = styled.li`
   }
 `;
 
-export default memo(Select);
+export const Select = {
+  Root: _Select,
+  Option: Option,
+};
