@@ -6,7 +6,6 @@ import {
   SwiperSlide as _SwiperSlide,
   useSwiper,
 } from "swiper/react";
-import { SwiperModule } from "swiper/types";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -17,7 +16,7 @@ type SwiperProps = {
   children: ReactNode;
   navigation?: boolean;
   pagination?: boolean;
-  modules?: SwiperModule[];
+  modules?: typeof Pagination | (typeof Navigation)[];
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
@@ -41,7 +40,7 @@ const SwiperWrapper = ({
         pagination={
           pagination && {
             clickable: true,
-            renderBullet: function (index, className) {
+            renderBullet: function (index: number, className: string) {
               return ReactDOMServer.renderToStaticMarkup(
                 <PaginationButton className={className}>
                   {index}
