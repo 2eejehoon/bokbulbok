@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
-import { SORT_ARRAY } from "@/contant";
-import useSortSelect from "@/hooks/useSortSelect";
 import Popover from "../Popover/Popover";
 import { Select } from "../Select/Select";
+import { SORT_ARRAY } from "@/contant";
+import useSortSelect from "@/hooks/useSortSelect";
 
 export default function SortSelect() {
   const { sortValue, onSortClick } = useSortSelect();
