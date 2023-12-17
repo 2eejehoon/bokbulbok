@@ -17,9 +17,9 @@ const AreaSelect = () => {
       <Popover.Portal>
         <Popover.Content width={150}>
           <Select.Root>
-            {AREA_ARRAY.map((area) => {
+            {AREA_ARRAY.map((area, index) => {
               return (
-                <Select.Option key={useId()} onClick={onClick}>
+                <Select.Option key={index} onClick={onClick}>
                   {area}
                 </Select.Option>
               );
