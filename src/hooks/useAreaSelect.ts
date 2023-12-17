@@ -1,3 +1,4 @@
+import { useState, MouseEvent } from "react";
 import {
   Area,
   AreaQuery,
@@ -6,8 +7,6 @@ import {
 } from "@/utils/area";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { useState } from "react";
-import { MouseEvent } from "react";
 
 const useAreaSelect = () => {
   const router = useRouter();

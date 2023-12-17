@@ -1,5 +1,5 @@
-import { PlaceCommonData, PlaceImageData, PlaceIntroData } from "@/types/place";
 import HttpClient from "./axios";
+import { PlaceCommonData, PlaceImageData, PlaceIntroData } from "@/types/place";
 import { Response } from "@/types/response";
 
 const SERVICE_KEY = process.env.NEXT_PUBLIC_API_KEY;

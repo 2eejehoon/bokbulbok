@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
+import { dehydrate } from "@tanstack/react-query";
 import { QueryClient } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/contant";
 import { getAreaBasedPlaceListData } from "@/api/area";
-import { dehydrate } from "@tanstack/react-query";
 import { isAreaQuery } from "@/utils/area";
 import useGetAreaBasedPlaceInfiniteData from "@/react-query/query/useGetAreaBasedPlaceInfiniteData";
 import Seo from "@/components/Seo/Seo";

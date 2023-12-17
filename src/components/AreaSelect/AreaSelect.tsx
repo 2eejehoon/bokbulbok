@@ -1,9 +1,10 @@
-import Popover from "../Popover/Popover";
 import styled from "styled-components";
+import Popover from "../Popover/Popover";
 import Button from "../Button/Button";
 import { Select } from "../Select/Select";
 import { AREA_ARRAY } from "@/utils/area";
 import useAreaSelect from "@/hooks/useAreaSelect";
+import { useId } from "react";
 
 const AreaSelect = () => {
   const { area, onClick } = useAreaSelect();
@@ -17,7 +18,11 @@ const AreaSelect = () => {
         <Popover.Content width={150}>
           <Select.Root>
             {AREA_ARRAY.map((area) => {
-              return <Select.Option onClick={onClick}>{area}</Select.Option>;
+              return (
+                <Select.Option key={useId()} onClick={onClick}>
+                  {area}
+                </Select.Option>
+              );
             })}
           </Select.Root>
         </Popover.Content>
