@@ -1,19 +1,39 @@
 import { ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getPlacelistData } from "@/api/place";
+import { getLocationBasedPlacelistData } from "@/api/location";
 import { QUERY_KEY } from "@/contant";
-import { isLocationQuery } from "@/types/query";
+import { isLocationQuery } from "@/utils/location";
 import ListLayout from "@/layout/ListLayout/ListLayout";
 import PlaceList from "@/components/PlaceList/PlaceList";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/Seo/Seo";
-import useGetPlaceInfiniteData from "@/hooks/useGetPlaceInfiniteData";
+import useGetLocationBasedPlaceInfiniteData from "@/react-query/query/useGetLocationBasedPlaceInfiniteData";
 import Loading from "@/components/Loading/Loading";
 
-export default function Place() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchInfiniteQuery({
+    queryKey: [QUERY_KEY.LOCATION_LIST],
+    queryFn: ({ pageParam = 1 }) => {
+      if (isLocationQuery(context.query)) {
+        const { lng, lat, range, sort } = context.query;
+        return getLocationBasedPlacelistData(pageParam, lng, lat, range, sort);
+      }
+    },
+  });
+
+  return {
+    props: {
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+    },
+  };
+}
+
+export default function Location() {
   const { data, hasNextPage, fetchNextPage, isFetching } =
-    useGetPlaceInfiniteData();
+    useGetLocationBasedPlaceInfiniteData();
   const targetRef = useInfiniteScroll({ hasNextPage, fetchNextPage });
 
   return (
@@ -25,26 +45,6 @@ export default function Place() {
   );
 }
 
-Place.getLayout = function getLayout(page: ReactElement) {
+Location.getLayout = function getLayout(page: ReactElement) {
   return <ListLayout>{page}</ListLayout>;
 };
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchInfiniteQuery({
-    queryKey: [QUERY_KEY.PLACELIST],
-    queryFn: ({ pageParam = 1 }) => {
-      if (isLocationQuery(context.query)) {
-        const { lng, lat, range, sort } = context.query;
-        return getPlacelistData(pageParam, lng, lat, range, sort);
-      }
-    },
-  });
-
-  return {
-    props: {
-      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-    },
-  };
-}

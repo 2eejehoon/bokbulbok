@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import * as ReactDOMServer from "react-dom/server";
 import styled from "styled-components";
 import {
@@ -17,19 +17,16 @@ type SwiperProps = {
   navigation?: boolean;
   pagination?: boolean;
   modules?: typeof Pagination | (typeof Navigation)[];
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
 const SwiperWrapper = ({
   children,
   navigation,
   pagination,
-  onMouseEnter,
-  onMouseLeave,
+  ...props
 }: SwiperProps) => {
   return (
-    <_SwiperWrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <_SwiperWrapper {...props}>
       <_Swiper
         navigation={
           navigation && {

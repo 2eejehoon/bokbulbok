@@ -7,10 +7,9 @@ export default function NotFound() {
   const router = useRouter();
 
   useEffect(() => {
-    const prevPath = getPrevPathFromSessionStorage() || "/";
-    const timeOut = setTimeout(() => router.push(prevPath), 5000);
-
-    return () => clearTimeout(timeOut);
+    // const prevPath = getPrevPathFromSessionStorage() || "/";
+    // const timeOut = setTimeout(() => router.push(prevPath), 5000);
+    // return () => clearTimeout(timeOut);
   }, [router]);
 
   return (

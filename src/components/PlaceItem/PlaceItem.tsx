@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import BlurImage from "../BlurImage/BlurImage";
 import RouletteButton from "../RouletteButton/RouletteButton";
-import { Category, convertCategoryToText } from "@/utils/convert";
+import { Category, convertCategoryToText } from "@/utils/category";
 
 interface PlaceItemProps {
   contentId: string;
@@ -24,7 +24,7 @@ export default function PlaceItem({
       <Thumbnail>
         <BlurImage src={image} alt={title} />
       </Thumbnail>
-      <Link href={`/place/detail/${contentId}`}>
+      <Link href={`/detail/${contentId}`}>
         <Body>
           <CategoryText>{convertCategoryToText(category)}</CategoryText>
           <Title>{title}</Title>

@@ -9,11 +9,37 @@ import {
 } from "@/api/place";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
-import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Map from "@/components/Map/Map";
 import Seo from "@/components/Seo/Seo";
-import useGetPlaceDetailData from "@/hooks/useGetPlaceDetailData";
-import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
+import useGetPlaceDetailData from "@/react-query/query/useGetPlaceDetailData";
+import ImageCarousel from "@/components/PlaceImageCarousel/PlaceImageCarousel";
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const queryClient = new QueryClient();
+
+  const contentId = context.query.contentId as string;
+
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: [QUERY_KEY.DETAIL_COMMON, contentId],
+      queryFn: () => getPlaceCommonDataById(contentId),
+    }),
+    queryClient.prefetchQuery({
+      queryKey: [QUERY_KEY.DETAIL_INTRO, contentId],
+      queryFn: () => getPlaceIntroDataById(contentId),
+    }),
+    queryClient.prefetchQuery({
+      queryKey: [QUERY_KEY.DETAIL_IMAGE, contentId],
+      queryFn: () => getPlaceImageDataById(contentId),
+    }),
+  ]);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 export default function PlaceDetail() {
   const [common, intro, image] = useGetPlaceDetailData();
@@ -47,30 +73,3 @@ export default function PlaceDetail() {
 PlaceDetail.getLayout = function getLayout(page: ReactElement) {
   return <DetailLayout>{page}</DetailLayout>;
 };
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const queryClient = new QueryClient();
-
-  const contentId = context.query.contentId as string;
-
-  await Promise.all([
-    queryClient.prefetchQuery({
-      queryKey: [QUERY_KEY.PLACECOMMON, contentId],
-      queryFn: () => getPlaceCommonDataById(contentId),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: [QUERY_KEY.PLACEINTRO, contentId],
-      queryFn: () => getPlaceIntroDataById(contentId),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
-      queryFn: () => getPlaceImageDataById(contentId),
-    }),
-  ]);
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}

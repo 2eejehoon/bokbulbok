@@ -6,7 +6,7 @@ type ImageCarouselProps = {
   images?: string[];
 };
 
-function ImageCarousel({ images = [] }: ImageCarouselProps) {
+function PlaceImageCarousel({ images = [] }: ImageCarouselProps) {
   const { showButtons, onMouseEnter, onMouseLeave } = usePlaceImageCarousel();
 
   return (
@@ -33,4 +33,4 @@ function ImageCarousel({ images = [] }: ImageCarouselProps) {
   );
 }
 
-export default ImageCarousel;
+export default PlaceImageCarousel;

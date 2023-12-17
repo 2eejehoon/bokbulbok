@@ -22,15 +22,15 @@ export default function useGetPlaceDetailData(): useGetPlaceDetailDataReturnType
   const [common, intro, image] = useQueries({
     queries: [
       {
-        queryKey: [QUERY_KEY.PLACECOMMON, contentId],
+        queryKey: [QUERY_KEY.DETAIL_COMMON, contentId],
         queryFn: () => getPlaceCommonDataById(contentId),
       },
       {
-        queryKey: [QUERY_KEY.PLACEINTRO, contentId],
+        queryKey: [QUERY_KEY.DETAIL_INTRO, contentId],
         queryFn: () => getPlaceIntroDataById(contentId),
       },
       {
-        queryKey: [QUERY_KEY.PLACEIMAGE, contentId],
+        queryKey: [QUERY_KEY.DETAIL_IMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
         select: (data: PlaceImageData[]) =>
           data.map((item) => item.originimgurl),

@@ -1,8 +1,8 @@
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { useState, MouseEvent } from "react";
-import { LocationQuery } from "@/types/query";
-import { Sort, convertQueryToSort, convertSortToQuery } from "@/utils/convert";
+import { LocationQuery } from "@/utils/location";
+import { Sort, convertQueryToSort, convertSortToQuery } from "@/utils/sort";
 
 type useSortSelectReturnType = {
   sortValue: Sort;

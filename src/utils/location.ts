@@ -1,3 +1,5 @@
+import { Sort } from "./sort";
+
 type SuccessLocationData = {
   status: "success";
   coords: GeolocationCoordinates;
@@ -57,4 +59,19 @@ export const isErrorLocationData = (
   location: LocationData
 ): location is ErrorLocationData => {
   return location.status === "error";
+};
+
+export type LocationQuery<T> = T & {
+  lng: string;
+  lat: string;
+  range: string;
+  sort: Sort;
+};
+
+export const isLocationQuery = <T extends {}>(
+  query: T
+): query is LocationQuery<T> => {
+  return (
+    "lng" in query && "lat" in query && "range" in query && "sort" in query
+  );
 };

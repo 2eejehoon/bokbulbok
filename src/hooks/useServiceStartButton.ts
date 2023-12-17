@@ -9,7 +9,7 @@ export default function useServiceStartButton() {
   const handleButtonClick = () => {
     if (isSuccessLocationData(locationData)) {
       router.push(
-        `/place/location?lng=${locationData.coords.longitude}&lat=${
+        `location/location?lng=${locationData.coords.longitude}&lat=${
           locationData.coords.latitude
         }&range=${5000}&sort=${"D"}`
       );

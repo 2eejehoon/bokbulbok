@@ -22,13 +22,13 @@ export interface PlaceData {
   sigungucode: string;
   tel: string;
   title: string;
+  zipcode?: string;
 }
 
 export interface PlaceCommonData extends PlaceData {
   homepage: string;
   overview: string;
   telname: string;
-  zipcode: string;
 }
 
 export interface PlaceIntroData {

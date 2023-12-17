@@ -1,10 +1,11 @@
-import { Sort } from "./utils/convert";
+import { Sort } from "./utils/sort";
 
 export const QUERY_KEY = {
-  PLACELIST: "PLACELIST",
-  PLACECOMMON: "PLACECOMMON",
-  PLACEINTRO: "PLACEINTRO",
-  PLACEIMAGE: "PLACEIMAGE",
+  LOCATION_LIST: "LOCATION_LIST",
+  AREA_LIST: "AREA_LIST",
+  DETAIL_COMMON: "DETAIL_COMMON",
+  DETAIL_INTRO: "DETAIL_INTRO",
+  DETAIL_IMAGE: "DETAIL_IMAGE",
 } as const;
 
 export const SORT_ARRAY: Sort[] = ["등록순", "수정순", "제목순"];

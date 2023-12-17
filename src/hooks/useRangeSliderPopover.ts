@@ -1,8 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { ChangeEvent, RefObject, useRef, useState } from "react";
-import { LocationQuery } from "@/types/query";
-import { convertQueryToRange, convertRangeToQuery } from "@/utils/convert";
+import { LocationQuery } from "@/utils/location";
+import { convertRangeToQuery } from "@/utils/convert";
+import { convertQueryToRange } from "@/utils/sort";
 
 type useRangeSliderPopoverReturnType = {
   popoverRef: RefObject<HTMLDivElement>;

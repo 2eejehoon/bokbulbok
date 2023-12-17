@@ -18,6 +18,7 @@ export default function ScrollToTopButton() {
 
 const ScrollButton = styled(Button)<{ ISSCROLLED: string }>`
   position: fixed;
+  right: 5px;
   bottom: ${({ ISSCROLLED }) => (ISSCROLLED === "true" ? `10px` : "-40px")};
   width: 40px;
   height: 40px;
