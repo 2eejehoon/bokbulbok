@@ -5,15 +5,12 @@ import { getLocationBasedPlacelistData } from "@/api/location";
 import { QUERY_KEY } from "@/contant";
 import { isLocationQuery } from "@/utils/location";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import PlaceList from "@/components/PlaceList/PlaceList";
+import PlaceList from "@/components/common/PlaceList/PlaceList";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import Seo from "@/components/Seo/Seo";
+import Seo from "@/components/common/Seo/Seo";
 import useGetLocationBasedPlaceInfiniteData from "@/react-query/query/useGetLocationBasedPlaceInfiniteData";
-import Loading from "@/components/Loading/Loading";
-import Header from "@/components/Header/Header";
-import RangeSliderPopover from "@/components/RangeSliderPopover/RangeSliderPopover";
-import SortSelect from "@/components/SortSelect/SortSelectModal";
-import RouletteModal from "@/components/RouletteModal/RouletteModal";
+import Loading from "@/components/common/Loading/Loading";
+import LocationPageHeader from "@/components/Location/LocationPageHeader/LocationPageHeader";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -42,16 +39,8 @@ export default function Location() {
 
   return (
     <>
-      <Header>
-        <Header.Left>
-          <RangeSliderPopover />
-          <SortSelect />
-        </Header.Left>
-        <Header.Right>
-          <RouletteModal />
-        </Header.Right>
-      </Header>
       <Seo title={"복불복"} description={"주변 음식점 리스트"} />
+      <LocationPageHeader />
       <PlaceList data={data} />
       <div ref={targetRef}>{isFetching && <Loading height={30} />}</div>
     </>

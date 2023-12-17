@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Popover from "../Popover/Popover";
-import Button from "../Button/Button";
-import { Select } from "../Select/Select";
+import Popover from "../../common/Popover/Popover";
+import Button from "../../common/Button/Button";
+import { Select } from "../../common/Select/Select";
 import { AREA_ARRAY } from "@/utils/area";
 import useAreaSelect from "@/hooks/useAreaSelect";
 

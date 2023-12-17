@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import GobackButton from "@/components/GobackButton/GobackButton";
+import GobackButton from "@/components/common/GobackButton/GobackButton";
 
 interface DetailLayoutProps {
   children: ReactNode;

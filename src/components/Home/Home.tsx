@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ServiceStartButton from "../ServiceStartButton/ServiceStartButton";
+import ServiceStartButton from "./ServiceStartButton/ServiceStartButton";
 
 export default function Home() {
   return (

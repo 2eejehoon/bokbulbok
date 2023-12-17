@@ -46,7 +46,7 @@ export default function useGetLocationBasedPlaceInfiniteData(): useGetPlaceInfin
         "D"
       );
     },
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? 1,
   });
 
   return {

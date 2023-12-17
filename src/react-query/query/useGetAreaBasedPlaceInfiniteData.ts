@@ -16,7 +16,7 @@ const useGetAreaBasedPlaceInfiniteData = () => {
       }
       return getAreaBasedPlaceListData(1, 1, "D");
     },
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? 1,
   });
 
   return {

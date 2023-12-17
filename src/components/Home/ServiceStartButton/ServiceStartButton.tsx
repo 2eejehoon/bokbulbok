@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Button from "../Button/Button";
-import Loading from "../Loading/Loading";
+import Button from "../../common/Button/Button";
+import Loading from "../../common/Loading/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {
-  const { locationData, handleLocationClick, handleAreaClick } =
+  const { locationData, onLocationButtonClick, onAreaButtonClick } =
     useServiceStartButton();
 
   if (locationData.status === "error") {
@@ -16,7 +16,7 @@ export default function ServiceStartButton() {
       <StartButton
         type={"button"}
         disabled={locationData.status !== "success"}
-        onClick={handleLocationClick}
+        onClick={onLocationButtonClick}
       >
         {locationData.status === "success" ? (
           "내 주변 음식점"
@@ -24,7 +24,7 @@ export default function ServiceStartButton() {
           <Loading height={20} />
         )}
       </StartButton>
-      <StartButton type="button" onClick={handleAreaClick}>
+      <StartButton type="button" onClick={onAreaButtonClick}>
         지역별 음식점
       </StartButton>
     </Wrapper>

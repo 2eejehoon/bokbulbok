@@ -11,16 +11,18 @@ type useSortSelectReturnType = {
 
 export default function useSortSelect(): useSortSelectReturnType {
   const router = useRouter();
-  const { lng, lat, range, sort } =
-    router.query as LocationQuery<ParsedUrlQuery>;
+  const { pathname, query } = router;
+  const { sort } = router.query as LocationQuery<ParsedUrlQuery>;
   const [sortValue, setSortValue] = useState(convertQueryToSort(sort));
 
   const onSortClick = (e: MouseEvent<HTMLLIElement>) => {
-    router.push(
-      `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${convertSortToQuery(
-        e.currentTarget.innerHTML as Sort
-      )}`
-    );
+    router.push({
+      pathname: pathname,
+      query: {
+        ...query,
+        sort: convertSortToQuery(e.currentTarget.innerHTML as Sort),
+      },
+    });
     setSortValue(e.currentTarget.innerHTML as Sort);
   };
 

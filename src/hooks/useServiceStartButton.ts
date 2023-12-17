@@ -6,19 +6,29 @@ export default function useServiceStartButton() {
   const router = useRouter();
   const locationData = useGeolocation();
 
-  const handleLocationClick = () => {
+  const onLocationButtonClick = () => {
     if (isSuccessLocationData(locationData)) {
-      router.push(
-        `location/location?lng=${locationData.coords.longitude}&lat=${
-          locationData.coords.latitude
-        }&range=${5000}&sort=${"D"}`
-      );
+      router.push({
+        pathname: "/location/location",
+        query: {
+          lng: locationData.coords.longitude,
+          lat: locationData.coords.latitude,
+          range: 5000,
+          sort: "D",
+        },
+      });
     }
   };
 
-  const handleAreaClick = () => {
-    router.push(`area/area?areaCode=${1}&sort=${"D"}`);
+  const onAreaButtonClick = () => {
+    router.push({
+      pathname: "/area/area",
+      query: {
+        areaCode: 1,
+        sort: "D",
+      },
+    });
   };
 
-  return { locationData, handleLocationClick, handleAreaClick };
+  return { locationData, onLocationButtonClick, onAreaButtonClick };
 }

@@ -11,15 +11,19 @@ export const getAreaBasedPlaceListData = async (
   areaCode: number = 1,
   sort: string
 ) => {
-  const response = await HttpClient.get<AreaBasedPlaceListDataResponse>(
-    `areaBasedList1?serviceKey=${SERVICE_KEY}&pageNo=${pageParam}&numOfRows=30&MobileApp=AppTest&MobileOS=ETC&arrange=${sort}&areaCode=${areaCode}&_type=json&contentTypeId=39`
-  );
+  try {
+    const response = await HttpClient.get<AreaBasedPlaceListDataResponse>(
+      `areaBasedList1?serviceKey=${SERVICE_KEY}&pageNo=${pageParam}&numOfRows=30&MobileApp=AppTest&MobileOS=ETC&arrange=${sort}&areaCode=${areaCode}&_type=json&contentTypeId=39`
+    );
 
-  const { items, pageNo } = response.data.response.body;
+    const { items, pageNo } = response.data.response.body;
 
-  return {
-    placeList: items.item,
-    nextCursor: pageNo + 1,
-    prevCursor: pageNo - 1,
-  };
+    return {
+      placeList: items.item,
+      nextCursor: pageNo + 1,
+      prevCursor: pageNo - 1,
+    };
+  } catch (error) {
+    throw new Error();
+  }
 };

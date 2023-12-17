@@ -6,15 +6,12 @@ import { QUERY_KEY } from "@/contant";
 import { getAreaBasedPlaceListData } from "@/api/area";
 import { isAreaQuery } from "@/utils/area";
 import useGetAreaBasedPlaceInfiniteData from "@/react-query/query/useGetAreaBasedPlaceInfiniteData";
-import Seo from "@/components/Seo/Seo";
-import PlaceList from "@/components/PlaceList/PlaceList";
-import Loading from "@/components/Loading/Loading";
+import Seo from "@/components/common/Seo/Seo";
+import PlaceList from "@/components/common/PlaceList/PlaceList";
+import Loading from "@/components/common/Loading/Loading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import Header from "@/components/Header/Header";
-import SortSelect from "@/components/SortSelect/SortSelectModal";
-import RouletteModal from "@/components/RouletteModal/RouletteModal";
-import AreaSelect from "@/components/AreaSelect/AreaSelect";
+import AreaPageHeader from "@/components/Area/AreaPageHeader/AreaPageHeader";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -43,16 +40,8 @@ export default function Area() {
 
   return (
     <>
-      <Header>
-        <Header.Left>
-          <AreaSelect />
-          <SortSelect />
-        </Header.Left>
-        <Header.Right>
-          <RouletteModal />
-        </Header.Right>
-      </Header>
       <Seo />
+      <AreaPageHeader />
       <PlaceList data={data} />
       <div ref={ref}>{isFetching && <Loading height={30} />}</div>
     </>

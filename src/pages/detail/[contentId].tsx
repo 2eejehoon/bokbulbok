@@ -1,7 +1,7 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { type ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
-import PlaceInfo from "@/components/PlaceInfo/PlaceInfo";
+import PlaceInfo from "@/components/common/PlaceInfo/PlaceInfo";
 import {
   getPlaceCommonDataById,
   getPlaceIntroDataById,
@@ -9,10 +9,10 @@ import {
 } from "@/api/detail";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
-import Map from "@/components/Map/Map";
-import Seo from "@/components/Seo/Seo";
+import Map from "@/components/common/Map/Map";
+import Seo from "@/components/common/Seo/Seo";
 import useGetPlaceDetailData from "@/react-query/query/useGetPlaceDetailData";
-import ImageCarousel from "@/components/PlaceImageCarousel/PlaceImageCarousel";
+import ImageCarousel from "@/components/common/PlaceImageCarousel/PlaceImageCarousel";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
