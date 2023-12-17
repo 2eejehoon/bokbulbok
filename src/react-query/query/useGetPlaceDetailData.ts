@@ -6,7 +6,7 @@ import {
   getPlaceCommonDataById,
   getPlaceIntroDataById,
   getPlaceImageDataById,
-} from "@/api/place";
+} from "@/api/detail";
 import { PlaceImageData, PlaceCommonData, PlaceIntroData } from "@/types/place";
 
 type useGetPlaceDetailDataReturnType = [

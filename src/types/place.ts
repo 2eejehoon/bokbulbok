@@ -1,4 +1,4 @@
-import { Category } from "@/utils/convert";
+import { Category } from "@/utils/category";
 
 export interface PlaceData {
   addr1: string;

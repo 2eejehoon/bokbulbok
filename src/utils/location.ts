@@ -1,4 +1,4 @@
-import { Sort } from "./sort";
+import { SortCode } from "./sort";
 
 type SuccessLocationData = {
   status: "success";
@@ -65,7 +65,7 @@ export type LocationQuery<T> = T & {
   lng: string;
   lat: string;
   range: string;
-  sort: Sort;
+  sort: SortCode;
 };
 
 export const isLocationQuery = <T extends {}>(
