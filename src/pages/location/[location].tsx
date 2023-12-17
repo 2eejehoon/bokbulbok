@@ -10,6 +10,10 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/Seo/Seo";
 import useGetLocationBasedPlaceInfiniteData from "@/react-query/query/useGetLocationBasedPlaceInfiniteData";
 import Loading from "@/components/Loading/Loading";
+import Header from "@/components/Header/Header";
+import RangeSliderPopover from "@/components/RangeSliderPopover/RangeSliderPopover";
+import SortSelect from "@/components/SortSelect/SortSelectModal";
+import RouletteModal from "@/components/RouletteModal/RouletteModal";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -38,6 +42,15 @@ export default function Location() {
 
   return (
     <>
+      <Header>
+        <Header.Left>
+          <RangeSliderPopover />
+          <SortSelect />
+        </Header.Left>
+        <Header.Right>
+          <RouletteModal />
+        </Header.Right>
+      </Header>
       <Seo title={"복불복"} description={"주변 음식점 리스트"} />
       <PlaceList data={data} />
       <div ref={targetRef}>{isFetching && <Loading height={30} />}</div>

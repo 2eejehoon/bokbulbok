@@ -14,7 +14,7 @@ const useGetAreaBasedPlaceInfiniteData = () => {
         const { areaCode, sort } = router.query;
         return getAreaBasedPlaceListData(pageParam, areaCode, sort);
       }
-      return getAreaBasedPlaceListData(1, "1", "D");
+      return getAreaBasedPlaceListData(1, 1, "D");
     },
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });

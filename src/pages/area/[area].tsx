@@ -11,6 +11,10 @@ import PlaceList from "@/components/PlaceList/PlaceList";
 import Loading from "@/components/Loading/Loading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import ListLayout from "@/layout/ListLayout/ListLayout";
+import Header from "@/components/Header/Header";
+import SortSelect from "@/components/SortSelect/SortSelectModal";
+import RouletteModal from "@/components/RouletteModal/RouletteModal";
+import AreaSelect from "@/components/AreaSelect/AreaSelect";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -39,6 +43,15 @@ export default function Area() {
 
   return (
     <>
+      <Header>
+        <Header.Left>
+          <AreaSelect />
+          <SortSelect />
+        </Header.Left>
+        <Header.Right>
+          <RouletteModal />
+        </Header.Right>
+      </Header>
       <Seo />
       <PlaceList data={data} />
       <div ref={ref}>{isFetching && <Loading height={30} />}</div>

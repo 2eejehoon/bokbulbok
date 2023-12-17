@@ -8,7 +8,7 @@ type AreaBasedPlaceListDataResponse = Response<PlaceData[]>;
 
 export const getAreaBasedPlaceListData = async (
   pageParam: number = 1,
-  areaCode: string = "1",
+  areaCode: number = 1,
   sort: string
 ) => {
   const response = await HttpClient.get<AreaBasedPlaceListDataResponse>(

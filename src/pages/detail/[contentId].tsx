@@ -6,7 +6,7 @@ import {
   getPlaceCommonDataById,
   getPlaceIntroDataById,
   getPlaceImageDataById,
-} from "@/api/place";
+} from "@/api/detail";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
 import Map from "@/components/Map/Map";

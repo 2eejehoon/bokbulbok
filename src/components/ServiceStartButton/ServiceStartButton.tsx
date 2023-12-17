@@ -4,22 +4,40 @@ import Loading from "../Loading/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 export default function ServiceStartButton() {
-  const { locationData, handleButtonClick } = useServiceStartButton();
+  const { locationData, handleLocationClick, handleAreaClick } =
+    useServiceStartButton();
 
   if (locationData.status === "error") {
     <ErrorMessage>{locationData.error.message}</ErrorMessage>;
   }
 
   return (
-    <StartButton
-      type={"button"}
-      disabled={locationData.status !== "success"}
-      onClick={handleButtonClick}
-    >
-      {locationData.status === "success" ? "시작하기" : <Loading height={20} />}
-    </StartButton>
+    <Wrapper>
+      <StartButton
+        type={"button"}
+        disabled={locationData.status !== "success"}
+        onClick={handleLocationClick}
+      >
+        {locationData.status === "success" ? (
+          "내 주변 음식점"
+        ) : (
+          <Loading height={20} />
+        )}
+      </StartButton>
+      <StartButton type="button" onClick={handleAreaClick}>
+        지역별 음식점
+      </StartButton>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
 
 const ErrorMessage = styled.p`
   text-align: center;

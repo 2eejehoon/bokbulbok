@@ -12,7 +12,7 @@ const CODE_TO_AREA = {
   31: "경기도",
   32: "강원도",
 } as const;
-type AreaCode = keyof typeof CODE_TO_AREA;
+export type AreaCode = keyof typeof CODE_TO_AREA;
 export const convertCodeToArea = (code: AreaCode) => {
   return CODE_TO_AREA[code] ?? "서울";
 };
@@ -29,15 +29,28 @@ const AREA_TO_CODE = {
   경기도: 31,
   강원도: 32,
 };
-type Area = keyof typeof AREA_TO_CODE;
+export type Area = keyof typeof AREA_TO_CODE;
 export const convertAreaToCode = (area: Area) => {
   return AREA_TO_CODE[area] ?? 1;
 };
 
 export type AreaQuery<T> = T & {
-  areaCode: string;
+  areaCode: AreaCode;
   sort: Sort;
 };
+
+export const AREA_ARRAY = [
+  "서울",
+  "인천",
+  "대전",
+  "대구",
+  "광주",
+  "부산",
+  "울산",
+  "세종",
+  "경기도",
+  "강원도",
+] as const;
 
 export const isAreaQuery = <T extends {}>(query: T): query is AreaQuery<T> => {
   return "areaCode" in query && "sort" in query;
