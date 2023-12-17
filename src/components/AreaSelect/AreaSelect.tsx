@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import { Select } from "../Select/Select";
 import { AREA_ARRAY } from "@/utils/area";
 import useAreaSelect from "@/hooks/useAreaSelect";
-import { useId } from "react";
 
 const AreaSelect = () => {
   const { area, onClick } = useAreaSelect();
