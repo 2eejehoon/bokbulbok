@@ -16,12 +16,12 @@ export default function useSortSelect(): useSortSelectReturnType {
   const [sortValue, setSortValue] = useState(convertQueryToSort(sort));
 
   const onSortClick = (e: MouseEvent<HTMLLIElement>) => {
-    setSortValue(e.currentTarget.innerHTML as Sort);
     router.push(
       `/place/location?lng=${lng}&lat=${lat}&range=${range}&sort=${convertSortToQuery(
         e.currentTarget.innerHTML as Sort
       )}`
     );
+    setSortValue(e.currentTarget.innerHTML as Sort);
   };
 
   return {

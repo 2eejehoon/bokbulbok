@@ -37,7 +37,7 @@ const useRangeSliderPopover = (): useRangeSliderPopoverReturnType => {
 
   const onConfirm = () => {
     router.push(
-      `/place/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
+      `/location/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
         inputValue
       )}&sort=${sort}`
     );

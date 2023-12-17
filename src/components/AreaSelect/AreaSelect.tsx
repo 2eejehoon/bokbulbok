@@ -6,7 +6,7 @@ import { AREA_ARRAY } from "@/utils/area";
 import useAreaSelect from "@/hooks/useAreaSelect";
 
 const AreaSelect = () => {
-  const { area, onClick } = useAreaSelect();
+  const { area, onAreaClick } = useAreaSelect();
 
   return (
     <Popover.Root>
@@ -18,7 +18,7 @@ const AreaSelect = () => {
           <Select.Root>
             {AREA_ARRAY.map((area, index) => {
               return (
-                <Select.Option key={index} onClick={onClick}>
+                <Select.Option key={index} onClick={onAreaClick}>
                   {area}
                 </Select.Option>
               );

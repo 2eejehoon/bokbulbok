@@ -13,7 +13,7 @@ const useAreaSelect = () => {
   const { areaCode, sort } = router.query as AreaQuery<ParsedUrlQuery>;
   const [area, setArea] = useState(convertCodeToArea(areaCode));
 
-  const onClick = (e: MouseEvent<HTMLLIElement>) => {
+  const onAreaClick = (e: MouseEvent<HTMLLIElement>) => {
     router.push(
       `area?areaCode=${convertAreaToCode(
         e.currentTarget.innerHTML as Area
@@ -24,7 +24,7 @@ const useAreaSelect = () => {
 
   return {
     area,
-    onClick,
+    onAreaClick,
   };
 };
 
