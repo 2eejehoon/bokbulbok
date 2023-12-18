@@ -1,11 +1,13 @@
-import { HTMLAttributes, ReactNode } from "react";
-import * as ReactDOMServer from "react-dom/server";
-import styled from "styled-components";
 import {
   Swiper as _Swiper,
   SwiperSlide as _SwiperSlide,
   useSwiper,
 } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { HTMLAttributes, ReactNode } from "react";
+import * as ReactDOMServer from "react-dom/server";
+import styled from "styled-components";
 import { Navigation, Pagination } from "swiper/modules";
 import ArrowRight from "../../../../public/arrow-right.svg";
 import ArrowLeft from "../../../../public/arrow-left.svg";

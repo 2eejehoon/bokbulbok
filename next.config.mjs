@@ -3,6 +3,7 @@ import path from "path";
 
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ["swiper", "ssr-window", "dom7"],
   sassOptions: {
     includePaths: [path.join("/", "pages")],
   },
