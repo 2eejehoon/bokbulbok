@@ -7,7 +7,6 @@ import {
   useSwiper,
 } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import "swiper/swiper.min.css";
 import ArrowRight from "../../../../public/arrow-right.svg";
 import ArrowLeft from "../../../../public/arrow-left.svg";
 
