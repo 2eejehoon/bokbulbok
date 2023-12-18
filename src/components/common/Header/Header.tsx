@@ -9,7 +9,7 @@ const Header = ({ children, ...props }: HeaderProps) => {
   const isSticky = useStickyHeader();
 
   return (
-    <_Header {...props} isSticky={isSticky}>
+    <_Header {...props} ISSTICKY={isSticky}>
       {children}
     </_Header>
   );
@@ -27,7 +27,7 @@ Header.Left = Left;
 Header.Right = Right;
 Header.displayName = "Header";
 
-const _Header = styled.header<{ isSticky: boolean }>`
+const _Header = styled.header<{ ISSTICKY: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,7 @@ const _Header = styled.header<{ isSticky: boolean }>`
   height: 50px;
   padding: 5px;
   top: 0;
-  position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
+  position: ${({ ISSTICKY }) => (ISSTICKY ? "sticky" : "relative")};
   background-color: white;
 `;
 
