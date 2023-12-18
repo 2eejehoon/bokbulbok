@@ -3,8 +3,6 @@ import {
   SwiperSlide as _SwiperSlide,
   useSwiper,
 } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
 import { HTMLAttributes, ReactNode } from "react";
 import * as ReactDOMServer from "react-dom/server";
 import styled from "styled-components";
@@ -53,6 +51,9 @@ const SwiperWrapper = ({
     </_SwiperWrapper>
   );
 };
+
+_Swiper.displayName = "SwiperWrapper";
+_SwiperSlide.displayName = "SwiperSilde";
 
 const _SwiperWrapper = styled.div`
   padding: 5px;
