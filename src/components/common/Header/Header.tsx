@@ -1,11 +1,18 @@
 import { HTMLAttributes, ReactNode } from "react";
 import styled from "styled-components";
+import useStickyHeader from "./useStickyHeader";
 
 type HeaderProps = { children: ReactNode } & HTMLAttributes<HTMLElement>;
 type DivProps = { children: ReactNode } & HTMLAttributes<HTMLDivElement>;
 
 const Header = ({ children, ...props }: HeaderProps) => {
-  return <_Header {...props}>{children}</_Header>;
+  const isSticky = useStickyHeader();
+
+  return (
+    <_Header {...props} isSticky={isSticky}>
+      {children}
+    </_Header>
+  );
 };
 
 const Left = ({ children, ...props }: DivProps) => {
@@ -20,14 +27,20 @@ Header.Left = Left;
 Header.Right = Right;
 Header.displayName = "Header";
 
-const _Header = styled.header`
+const _Header = styled.header<{ isSticky: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px lightgrey solid;
+  z-index: 1;
   width: 100%;
+  min-width: 350px;
+  max-width: 400px;
   height: 50px;
   padding: 5px;
-  border-bottom: 1px lightgrey solid;
+  top: 0;
+  position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
+  background-color: white;
 `;
 
 const _Left = styled.div`

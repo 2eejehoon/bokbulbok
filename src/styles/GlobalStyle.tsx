@@ -7,12 +7,17 @@ import {
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
 
   html {
     background-color: whitesmoke;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
   }
 
   body {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
-import useGoback from "@/hooks/useGoback";
+import useGoback from "@/components/common/GobackButton/useGoback";
 
 export default function GobackButton() {
   const handleGobackClick = useGoback();

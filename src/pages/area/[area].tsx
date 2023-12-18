@@ -40,7 +40,7 @@ export default function Area() {
 
   return (
     <>
-      <Seo />
+      <Seo title="복불복" description="지역별 음식점 정보" />
       <AreaPageHeader />
       <PlaceList data={data} />
       <div ref={ref}>{isFetching && <Loading height={30} />}</div>

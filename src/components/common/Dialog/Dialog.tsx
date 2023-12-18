@@ -17,7 +17,7 @@ const Content = styled(_Dialog.Content)<{
   left: 0;
   right: 0;
   margin: auto;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +35,7 @@ const Dialog = {
   Root: _Dialog.Root,
   Trigger: _Dialog.Trigger,
   Overlay: Overlay,
+  Portal: _Dialog.Portal,
   Content: Content,
   Title: Title,
   Description: Description,

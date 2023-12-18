@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import useMap from "@/hooks/useMap";
+import useMap from "@/components/Detail/DetailMap/useMap";
 
 interface MapProps {
   lng: number;
   lat: number;
 }
 
-export default function Map({ lng, lat }: MapProps) {
+export default function DetailMap({ lng, lat }: MapProps) {
   useMap(lat, lng);
 
   return (

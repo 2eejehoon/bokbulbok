@@ -1,7 +1,7 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { type ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
-import PlaceInfo from "@/components/common/PlaceInfo/PlaceInfo";
+import PlaceInfo from "@/components/Detail/PlaceInfo/PlaceInfo";
 import {
   getPlaceCommonDataById,
   getPlaceIntroDataById,
@@ -9,10 +9,11 @@ import {
 } from "@/api/detail";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
-import Map from "@/components/common/Map/Map";
+import Map from "@/components/Detail/DetailMap/DetailMap";
 import Seo from "@/components/common/Seo/Seo";
 import useGetPlaceDetailData from "@/react-query/query/useGetPlaceDetailData";
-import ImageCarousel from "@/components/common/PlaceImageCarousel/PlaceImageCarousel";
+import ImageCarousel from "@/components/Detail/PlaceImageCarousel/PlaceImageCarousel";
+import DetailPageHeader from "@/components/Detail/DetailPageHeader/DetailPageHeader";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ export default function PlaceDetail() {
         description={common.data?.overview}
         image={common.data?.firstimage}
       />
+      <DetailPageHeader />
       <ImageCarousel images={image.data} />
       <PlaceInfo
         title={common.data?.title}

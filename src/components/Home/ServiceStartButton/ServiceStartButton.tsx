@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../../common/Button/Button";
 import Loading from "../../common/Loading/Loading";
-import useServiceStartButton from "@/hooks/useServiceStartButton";
+import useServiceStartButton from "@/components/Home/ServiceStartButton/useServiceStartButton";
 
 export default function ServiceStartButton() {
   const { locationData, onLocationButtonClick, onAreaButtonClick } =

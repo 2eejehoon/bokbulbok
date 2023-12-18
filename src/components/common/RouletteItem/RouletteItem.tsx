@@ -22,7 +22,7 @@ export default function RouletteItem({
       key={contentId}
       className={cx("li", convertLengthToText(length))}
     >
-      <Link href={`/place/detail/${contentId}`}>
+      <Link href={`/detail/${contentId}`}>
         <Content className={cx("title", convertLengthToText(length))}>
           {title}
         </Content>

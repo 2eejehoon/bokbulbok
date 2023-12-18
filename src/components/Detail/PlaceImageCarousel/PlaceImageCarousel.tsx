@@ -1,6 +1,6 @@
-import Swiper from "../Swiper/Swiper";
-import BlurImage from "../BlurImage/BlurImage";
-import usePlaceImageCarousel from "@/hooks/usePlaceImageCarousel";
+import Swiper from "../../common/Swiper/Swiper";
+import BlurImage from "../../common/BlurImage/BlurImage";
+import usePlaceImageCarousel from "@/components/Detail/PlaceImageCarousel/usePlaceImageCarousel";
 
 type ImageCarouselProps = {
   images?: string[];

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
 import BlurImage from "../BlurImage/BlurImage";
-import useCarousel from "@/hooks/useCarousel";
+import useCarousel from "@/components/common/Carousel/useCarousel";
 
 interface CarouselProps {
   images?: string[];

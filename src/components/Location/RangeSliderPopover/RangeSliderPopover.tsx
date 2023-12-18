@@ -1,5 +1,5 @@
 import SliderPopover from "../../common/SliderPopover/SliderPopover";
-import useRangeSliderPopover from "@/hooks/useRangeSliderPopover";
+import useRangeSliderPopover from "@/components/Location/RangeSliderPopover/useRangeSliderPopover";
 
 const RangeSliderPopover = () => {
   const {

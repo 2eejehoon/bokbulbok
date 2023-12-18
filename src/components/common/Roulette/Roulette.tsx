@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
 import RouletteItem from "../RouletteItem/RouletteItem";
-import useRoulette from "@/hooks/useRoulette";
+import useRoulette from "@/components/common/Roulette/useRoulette";
 import { Length } from "@/utils/convert";
 
 export default function Roulette() {

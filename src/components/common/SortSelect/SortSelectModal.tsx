@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Popover from "../Popover/Popover";
 import { Select } from "../Select/Select";
 import { SORT_ARRAY } from "@/contant";
-import useSortSelect from "@/hooks/useSortSelect";
+import useSortSelect from "@/components/common/SortSelect/useSortSelect";
 
 export default function SortSelect() {
   const { sortValue, onSortClick } = useSortSelect();

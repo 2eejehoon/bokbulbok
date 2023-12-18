@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
-import useScrollToTop from "@/hooks/useScrollToTop";
+import useScrollToTop from "@/components/common/ScrollToTopButton/useScrollToTop";
 
 export default function ScrollToTopButton() {
   const [isScrolled, handleButtonClick] = useScrollToTop();

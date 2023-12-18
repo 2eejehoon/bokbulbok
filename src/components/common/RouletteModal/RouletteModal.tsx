@@ -9,9 +9,11 @@ export default function RouletteModal() {
       <Dialog.Trigger asChild>
         <ModalButton>돌려 돌려 돌림판</ModalButton>
       </Dialog.Trigger>
-      <Dialog.Content width={"360px"} height={"540px"}>
-        <Roulette />
-      </Dialog.Content>
+      <Dialog.Portal>
+        <Dialog.Content width={"360px"} height={"540px"}>
+          <Roulette />
+        </Dialog.Content>
+      </Dialog.Portal>
     </Dialog.Root>
   );
 }
