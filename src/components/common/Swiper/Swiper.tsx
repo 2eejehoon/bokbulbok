@@ -3,61 +3,40 @@ import {
   SwiperSlide as _SwiperSlide,
   useSwiper,
 } from "swiper/react";
-import { HTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 import * as ReactDOMServer from "react-dom/server";
 import styled from "styled-components";
 import { Navigation, Pagination } from "swiper/modules";
 import ArrowRight from "../../../../public/arrow-right.svg";
 import ArrowLeft from "../../../../public/arrow-left.svg";
+import "swiper/css";
+import "swiper/css/pagination";
 
 type SwiperProps = {
   children: ReactNode;
-  navigation?: boolean;
-  pagination?: boolean;
-  modules?: typeof Pagination | (typeof Navigation)[];
-} & HTMLAttributes<HTMLDivElement>;
-
-const SwiperWrapper = ({
-  children,
-  navigation,
-  pagination,
-  ...props
-}: SwiperProps) => {
-  return (
-    <_SwiperWrapper {...props}>
-      <_Swiper
-        navigation={
-          navigation && {
-            prevEl: ".swiper-button-prev",
-            nextEl: ".swiper-button-next",
-          }
-        }
-        pagination={
-          pagination && {
-            clickable: true,
-            renderBullet: function (index: number, className: string) {
-              return ReactDOMServer.renderToStaticMarkup(
-                <PaginationButton className={className}>
-                  {index}
-                </PaginationButton>
-              );
-            },
-          }
-        }
-        modules={[Navigation, Pagination]}
-      >
-        {children}
-      </_Swiper>
-    </_SwiperWrapper>
-  );
 };
 
-_Swiper.displayName = "SwiperWrapper";
-_SwiperSlide.displayName = "SwiperSilde";
-
-const _SwiperWrapper = styled.div`
-  padding: 5px;
-`;
+const SwiperWrapper = ({ children }: SwiperProps) => {
+  return (
+    <_Swiper
+      navigation={{
+        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+      }}
+      pagination={{
+        clickable: true,
+        renderBullet: function (index: number, className: string) {
+          return ReactDOMServer.renderToStaticMarkup(
+            <PaginationButton className={className}>{index}</PaginationButton>
+          );
+        },
+      }}
+      modules={[Navigation, Pagination]}
+    >
+      {children}
+    </_Swiper>
+  );
+};
 
 const PrevButton = () => {
   const swiper = useSwiper();

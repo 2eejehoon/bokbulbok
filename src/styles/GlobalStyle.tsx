@@ -3,8 +3,6 @@ import {
   createGlobalStyle,
   ThemeProvider as Provider,
 } from "styled-components";
-import "swiper/css";
-import "swiper/css/pagination";
 
 export const GlobalStyle = createGlobalStyle`
   * {

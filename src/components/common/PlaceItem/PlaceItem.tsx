@@ -22,7 +22,7 @@ export default function PlaceItem({
   return (
     <Container>
       <Thumbnail>
-        <BlurImage src={image} alt={title} />
+        <BlurImage src={image} alt={title} fill sizes="100%" />
       </Thumbnail>
       <Link href={`/detail/${contentId}`}>
         <Body>

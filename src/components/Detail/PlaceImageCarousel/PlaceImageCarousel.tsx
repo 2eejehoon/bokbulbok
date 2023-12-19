@@ -1,5 +1,5 @@
-import Swiper from "../../common/Swiper/Swiper";
 import BlurImage from "../../common/BlurImage/BlurImage";
+import Swiper from "@/components/common/Swiper/Swiper";
 import usePlaceImageCarousel from "@/components/Detail/PlaceImageCarousel/usePlaceImageCarousel";
 
 type ImageCarouselProps = {
@@ -10,26 +10,23 @@ function PlaceImageCarousel({ images = [] }: ImageCarouselProps) {
   const { showButtons, onMouseEnter, onMouseLeave } = usePlaceImageCarousel();
 
   return (
-    <Swiper.Wrapper
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      pagination
-      navigation
-    >
-      {images.map((image, index) => {
-        return (
-          <Swiper.Slide key={index} width={"100%"} height={260}>
-            <BlurImage src={image} alt="사진" />
-          </Swiper.Slide>
-        );
-      })}
-      {showButtons && (
-        <>
-          <Swiper.PrevButton />
-          <Swiper.NextButton />
-        </>
-      )}
-    </Swiper.Wrapper>
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <Swiper.Wrapper>
+        {images.map((image) => {
+          return (
+            <Swiper.Slide key={image} width={390} height={260}>
+              <BlurImage src={image} alt="사진" fill sizes="100%" />
+            </Swiper.Slide>
+          );
+        })}
+        {showButtons && (
+          <>
+            <Swiper.PrevButton />
+            <Swiper.NextButton />
+          </>
+        )}
+      </Swiper.Wrapper>
+    </div>
   );
 }
 

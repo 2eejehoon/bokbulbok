@@ -16,7 +16,7 @@ export default function Carousel({ images = [] }: CarouselProps) {
         {(images.length === 0 ? ["/noimg.png"] : images).map((image) => {
           return (
             <ImageContainer key={image} index={imageIndex}>
-              <BlurImage src={image} alt={"음식점"} />
+              <BlurImage src={image} alt={"음식점"} fill sizes="100%" />
             </ImageContainer>
           );
         })}
