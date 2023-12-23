@@ -5,7 +5,7 @@ import { convertCategoryToText, Category } from "@/utils/category";
 
 interface PlaceInfoProps {
   title?: string;
-  category?: Category;
+  category: Category;
   menu?: string;
   address?: string;
   tel?: string;

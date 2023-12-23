@@ -56,7 +56,7 @@ export default function PlaceDetail() {
       <ImageCarousel images={image.data} />
       <PlaceInfo
         title={common.data?.title}
-        category={common.data?.cat3}
+        category={common.data?.cat3 ?? "기타"}
         address={common.data?.addr1}
         menu={intro.data?.treatmenu}
         tel={intro.data?.infocenterfood}
