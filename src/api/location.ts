@@ -19,7 +19,7 @@ export const getLocationBasedPlacelistData = async (
 }> => {
   try {
     const response = await HttpClient.get<PlaceDataResponse>(
-      `locationBasedList1?serviceKey=${SERVICE_KEY}&numOfRows=30&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${lng}&mapY=${lat}&radius=${radius}`
+      `locationBasedList1?serviceKey=${SERVICE_KEY}&numOfRows=10&pageNo=${pageParam}&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=${arrange}&contentTypeId=39&mapX=${lng}&mapY=${lat}&radius=${radius}`
     );
     const { items, pageNo } = response.data.response.body;
     return {

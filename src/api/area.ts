@@ -13,7 +13,7 @@ export const getAreaBasedPlaceListData = async (
 ) => {
   try {
     const response = await HttpClient.get<AreaBasedPlaceListDataResponse>(
-      `areaBasedList1?serviceKey=${SERVICE_KEY}&pageNo=${pageParam}&numOfRows=30&MobileApp=AppTest&MobileOS=ETC&arrange=${sort}&areaCode=${areaCode}&_type=json&contentTypeId=39`
+      `areaBasedList1?serviceKey=${SERVICE_KEY}&pageNo=${pageParam}&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=${sort}&areaCode=${areaCode}&_type=json&contentTypeId=39`
     );
 
     const { items, pageNo } = response.data.response.body;
