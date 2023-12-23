@@ -22,7 +22,7 @@ export default function PlaceItem({
   return (
     <Container>
       <Thumbnail>
-        <BlurImage src={image} alt={title} fill sizes="100%" />
+        <BlurImage src={image} alt={title} width={120} height={120} />
       </Thumbnail>
       <Link href={`/detail/${contentId}`}>
         <Body>
@@ -47,11 +47,18 @@ const Container = styled.div`
 `;
 
 const Thumbnail = styled.div`
+  contain: size;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  width: 120px;
+  min-width: 120px;
   height: 120px;
+
+  img {
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1/1;
+  }
 `;
 
 const Body = styled.div`
