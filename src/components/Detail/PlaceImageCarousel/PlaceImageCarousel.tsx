@@ -1,6 +1,6 @@
 import BlurImage from "../../common/BlurImage/BlurImage";
+import usePlaceImageCarousel from "./usePlaceImageCarousel";
 import Swiper from "@/components/common/Swiper/Swiper";
-import usePlaceImageCarousel from "@/components/Detail/PlaceImageCarousel/usePlaceImageCarousel";
 
 type ImageCarouselProps = {
   images?: string[];
@@ -14,8 +14,8 @@ function PlaceImageCarousel({ images = [] }: ImageCarouselProps) {
       <Swiper.Wrapper>
         {images.map((image) => {
           return (
-            <Swiper.Slide key={image} width={390} height={260}>
-              <BlurImage src={image} alt="사진" fill sizes="100%" />
+            <Swiper.Slide key={image}>
+              <BlurImage src={image} alt="사진" width={390} height={260} />
             </Swiper.Slide>
           );
         })}
