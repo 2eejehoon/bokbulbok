@@ -10,7 +10,8 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/common/Seo/Seo";
 import useGetLocationBasedPlaceInfiniteData from "@/react-query/query/useGetLocationBasedPlaceInfiniteData";
 import Loading from "@/components/common/Loading/Loading";
-import LocationPageHeader from "@/components/Location/LocationPageHeader/LocationPageHeader";
+import LocationPageHeader from "@/components/location/LocationPageHeader/LocationPageHeader";
+import LocationPlaceList from "@/components/location/LocationPlaceList/LocationPlaceList";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -33,16 +34,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function Location() {
-  const { data, hasNextPage, fetchNextPage, isFetching } =
-    useGetLocationBasedPlaceInfiniteData();
-  const targetRef = useInfiniteScroll({ hasNextPage, fetchNextPage });
-
   return (
     <>
       <Seo title={"복불복"} description={"주변 음식점 리스트"} />
       <LocationPageHeader />
-      <PlaceList data={data} />
-      <div ref={targetRef}>{isFetching && <Loading height={30} />}</div>
+      <LocationPlaceList />
     </>
   );
 }

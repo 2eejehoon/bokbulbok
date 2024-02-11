@@ -5,13 +5,10 @@ import { QueryClient } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/contant";
 import { getAreaBasedPlaceListData } from "@/api/area";
 import { isAreaQuery } from "@/utils/area";
-import useGetAreaBasedPlaceInfiniteData from "@/react-query/query/useGetAreaBasedPlaceInfiniteData";
 import Seo from "@/components/common/Seo/Seo";
-import PlaceList from "@/components/common/PlaceList/PlaceList";
-import Loading from "@/components/common/Loading/Loading";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import AreaPageHeader from "@/components/Area/AreaPageHeader/AreaPageHeader";
+import AreaPageHeader from "@/components/area/AreaPageHeader/AreaPageHeader";
+import AreaPlaceList from "@/components/area/AreaPlaceList/AreaPlaceLIst";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -34,16 +31,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function Area() {
-  const { data, fetchNextPage, hasNextPage, isFetching } =
-    useGetAreaBasedPlaceInfiniteData();
-  const ref = useInfiniteScroll({ hasNextPage, fetchNextPage });
-
   return (
     <>
       <Seo title="복불복" description="지역별 음식점 정보" />
       <AreaPageHeader />
-      <PlaceList data={data} />
-      <div ref={ref}>{isFetching && <Loading height={30} />}</div>
+      <AreaPlaceList />
     </>
   );
 }
