@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import Button from "../../common/Button/Button";
-import useServiceStartButton from "@/components/Home/ServiceStartButton/useServiceStartButton";
+import useServiceStartButton from "@/components/home/ServiceStartButton/useServiceStartButton";
 
 const LocationServiceButton = () => {
   const { onLocationButtonClick } = useServiceStartButton();
 
-  return (
-    <LocationButton onClick={onLocationButtonClick}>
-      내 주변 음식점
-    </LocationButton>
-  );
+  return <LocationButton onClick={onLocationButtonClick}>내 주변 음식점</LocationButton>;
 };
 
 const LocationButton = styled(Button)`

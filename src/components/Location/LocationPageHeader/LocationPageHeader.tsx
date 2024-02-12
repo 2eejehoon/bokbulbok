@@ -1,8 +1,8 @@
 import Header from "../../common/Header/Header";
 import SortSelect from "../../common/SortSelect/SortSelectModal";
 import RouletteModal from "../../common/RouletteModal/RouletteModal";
-import AreaServiceButton from "../../Area/AreaServiceButton/AreaServiceButton";
 import RangeSliderPopover from "../RangeSliderPopover/RangeSliderPopover";
+import AreaServiceButton from "@/components/area/AreaServiceButton/AreaServiceButton";
 
 const LocationPageHeader = () => {
   return (

@@ -1,18 +1,8 @@
 import SliderPopover from "../../common/SliderPopover/SliderPopover";
-import useRangeSliderPopover from "@/components/Location/RangeSliderPopover/useRangeSliderPopover";
+import useRangeSliderPopover from "./useRangeSliderPopover";
 
 const RangeSliderPopover = () => {
-  const {
-    inputValue,
-    buttonValue,
-    min,
-    max,
-    step,
-    unit,
-    onChange,
-    onConfirm,
-    onCancle,
-  } = useRangeSliderPopover();
+  const { inputValue, buttonValue, min, max, step, unit, onChange, onConfirm, onCancle } = useRangeSliderPopover();
 
   return (
     <SliderPopover

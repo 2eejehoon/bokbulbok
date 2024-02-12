@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useMap from "@/components/Detail/DetailMap/useMap";
+import useMap from "./useMap";
 
 interface MapProps {
   lng: number;

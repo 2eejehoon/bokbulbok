@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Popover from "../../common/Popover/Popover";
 import Button from "../../common/Button/Button";
 import { Select } from "../../common/Select/Select";
+import useAreaSelect from "./useAreaSelect";
 import { AREA_ARRAY } from "@/utils/area";
-import useAreaSelect from "@/components/Area/AreaSelect/useAreaSelect";
 
 const AreaSelect = () => {
   const { area, onAreaClick } = useAreaSelect();

@@ -1,19 +1,15 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { type ReactElement } from "react";
 import { GetServerSidePropsContext } from "next";
-import PlaceInfo from "@/components/Detail/PlaceInfo/PlaceInfo";
-import {
-  getPlaceCommonDataById,
-  getPlaceIntroDataById,
-  getPlaceImageDataById,
-} from "@/api/detail";
+import PlaceInfo from "@/components/detail/PlaceInfo/PlaceInfo";
+import { getPlaceCommonDataById, getPlaceIntroDataById, getPlaceImageDataById } from "@/api/detail";
 import { QUERY_KEY } from "@/contant";
 import DetailLayout from "@/layout/DetailLayout/DetailLayout";
-import Map from "@/components/Detail/DetailMap/DetailMap";
 import Seo from "@/components/common/Seo/Seo";
 import useGetPlaceDetailData from "@/react-query/query/useGetPlaceDetailData";
-import ImageCarousel from "@/components/Detail/PlaceImageCarousel/PlaceImageCarousel";
-import DetailPageHeader from "@/components/Detail/DetailPageHeader/DetailPageHeader";
+import PlaceImageCarousel from "@/components/detail/PlaceImageCarousel/PlaceImageCarousel";
+import DetailPageHeader from "@/components/detail/DetailPageHeader/DetailPageHeader";
+import DetailMap from "@/components/detail/DetailMap/DetailMap";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
@@ -47,13 +43,9 @@ export default function PlaceDetail() {
 
   return (
     <>
-      <Seo
-        title={common.data?.title}
-        description={common.data?.overview}
-        image={common.data?.firstimage}
-      />
+      <Seo title={common.data?.title} description={common.data?.overview} image={common.data?.firstimage} />
       <DetailPageHeader />
-      <ImageCarousel images={image.data} />
+      <PlaceImageCarousel images={image.data} />
       <PlaceInfo
         title={common.data?.title}
         category={common.data?.cat3 ?? "기타"}
@@ -64,10 +56,7 @@ export default function PlaceDetail() {
         businesshour={intro.data?.opentimefood}
         overview={common.data?.overview}
       />
-      <Map
-        lng={Number(common.data?.mapx) ?? 126.969655}
-        lat={Number(common.data?.mapy) ?? 37.55376}
-      />
+      <DetailMap lng={Number(common.data?.mapx) ?? 126.969655} lat={Number(common.data?.mapy) ?? 37.55376} />
     </>
   );
 }

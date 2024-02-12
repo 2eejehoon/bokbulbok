@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../../common/Button/Button";
-import useServiceStartButton from "@/components/Home/ServiceStartButton/useServiceStartButton";
+import useServiceStartButton from "@/components/home/ServiceStartButton/useServiceStartButton";
 
 const AreaServiceButton = () => {
   const { onAreaButtonClick } = useServiceStartButton();
