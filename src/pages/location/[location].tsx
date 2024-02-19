@@ -5,11 +5,7 @@ import { getLocationBasedPlacelistData } from "@/api/location";
 import { QUERY_KEY } from "@/contant";
 import { isLocationQuery } from "@/utils/location";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import PlaceList from "@/components/common/PlaceList/PlaceList";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import Seo from "@/components/common/Seo/Seo";
-import useGetLocationBasedPlaceInfiniteData from "@/react-query/query/useGetLocationBasedPlaceInfiniteData";
-import Loading from "@/components/common/Loading/Loading";
 import LocationPageHeader from "@/components/location/LocationPageHeader/LocationPageHeader";
 import LocationPlaceList from "@/components/location/LocationPlaceList/LocationPlaceList";
 

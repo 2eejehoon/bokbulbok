@@ -6,11 +6,7 @@ const SERVICE_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 type AreaBasedPlaceListDataResponse = Response<PlaceData[]>;
 
-export const getAreaBasedPlaceListData = async (
-  pageParam: number = 1,
-  areaCode: number = 1,
-  sort: string
-) => {
+export const getAreaBasedPlaceListData = async (pageParam: number = 1, areaCode: number = 1, sort: string) => {
   try {
     const response = await HttpClient.get<AreaBasedPlaceListDataResponse>(
       `areaBasedList1?serviceKey=${SERVICE_KEY}&pageNo=${pageParam}&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=${sort}&areaCode=${areaCode}&_type=json&contentTypeId=39`
@@ -24,6 +20,6 @@ export const getAreaBasedPlaceListData = async (
       prevCursor: pageNo - 1,
     };
   } catch (error) {
-    throw new Error();
+    throw new Error("getAreaBasedListData");
   }
 };

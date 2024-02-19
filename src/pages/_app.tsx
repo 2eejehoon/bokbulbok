@@ -3,11 +3,7 @@ import { ReactElement, ReactNode, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import {
-  Hydrate,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -49,16 +45,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Script
         strategy={"beforeInteractive"}
         type={"text/javascript"}
-        src={
-          "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=" +
-          process.env.NEXT_PUBLIC_MAP_KEY
-        }
+        src={"https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=" + process.env.NEXT_PUBLIC_MAP_KEY}
       />
       <GlobalStyle />
       <RecoilRoot>
-        <Hydrate state={pageProps.dehydratedState}>
-          {getLayout(<Component {...pageProps} />)}
-        </Hydrate>
+        <Hydrate state={pageProps.dehydratedState}>{getLayout(<Component {...pageProps} />)}</Hydrate>
       </RecoilRoot>
       <ReactQueryDevtools />
     </QueryClientProvider>
