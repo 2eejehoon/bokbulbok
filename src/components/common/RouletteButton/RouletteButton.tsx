@@ -9,14 +9,9 @@ interface RouletteButtonProps {
   title: string;
 }
 
-export default function RouletteButton({
-  contentId,
-  title,
-}: RouletteButtonProps) {
+export default function RouletteButton({ contentId, title }: RouletteButtonProps) {
   const [rouletteItems, setRouletteItems] = useRecoilState(rouletteItemsState);
-  const [isIncluded, setIsIncluded] = useState(
-    rouletteItems.findIndex((item) => item.contentId === contentId) > -1
-  );
+  const [isIncluded, setIsIncluded] = useState(rouletteItems.findIndex((item) => item.contentId === contentId) > -1);
 
   const handleAddClick = () => {
     if (rouletteItems.length === 6) {
@@ -30,9 +25,7 @@ export default function RouletteButton({
   };
 
   const handleRemoveClick = () => {
-    const filteredRouletteItems = rouletteItems.filter(
-      (item) => item.contentId !== contentId
-    );
+    const filteredRouletteItems = rouletteItems.filter((item) => item.contentId !== contentId);
 
     setRouletteItems(filteredRouletteItems);
     setIsIncluded(false);
