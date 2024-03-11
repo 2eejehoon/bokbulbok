@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import Seo from "@/components/common/Seo";
+import Seo from "@/components/Common/Seo";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
-import Home from "@/components/home/Home";
+import Home from "@/components/Home/Home";
 
 export default function Index() {
   return (

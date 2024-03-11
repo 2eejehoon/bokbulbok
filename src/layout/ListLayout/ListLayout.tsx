@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import ScrollToTopButton from "@/components/common/ScrollToTopButton";
+import ScrollToTopButton from "@/components/Common/ScrollToTopButton";
 
 interface ListLayoutProps {
   children: ReactNode;

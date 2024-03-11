@@ -1,25 +1,25 @@
 import styled from "styled-components";
-import Popover from "../Common/Popover";
-import Button from "../Common/Button";
-import { Select } from "../Common/Select";
-import useAreaSelect from "../../hooks/useAreaSelect";
-import { AREA_ARRAY } from "@/utils/area";
+import Button from "./Button";
+import Popover from "./Popover";
+import { Select } from "./Select";
+import { SORT_ARRAY } from "@/contant";
+import useSortSelect from "@/hooks/useSortSelect";
 
-const AreaSelect = () => {
-  const { area, onAreaClick } = useAreaSelect();
+export default function SortSelect() {
+  const { sortValue, onSortClick } = useSortSelect();
 
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <SelectButton>{area}</SelectButton>
+        <SelectButton>{sortValue}</SelectButton>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content width={150}>
           <Select.Root>
-            {AREA_ARRAY.map((area, index) => {
+            {SORT_ARRAY.map((sort, index) => {
               return (
-                <Select.Option key={index} onClick={onAreaClick}>
-                  {area}
+                <Select.Option key={index} onClick={onSortClick}>
+                  {sort}
                 </Select.Option>
               );
             })}
@@ -28,7 +28,7 @@ const AreaSelect = () => {
       </Popover.Portal>
     </Popover.Root>
   );
-};
+}
 
 const SelectButton = styled(Button)`
   font-size: 12px;
@@ -37,5 +37,3 @@ const SelectButton = styled(Button)`
   border-radius: 20px;
   color: black;
 `;
-
-export default AreaSelect;
