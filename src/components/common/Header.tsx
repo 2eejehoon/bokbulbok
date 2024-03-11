@@ -34,8 +34,6 @@ const _Header = styled.header<{ $ISSTICKY: boolean }>`
   border-bottom: 1px lightgrey solid;
   z-index: 1;
   width: 100%;
-  min-width: 350px;
-  max-width: 400px;
   height: 50px;
   padding: 5px;
   top: 0;

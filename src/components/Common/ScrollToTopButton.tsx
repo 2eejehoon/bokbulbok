@@ -21,6 +21,7 @@ const ScrollButton = styled(Button)<{ ISSCROLLED: string }>`
   font-size: 16px;
   font-weight: 700;
   color: white;
+  border: none;
   background-color: black;
   border-radius: 50%;
   transition: bottom 0.3s;

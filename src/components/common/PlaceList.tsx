@@ -38,6 +38,7 @@ const Container = styled.ul`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  max-width: 355px;
   overflow-y: scroll;
   margin: 0px;
   padding: 0px;

@@ -16,7 +16,7 @@ export default function PlaceItem({ contentId, image, title, address, category }
   return (
     <Container>
       <Thumbnail>
-        <BlurImage src={image} alt={title} width={120} height={120} />
+        <BlurImage src={image} alt={title} fill />
       </Thumbnail>
       <Link href={`/detail/${contentId}`}>
         <Body>
@@ -33,26 +33,24 @@ export default function PlaceItem({ contentId, image, title, address, category }
 const Container = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 10px;
   padding: 10px;
   width: 100%;
   border-bottom: 1px solid lightgrey;
 `;
 
 const Thumbnail = styled.div`
-  contain: size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  min-width: 120px;
-  height: 120px;
-
-  img {
-    width: 120px;
-    height: 120px;
-    aspect-ratio: 1/1;
-  }
+  min-width: 100%;
+  height: 200px;
 `;
 
 const Body = styled.div`

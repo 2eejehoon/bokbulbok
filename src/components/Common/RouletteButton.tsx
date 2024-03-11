@@ -67,6 +67,7 @@ const AddButton = styled(Button)`
   font-weight: 700;
   right: 5px;
   bottom: 5px;
+  border: none;
   background-color: black;
   border-radius: 20px;
   color: white;

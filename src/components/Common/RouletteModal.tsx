@@ -21,6 +21,7 @@ export default function RouletteModal() {
 const ModalButton = styled(Button)`
   font-size: 12px;
   color: white;
+  border: none;
   background-color: black;
   border-radius: 20px;
 `;

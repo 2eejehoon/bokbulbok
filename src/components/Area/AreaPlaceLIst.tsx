@@ -6,7 +6,6 @@ import useGetAreaBasedPlaceInfiniteData from "@/react-query/query/useGetAreaBase
 export default function AreaPlaceList() {
   const { data, isFetching, hasNextPage, fetchNextPage } = useGetAreaBasedPlaceInfiniteData();
   const ref = useInfiniteScroll({ hasNextPage, fetchNextPage });
-  console.log(data);
 
   return (
     <>

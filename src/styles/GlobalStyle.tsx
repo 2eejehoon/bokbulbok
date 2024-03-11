@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
-import {
-  createGlobalStyle,
-  ThemeProvider as Provider,
-} from "styled-components";
+import { createGlobalStyle, ThemeProvider as Provider } from "styled-components";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -25,7 +22,16 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: white;
     min-width: 350px;
-    max-width: 400px;
+    max-width: 1400px;
+    
+    @media screen and (max-width: 1400px) {
+      max-width: 1200px;
+    }
+
+    @media screen and (max-width: 800px){
+      max-width: 350px;  
+    }
+
     min-height: 100vh;
     margin: auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -46,7 +52,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    border: none;
     background: none;
   }
 

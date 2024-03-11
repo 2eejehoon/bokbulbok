@@ -15,7 +15,7 @@ export default function GobackButton() {
 const BackButton = styled(Button)`
   font-size: 12px;
   color: black;
-  background-color: white;
   border: 1px solid lightgrey;
+  background-color: white;
   border-radius: 20px;
 `;
