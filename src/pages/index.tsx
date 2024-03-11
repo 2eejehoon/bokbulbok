@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Seo from "@/components/common/Seo/Seo";
+import Seo from "@/components/common/Seo";
 import BaseLayout from "@/layout/BaseLayout/BaseLayout";
 import Home from "@/components/home/Home";
 

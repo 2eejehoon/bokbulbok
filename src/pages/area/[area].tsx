@@ -5,10 +5,10 @@ import { QueryClient } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/contant";
 import { getAreaBasedPlaceListData } from "@/api/area";
 import { isAreaQuery } from "@/utils/area";
-import Seo from "@/components/common/Seo/Seo";
+import Seo from "@/components/common/Seo";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import AreaPageHeader from "@/components/area/AreaPageHeader/AreaPageHeader";
-import AreaPlaceList from "@/components/area/AreaPlaceList/AreaPlaceLIst";
+import AreaPageHeader from "@/components/area/AreaPageHeader";
+import AreaPlaceList from "@/components/area/AreaPlaceLIst";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();

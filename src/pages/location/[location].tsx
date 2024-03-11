@@ -5,9 +5,9 @@ import { getLocationBasedPlacelistData } from "@/api/location";
 import { QUERY_KEY } from "@/contant";
 import { isLocationQuery } from "@/utils/location";
 import ListLayout from "@/layout/ListLayout/ListLayout";
-import Seo from "@/components/common/Seo/Seo";
-import LocationPageHeader from "@/components/location/LocationPageHeader/LocationPageHeader";
-import LocationPlaceList from "@/components/location/LocationPlaceList/LocationPlaceList";
+import Seo from "@/components/common/Seo";
+import LocationPageHeader from "@/components/location/LocationPageHeader";
+import LocationPlaceList from "@/components/location/LocationPlaceList";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const queryClient = new QueryClient();

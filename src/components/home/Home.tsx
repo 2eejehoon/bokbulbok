@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import ServiceStartButton from "./ServiceStartButton/ServiceStartButton";
+import ServiceStartButton from "./ServiceStartButton";
 
 export default function Home() {
   return (
     <Container>
       <Title>복불복</Title>
       <Text>
-        내 주변 음식점 정보 확인하고 <br /> 룰렛 게임으로 랜덤한 음식점을 선택할
-        수 있습니다.
+        내 주변 음식점 정보 확인하고 <br /> 룰렛 게임으로 랜덤한 음식점을 선택할 수 있습니다.
       </Text>
       <ServiceStartButton />
     </Container>
