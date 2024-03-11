@@ -2,7 +2,7 @@ import Header from "../../common/Header/Header";
 import AreaSelect from "../AreaSelect/AreaSelect";
 import SortSelect from "../../common/SortSelect/SortSelectModal";
 import RouletteModal from "../../common/RouletteModal/RouletteModal";
-import LocationServiceButton from "@/components/location/LocationServiceButton/LocationServiceButton";
+// import LocationServiceButton from "@/components/location/LocationServiceButton/LocationServiceButton";
 
 const AreaPageHeader = () => {
   return (
@@ -12,7 +12,7 @@ const AreaPageHeader = () => {
         <SortSelect />
       </Header.Left>
       <Header.Right>
-        <LocationServiceButton />
+        {/* <LocationServiceButton /> */}
         <RouletteModal />
       </Header.Right>
     </Header>
