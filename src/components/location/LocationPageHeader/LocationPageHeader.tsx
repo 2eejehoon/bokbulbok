@@ -1,22 +1,22 @@
 import Header from "../../common/Header/Header";
-import AreaSelect from "../AreaSelect/AreaSelect";
 import SortSelect from "../../common/SortSelect/SortSelectModal";
 import RouletteModal from "../../common/RouletteModal/RouletteModal";
-import LocationServiceButton from "@/components/location/LocationServiceButton/LocationServiceButton";
+import RangeSliderPopover from "../RangeSliderPopover/RangeSliderPopover";
+import AreaServiceButton from "@/components/area/AreaServiceButton/AreaServiceButton";
 
-const AreaPageHeader = () => {
+const LocationPageHeader = () => {
   return (
     <Header>
       <Header.Left>
-        <AreaSelect />
+        <RangeSliderPopover />
         <SortSelect />
       </Header.Left>
       <Header.Right>
-        <LocationServiceButton />
+        <AreaServiceButton />
         <RouletteModal />
       </Header.Right>
     </Header>
   );
 };
 
-export default AreaPageHeader;
+export default LocationPageHeader;

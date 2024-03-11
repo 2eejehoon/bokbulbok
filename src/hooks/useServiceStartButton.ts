@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useGeolocation } from "../../../hooks/useGeolocation";
+import { useGeolocation } from "./useGeolocation";
 import { isSuccessLocationData } from "@/utils/location";
 
 export default function useServiceStartButton() {
