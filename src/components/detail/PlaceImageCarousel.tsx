@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useSwiper } from "swiper/react";
 import BlurImage from "../common/BlurImage";
-import ArrowRight from "../../../../public/arrow-right.svg";
-import ArrowLeft from "../../../../public/arrow-left.svg";
+import ArrowRight from "../common/ArrowRight";
+import ArrowLeft from "../common/ArrowLeft";
 import usePlaceImageCarousel from "../../hooks/usePlaceImageCarousel";
 
 type ImageCarouselProps = {
