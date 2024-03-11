@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useSwiper } from "swiper/react";
 import BlurImage from "../Common/BlurImage";
-import ArrowRight from "../Common/ArrowRight";
-import ArrowLeft from "../Common/ArrowLeft";
+import ArrowRight from "../../../public/arrow-right.svg";
+import ArrowLeft from "../../../public/arrow-left.svg";
 import usePlaceImageCarousel from "../../hooks/usePlaceImageCarousel";
 
 type ImageCarouselProps = {
@@ -76,6 +76,7 @@ const _PrevButton = styled.button`
   align-items: center;
   width: 25px;
   height: 25px;
+  border: 1px solid lightgrey;
   border-radius: 50%;
   position: absolute;
   top: calc(50% - 12.5px);
@@ -90,6 +91,7 @@ const _NextButton = styled.button`
   align-items: center;
   width: 25px;
   height: 25px;
+  border: 1px solid lightgrey;
   border-radius: 50%;
   position: absolute;
   top: calc(50% - 12.5px);
@@ -103,6 +105,7 @@ const PaginationButton = styled.button`
   font-weight: 600;
   width: 20px;
   height: 20px;
+  border: 1px solid lightgrey;
   border-radius: 50%;
   background-color: white;
   text-align: center;
