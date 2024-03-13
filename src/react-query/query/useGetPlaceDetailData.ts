@@ -2,11 +2,7 @@ import { useRouter } from "next/router";
 import { useQueries } from "@tanstack/react-query";
 import { UseQueryResult } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/contant";
-import {
-  getPlaceCommonDataById,
-  getPlaceIntroDataById,
-  getPlaceImageDataById,
-} from "@/api/detail";
+import { getPlaceCommonDataById, getPlaceIntroDataById, getPlaceImageDataById } from "@/api/detail";
 import { PlaceImageData, PlaceCommonData, PlaceIntroData } from "@/types/place";
 
 type useGetPlaceDetailDataReturnType = [
@@ -19,7 +15,7 @@ export default function useGetPlaceDetailData(): useGetPlaceDetailDataReturnType
   const router = useRouter();
   const contentId = router.query.contentId as string;
 
-  const [common, intro, image] = useQueries({
+  return useQueries({
     queries: [
       {
         queryKey: [QUERY_KEY.DETAIL_COMMON, contentId],
@@ -32,11 +28,8 @@ export default function useGetPlaceDetailData(): useGetPlaceDetailDataReturnType
       {
         queryKey: [QUERY_KEY.DETAIL_IMAGE, contentId],
         queryFn: () => getPlaceImageDataById(contentId),
-        select: (data: PlaceImageData[]) =>
-          data.map((item) => item.originimgurl),
+        select: (data: PlaceImageData[]) => data.map((item) => item.originimgurl),
       },
     ],
   });
-
-  return [common, intro, image];
 }

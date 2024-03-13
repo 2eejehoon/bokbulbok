@@ -12,10 +12,7 @@ type ErrorLocationData = {
   error: { code: number; message: string };
 };
 
-export type LocationData =
-  | SuccessLocationData
-  | LoadingLocationData
-  | ErrorLocationData;
+export type LocationData = SuccessLocationData | LoadingLocationData | ErrorLocationData;
 
 export const getGeolocationData = (): Promise<LocationData> => {
   return new Promise((resolve) => {
@@ -43,21 +40,15 @@ export const getGeolocationData = (): Promise<LocationData> => {
   });
 };
 
-export const isSuccessLocationData = (
-  location: LocationData
-): location is SuccessLocationData => {
+export const isSuccessLocationData = (location: LocationData): location is SuccessLocationData => {
   return location.status === "success";
 };
 
-export const isLoadingLocationData = (
-  location: LocationData
-): location is LoadingLocationData => {
+export const isLoadingLocationData = (location: LocationData): location is LoadingLocationData => {
   return location.status === "loading";
 };
 
-export const isErrorLocationData = (
-  location: LocationData
-): location is ErrorLocationData => {
+export const isErrorLocationData = (location: LocationData): location is ErrorLocationData => {
   return location.status === "error";
 };
 
@@ -68,10 +59,6 @@ export type LocationQuery<T> = T & {
   sort: SortCode;
 };
 
-export const isLocationQuery = <T extends {}>(
-  query: T
-): query is LocationQuery<T> => {
-  return (
-    "lng" in query && "lat" in query && "range" in query && "sort" in query
-  );
+export const isLocationQuery = <T extends {}>(query: T): query is LocationQuery<T> => {
+  return "lng" in query && "lat" in query && "range" in query && "sort" in query;
 };

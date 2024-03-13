@@ -31,28 +31,15 @@ interface useGetPlaceInfiniteDataReturnType {
 export default function useGetLocationBasedPlaceInfiniteData(): useGetPlaceInfiniteDataReturnType {
   const router = useRouter();
 
-  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
+  return useInfiniteQuery({
     queryKey: [QUERY_KEY.LOCATION_LIST],
     queryFn: ({ pageParam = 1 }) => {
       if (isLocationQuery(router.query)) {
         const { lng, lat, range, sort } = router.query;
         return getLocationBasedPlacelistData(pageParam, lng, lat, range, sort);
       }
-      return getLocationBasedPlacelistData(
-        1,
-        "126.969655",
-        "37.55376",
-        "5000",
-        "D"
-      );
+      return getLocationBasedPlacelistData(1, "126.969655", "37.55376", "5000", "D");
     },
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? 1,
   });
-
-  return {
-    data,
-    hasNextPage,
-    fetchNextPage,
-    isFetching,
-  };
 }

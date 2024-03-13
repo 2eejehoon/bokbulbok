@@ -7,7 +7,7 @@ import { getAreaBasedPlaceListData } from "@/api/area";
 const useGetAreaBasedPlaceInfiniteData = () => {
   const router = useRouter();
 
-  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
+  return useInfiniteQuery({
     queryKey: [QUERY_KEY.AREA_LIST],
     queryFn: ({ pageParam = 1 }) => {
       if (isAreaQuery(router.query)) {
@@ -18,13 +18,6 @@ const useGetAreaBasedPlaceInfiniteData = () => {
     },
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? 1,
   });
-
-  return {
-    data,
-    hasNextPage,
-    fetchNextPage,
-    isFetching,
-  };
 };
 
 export default useGetAreaBasedPlaceInfiniteData;
