@@ -4,7 +4,7 @@ import { GetServerSidePropsContext } from "next";
 import PlaceInfo from "@/components/Detail/PlaceInfo";
 import { getPlaceCommonDataById, getPlaceIntroDataById, getPlaceImageDataById } from "@/api/detail";
 import { QUERY_KEY } from "@/contant";
-import DetailLayout from "@/layout/DetailLayout/DetailLayout";
+import DetailLayout from "@/layout/DetailLayout";
 import Seo from "@/components/Common/Seo";
 import useGetPlaceDetailData from "@/react-query/query/useGetPlaceDetailData";
 import PlaceImageCarousel from "@/components/Detail/PlaceImageCarousel";

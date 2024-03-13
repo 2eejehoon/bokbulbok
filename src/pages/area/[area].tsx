@@ -6,7 +6,7 @@ import { QUERY_KEY } from "@/contant";
 import { getAreaBasedPlaceListData } from "@/api/area";
 import { isAreaQuery } from "@/utils/area";
 import Seo from "@/components/Common/Seo";
-import ListLayout from "@/layout/ListLayout/ListLayout";
+import ListLayout from "@/layout/ListLayout";
 import AreaPageHeader from "@/components/Area/AreaPageHeader";
 import AreaPlaceList from "@/components/Area/AreaPlaceLIst";
 

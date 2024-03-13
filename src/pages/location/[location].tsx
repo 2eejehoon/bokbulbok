@@ -4,7 +4,7 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getLocationBasedPlacelistData } from "@/api/location";
 import { QUERY_KEY } from "@/contant";
 import { isLocationQuery } from "@/utils/location";
-import ListLayout from "@/layout/ListLayout/ListLayout";
+import ListLayout from "@/layout/ListLayout";
 import Seo from "@/components/Common/Seo";
 import LocationPageHeader from "@/components/Location/LocationPageHeader";
 import LocationPlaceList from "@/components/Location/LocationPlaceList";

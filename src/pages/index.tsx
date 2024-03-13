@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Seo from "@/components/Common/Seo";
-import BaseLayout from "@/layout/BaseLayout/BaseLayout";
+import BaseLayout from "@/layout/BaseLayout";
 import Home from "@/components/Home/Home";
 
 export default function Index() {
