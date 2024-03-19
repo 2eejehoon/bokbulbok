@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import ServiceStartButton from "./ServiceStartButton";
+import LocationServiceButton from "../Location/LocationServiceButton";
+import AreaServiceButton from "../Area/AreaServiceButton";
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
       <Text>
         내 주변 음식점 정보 확인하고 <br /> 룰렛 게임으로 랜덤한 음식점을 선택할 수 있습니다.
       </Text>
-      <ServiceStartButton />
+      <LocationServiceButton />
+      <AreaServiceButton />
     </Container>
   );
 }
@@ -19,6 +21,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 20px;
 `;
 
 const Title = styled.h1`
