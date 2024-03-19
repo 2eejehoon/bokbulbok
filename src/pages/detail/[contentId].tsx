@@ -38,6 +38,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
+PlaceDetail.getLayout = function getLayout(page: ReactElement) {
+  return <DetailLayout>{page}</DetailLayout>;
+};
+
 export default function PlaceDetail() {
   const [common, intro, image] = useGetPlaceDetailData();
 
@@ -60,7 +64,3 @@ export default function PlaceDetail() {
     </>
   );
 }
-
-PlaceDetail.getLayout = function getLayout(page: ReactElement) {
-  return <DetailLayout>{page}</DetailLayout>;
-};

@@ -7,7 +7,7 @@ export default function ServiceStartButton() {
   const { locationData, onLocationButtonClick, onAreaButtonClick } = useServiceStartButton();
 
   if (locationData.status === "error") {
-    <ErrorMessage>{locationData.error.message}</ErrorMessage>;
+    return <ErrorMessage>{locationData.error.message}</ErrorMessage>;
   }
 
   return (
