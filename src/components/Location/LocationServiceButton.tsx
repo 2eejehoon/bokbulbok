@@ -1,11 +1,20 @@
 import styled from "styled-components";
 import Button from "../Common/Button";
+import Loading from "../Common/Loading";
 import useServiceStartButton from "@/hooks/useServiceStartButton";
 
 const LocationServiceButton = () => {
-  const { onLocationButtonClick } = useServiceStartButton();
+  const { locationData, onLocationButtonClick } = useServiceStartButton();
 
-  return <LocationButton onClick={onLocationButtonClick}>내 주변 음식점</LocationButton>;
+  if (locationData.status === "error") {
+    return null;
+  }
+
+  return (
+    <LocationButton disabled={locationData.status !== "success"} onClick={onLocationButtonClick}>
+      {locationData.status === "loading" ? <Loading height={15} /> : "내 주변 음식점"}
+    </LocationButton>
+  );
 };
 
 const LocationButton = styled(Button)`
@@ -14,6 +23,7 @@ const LocationButton = styled(Button)`
   border: none;
   background-color: black;
   border-radius: 20px;
+  width: 90px;
 `;
 
 export default LocationServiceButton;
