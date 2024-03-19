@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Button from "../Common/Button";
-import useServiceStartButton from "@/hooks/useServiceStartButton";
+import useAreaServiceStartButton from "@/hooks/useAreaServiceStartButton";
 
 const AreaServiceButton = () => {
-  const { onAreaButtonClick } = useServiceStartButton();
+  const onAreaButtonClick = useAreaServiceStartButton();
 
   return <AreaButton onClick={onAreaButtonClick}>지역별 음식점</AreaButton>;
 };

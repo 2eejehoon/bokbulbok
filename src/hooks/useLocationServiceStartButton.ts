@@ -20,15 +20,5 @@ export default function useServiceStartButton() {
     }
   };
 
-  const onAreaButtonClick = () => {
-    router.push({
-      pathname: "/area/area",
-      query: {
-        areaCode: 1,
-        sort: "D",
-      },
-    });
-  };
-
-  return { locationData, onLocationButtonClick, onAreaButtonClick };
+  return { locationData, onLocationButtonClick };
 }

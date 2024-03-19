@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Common/Button";
 import Loading from "../Common/Loading";
-import useServiceStartButton from "@/hooks/useServiceStartButton";
+import useServiceStartButton from "@/hooks/useLocationServiceStartButton";
 
 const LocationServiceButton = () => {
   const { locationData, onLocationButtonClick } = useServiceStartButton();
