@@ -18,16 +18,15 @@ type useRangeSliderPopoverReturnType = {
   onCancle: () => void;
 };
 
-const MIN = "5";
+const MIN = "0.5";
 const MAX = "50";
-const STEP = "5";
+const STEP = "0.5";
 const UNIT = "km";
 
 const useRangeSliderPopover = (): useRangeSliderPopoverReturnType => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const { lng, lat, range, sort } =
-    router.query as LocationQuery<ParsedUrlQuery>;
+  const { lng, lat, range, sort } = router.query as LocationQuery<ParsedUrlQuery>;
   const [inputValue, setInputValue] = useState(convertQueryToRange(range));
   const [buttonValue, setButtonValue] = useState(Number(range) / 1000);
 
@@ -36,11 +35,7 @@ const useRangeSliderPopover = (): useRangeSliderPopoverReturnType => {
   };
 
   const onConfirm = () => {
-    router.push(
-      `/location/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(
-        inputValue
-      )}&sort=${sort}`
-    );
+    router.push(`/location/location?lng=${lng}&lat=${lat}&range=${convertRangeToQuery(inputValue)}&sort=${sort}`);
     setButtonValue(inputValue);
   };
 
