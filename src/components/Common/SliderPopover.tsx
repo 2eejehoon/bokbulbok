@@ -74,6 +74,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 5px;
 `;
 
 const ConfirmButton = styled(Button)`
@@ -90,16 +91,4 @@ const CancleButton = styled(Button)`
   border: 1px solid lightgrey;
   border-radius: 20px;
   color: black;
-`;
-
-const Background = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
 `;

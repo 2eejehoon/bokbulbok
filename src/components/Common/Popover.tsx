@@ -3,24 +3,17 @@ import styled from "styled-components";
 
 const _Trigger = styled(_Popover.Trigger)``;
 
-const _Close = styled(_Popover.Close)``;
+const _Close = styled(_Popover.Close)`
+  border: none;
+`;
 
 const _Content = styled(_Popover.Content)<{
   width?: string | number;
   height?: string | number;
 }>`
-  width: ${({ width }) =>
-    typeof width === "string"
-      ? `${width}`
-      : typeof width === "number"
-      ? `${width}px`
-      : ""};
+  width: ${({ width }) => (typeof width === "string" ? `${width}` : typeof width === "number" ? `${width}px` : "")};
   height: ${({ height }) =>
-    typeof height === "string"
-      ? `${height}`
-      : typeof height === "number"
-      ? `${height}px`
-      : ""};
+    typeof height === "string" ? `${height}` : typeof height === "number" ? `${height}px` : ""};
   padding: 5px;
   background-color: white;
   border: 1px solid lightgrey;
