@@ -21,8 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: white;
-    max-width: 350px;
-
+    max-width:430px;
     min-height: 100vh;
     margin: auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
